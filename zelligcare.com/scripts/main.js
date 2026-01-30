@@ -1127,8 +1127,7 @@ $(function(){
 		$item.attr('data-type', type).addClass('is-' + type);
 	});
 	
-	/*
-$('.review-carousel').slick({
+	$('.review-carousel').slick({
 		autoplay:true,
 		arrows: true,
 		dots: false,
@@ -1139,7 +1138,6 @@ $('.review-carousel').slick({
 		prevArrow:".prev",
 		nextArrow:".next"
 	});
-*/
 	/*
 	$('.review-box .ry-each .carousel-inner').slick({
 		autoplay:true,
