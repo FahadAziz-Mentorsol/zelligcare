@@ -25,13 +25,11 @@ function zelligcare_scripts() {
     wp_enqueue_style('common-global', get_template_directory_uri() . '/css/common-global.css');
     wp_enqueue_style('site-overrides', get_template_directory_uri() . '/css/site-overrides.css');
     
-    // jQuery
-    wp_enqueue_script('jquery');
+    // Additional page-specific styles
     wp_enqueue_style('homepage-page', get_template_directory_uri() . '/css/homepage-page.css');
     wp_enqueue_style('about-us', get_template_directory_uri() . '/css/about-us.css');
     
-    // Theme styles
-    wp_enqueue_style('zelligcare-style', get_stylesheet_uri());
+    // Theme styles (remove duplicate)
     wp_enqueue_style('dependencies', get_template_directory_uri() . '/styles/dependencies.css');
     wp_enqueue_style('default', get_template_directory_uri() . '/styles/default.css');
     wp_enqueue_style('site', get_template_directory_uri() . '/styles/site.css');
@@ -54,15 +52,20 @@ function zelligcare_scripts() {
     wp_enqueue_style('overrides', get_template_directory_uri() . '/styles/overrides.css');
     wp_enqueue_style('mobile-header', get_template_directory_uri() . '/styles/mobile-header.css');
     
-    // Scripts
-    wp_enqueue_script('jquery', 'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js', array(), '3.3.1', true);
+    // Scripts - jQuery should be loaded first
+    wp_enqueue_script('jquery', 'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js', array(), '3.3.1', false);
     wp_enqueue_script('bootstrap', 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js', array('jquery'), '3.3.7', true);
     wp_enqueue_script('tailwind', 'https://cdn.tailwindcss.com', array(), null, false);
     wp_enqueue_script('google-maps', 'https://maps.googleapis.com/maps/api/js?key=AIzaSyBhDrnT7O9YqoL7Yn3hF0Z1d2e3f4g5h6i7j8k9l0', array(), null, true);
     wp_enqueue_script('userway', 'https://cdn.userway.org/widget.js', array(), null, true);
     wp_add_inline_script('userway', 'var _userway_config = { position: 3, size: "small", account: "sSEkA4Kkqq" };');
     
+    // Slick Carousel CSS and JS
+    wp_enqueue_style('slick-carousel-css', 'https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css', array(), '1.8.1');
     wp_enqueue_script('slick-carousel', 'https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js', array('jquery'), '1.8.1', true);
+    
+    // AOS (Animate On Scroll) CSS and JS
+    wp_enqueue_style('aos-css', 'https://unpkg.com/aos@2.3.1/dist/aos.css', array(), '2.3.1');
     wp_enqueue_script('aos', 'https://unpkg.com/aos@2.3.1/dist/aos.js', array(), '2.3.1', true);
     wp_enqueue_script('touchswipe', get_template_directory_uri() . '/js/touchswipe.min.js', array('jquery'), null, true);
     wp_enqueue_script('jquery-ui', get_template_directory_uri() . '/js/jquery-ui.js', array('jquery'), null, true);
@@ -83,7 +86,11 @@ function zelligcare_scripts() {
     wp_enqueue_script('zelligcare-inner-contact-map', get_template_directory_uri() . '/scripts/inner-contact-map.js', array('jquery'), null, true);
     wp_enqueue_script('zelligcare-homepage-cta-style-4', get_template_directory_uri() . '/scripts/homepage-cta-style-4.js', array('jquery'), null, true);
     wp_enqueue_script('zelligcare-homepage-insurance-style1', get_template_directory_uri() . '/scripts/homepage-insurance-style1.js', array('jquery'), null, true);
-    wp_enqueue_script('zelligcare-homepage-meet-the-team-style2', get_template_directory_uri() . '/scripts/homepage-meet-the-team-style2.js', array('jquery'), null, true);
+    // Check if file exists with cache-busting name, otherwise use clean name
+    $team_script = file_exists(get_template_directory() . '/scripts/homepage-meet-the-team-style2﹖jxl695697585=jxl695697585.js') 
+        ? '/scripts/homepage-meet-the-team-style2﹖jxl695697585=jxl695697585.js'
+        : '/scripts/homepage-meet-the-team-style2.js';
+    wp_enqueue_script('zelligcare-homepage-meet-the-team-style2', get_template_directory_uri() . $team_script, array('jquery'), null, true);
     wp_enqueue_script('zelligcare-inner-team-style-1', get_template_directory_uri() . '/scripts/inner-team-style-1.js', array('jquery'), null, true);
     wp_enqueue_script('zelligcare-inner-team-style-3', get_template_directory_uri() . '/scripts/inner-team-style-3.js', array('jquery'), null, true);
     
@@ -95,31 +102,38 @@ function zelligcare_scripts() {
 
     // Sticky Header Script
     wp_add_inline_script('zelligcare-main', "
-        // Sticky logo functionality
-        litlleLogo = document.getElementById('litlleLogo');
-        if (litlleLogo) {
-            var myScrollFunc = function () {
-                var y = window.scrollY;
-                if (y >= 150) {
-                    litlleLogo.style.display = 'block'
-                } else {
-                    litlleLogo.style.display = 'none'
-                }
-            };
-            window.addEventListener('scroll', myScrollFunc);
-        }
+        // Sticky logo functionality - Run on DOM ready
+        document.addEventListener('DOMContentLoaded', function() {
+            var litlleLogo = document.getElementById('litlleLogo');
+            if (litlleLogo) {
+                var myScrollFunc = function () {
+                    var y = window.scrollY || window.pageYOffset || document.documentElement.scrollTop;
+                    if (y >= 150) {
+                        litlleLogo.style.display = 'block';
+                    } else {
+                        litlleLogo.style.display = 'none';
+                    }
+                };
+                // Run once on load to set initial state
+                myScrollFunc();
+                // Then listen for scroll events
+                window.addEventListener('scroll', myScrollFunc, { passive: true });
+            }
+        });
         
         // Sticky header functionality
         window.addEventListener('scroll', function() {
             var header = document.querySelector('.module-43');
             if (header) {
                 if (window.scrollY > 0) {
+                    header.classList.add('fixed');
                     header.classList.add('custom-sticky');
                 } else {
+                    header.classList.remove('fixed');
                     header.classList.remove('custom-sticky');
                 }
             }
-        });
+        }, { passive: true });
         
         // Mobile menu functionality
         document.addEventListener('DOMContentLoaded', function() {

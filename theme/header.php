@@ -26,7 +26,7 @@
               <div class="col-xs-12 ry-leads">
                 <div class="col-xs-12 btn-wrapper">
                   <div class="btn-wrap">
-                    <a href="tel:2153181821" data-toggle-value data-toggle-default-visible="false" data-toggle-show-animation data-toggle-hide-animation data-toggle-show-animation-options="{}" data-toggle-hide-animation-options="{}" id class="ry-btn ry-btn-primary" target="_self">(215) 318-1821</a>
+                    <a href="tel:012.345.6789" data-toggle-value data-toggle-default-visible="false" data-toggle-show-animation data-toggle-hide-animation data-toggle-show-animation-options="{}" data-toggle-hide-animation-options="{}" id class="ry-btn ry-btn-primary" target="_self">(012) 345-6789</a>
                   </div>
                   <div class="btn-wrap apt">
                     <a href="<?php echo home_url('/request-an-appointment/'); ?>" data-toggle-value data-toggle-default-visible="false" data-toggle-show-animation data-toggle-hide-animation data-toggle-show-animation-options="{}" data-toggle-hide-animation-options="{}" target="_blank" id class="ry-btn ry-btn-secondary">REQUEST AN APPOINTMENT</a>
@@ -83,18 +83,6 @@
                     </ul>
                   </li>
                 </ul>
-                <script>
-                  litlleLogo = document.getElementById("litlleLogo");
-                  var myScrollFunc = function() {
-                    var y = window.scrollY;
-                    if (y >= 150) {
-                      litlleLogo.style.display = "block"
-                    } else {
-                      litlleLogo.style.display = "none"
-                    }
-                  };
-                  window.addEventListener("scroll", myScrollFunc);
-                </script>
               </div>
             </div>
           </div>
@@ -119,7 +107,7 @@
               </div>
               <div class="flex-item right-nav">
                 <div class="mobile-button">
-                  <a href="tel:2153181821"><i class="fa fa-phone" aria-hidden="true"></i></a>
+                  <a href="tel:0123456789"><i class="fa fa-phone" aria-hidden="true"></i></a>
                   <a href="<?php echo home_url('/request-an-appointment/'); ?>" target="_blank"><i class="fa fa-calendar" aria-hidden="true"></i></a>
                 </div>
               </div>

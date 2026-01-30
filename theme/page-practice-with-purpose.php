@@ -4,41 +4,196 @@ Template Name: Practice With Purpose (Careers)
 */
 get_header(); ?>
 
-<!-- Exact Original HTML Structure -->
+<!-- Page Banner -->
 <div id="ry-pg-banner">
-  <div class="col-xs-12 ry-bnr-wrp ry-el-bg">
+  <div class="col-xs-12 ry-bnr-wrp ry-el-bg" style="background-image: url('https://static.royacdn.com/Site-656e9e6e-f19a-4ed1-9c29-85197594446c/Homepage_Assets/ib.jpg');">
     <div class="col-xs-12">
-      <img src="https://static.royacdn.com/Site-656e9e6e-f19a-4ed1-9c29-85197594446c/Homepage_Assets/ib.jpg" loading="lazy" alt class="img-responsive">
+      <img src="https://static.royacdn.com/Site-656e9e6e-f19a-4ed1-9c29-85197594446c/Homepage_Assets/ib.jpg" loading="lazy" alt="" class="img-responsive">
     </div>
   </div>
   <div class="col-xs-12 ry-pg-title">
     <div class="col-xs-12 ry-container">
       <div>
-        <h1>Practice With Purpose</h1>
+        <h1 class="ry-responsive-title">Practice With Purpose</h1>
       </div>
     </div>
   </div>
 </div>
 
+<!-- Page Content -->
 <div id="ry-pg-content">
   <div id="ry-pg-body" class="col-xs-12 inner-careers">
     <div class="col-xs-12 module-cta custom">
       <div class="col-xs-12 ry-container">
         <div class="col-xs-12 content">
           <div class="col-xs-12 ry-flex">
-            <div class="col-xs-12 col-lg-3 each each-1" data-aos-duration="1500" data-aos="fade-right">
+            <div class="col-xs-12 col-lg-3 each each-1 aos-init aos-animate" data-aos-duration="1500" data-aos="fade-right">
               <div class="col-xs-12 wrapper">
-                <div class="col-xs-12 photo">
-                  <div class="col-xs-12 ry-el-bg">
-                    <img src="https://static.royacdn.com/Site-656e9e6e-f19a-4ed1-9c29-85197594446c/Homepage_Assets/join-our-team.jpg" loading="lazy" alt class="img-responsive">
+                <div class="title">
+                  <h3>Why Zellig?</h3>
+                </div>
+                <div class="ry-text">
+                  <p>Join us in making mental health care more personal, equitable, and impactful. At Zellig, we're building a practice that is as much for clinicians as it is for patients.<br><br>We believe exceptional care starts with supporting the people who provide it.</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-12 col-lg-3 each each-2 aos-init aos-animate" data-aos-duration="1500" data-aos="fade-right">
+              <div class="col-xs-12 icon">
+                <img src="https://static.royacdn.com/Site-656e9e6e-f19a-4ed1-9c29-85197594446c/Careers_Page/icon1.png" loading="lazy" alt="" class="img-responsive">
+              </div>
+              <div class="col-xs-12 wrapper">
+                <div class="title">
+                  <h4>Transparent, Market-Leading Pay</h4>
+                </div>
+                <div class="ry-text">
+                  <p>We believe in paying clinicians fairly and transparently. Our compensation is among the best in the field, with options for 1099 contracts or W2 roles with a comprehensive benefits package.</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-12 col-lg-3 each each-2 aos-init aos-animate" data-aos-duration="1500" data-aos="fade-right">
+              <div class="col-xs-12 icon">
+                <img src="https://static.royacdn.com/Site-656e9e6e-f19a-4ed1-9c29-85197594446c/Careers_Page/icon2.png" loading="lazy" alt="" class="img-responsive">
+              </div>
+              <div class="col-xs-12 wrapper">
+                <div class="title">
+                  <h4>A Supportive, Tech-Forward Practice</h4>
+                </div>
+                <div class="ry-text">
+                  <p>Administrative burdens are kept off your plate. Our systems—from an award-winning EMR with AI scribe to thoughtfully designed workflows—are built to make your work smoother.</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-12 col-lg-3 each each-2 aos-init aos-animate" data-aos-duration="1500" data-aos="fade-right">
+              <div class="col-xs-12 icon">
+                <img src="https://static.royacdn.com/Site-656e9e6e-f19a-4ed1-9c29-85197594446c/Careers_Page/icon3.png" loading="lazy" alt="Collaboration At Zellig" class="img-responsive">
+              </div>
+              <div class="col-xs-12 wrapper">
+                <div class="title">
+                  <h4>Unmatched Career Development</h4>
+                </div>
+                <div class="ry-text">
+                  <p>At Zellig, professional growth isn't an afterthought. Newer providers are paired with experienced mentors. Teaching, writing, and leadership opportunities are encouraged and supported at every stage.</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-12 col-lg-3 each each-2 aos-init aos-animate" data-aos-duration="1500" data-aos="fade-right">
+              <div class="col-xs-12 icon">
+                <img src="https://static.royacdn.com/Site-656e9e6e-f19a-4ed1-9c29-85197594446c/Careers_Page/icon4.png" loading="lazy" alt="" class="img-responsive">
+              </div>
+              <div class="col-xs-12 wrapper">
+                <div class="title">
+                  <h4>Mission-Driven Work</h4>
+                </div>
+                <div class="ry-text">
+                  <p>We are deeply committed to making mental health care more equitable. Through our pro bono program, clinicians are paid while providing low-cost or free care to patients who need it most. Advocacy for causes that matter isn't just allowed—it's part of who we are.</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-12 col-lg-3 each each-2 aos-init aos-animate" data-aos-duration="1500" data-aos="fade-right">
+              <div class="col-xs-12 icon">
+                <img src="https://static.royacdn.com/Site-656e9e6e-f19a-4ed1-9c29-85197594446c/Careers_Page/icon_5_new.png" loading="lazy" alt="" class="img-responsive">
+              </div>
+              <div class="col-xs-12 wrapper">
+                <div class="title">
+                  <h4>A Connected Team, Even From Afar</h4>
+                </div>
+                <div class="ry-text">
+                  <p>Because we spend so much of our lives at work, we believe that genuine connection matters. At Zellig, community isn't mandatory—but it's thoughtfully supported. From group chats and case discussions to optional meetups and shared projects, we make it easy to build meaningful relationships with your peers.</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-12 col-lg-3 each each-2 aos-init aos-animate" data-aos-duration="1500" data-aos="fade-right">
+              <div class="col-xs-12 icon">
+                <img src="https://static.royacdn.com/Site-656e9e6e-f19a-4ed1-9c29-85197594446c/Careers_Page/icon6.png" loading="lazy" alt="" class="img-responsive">
+              </div>
+              <div class="col-xs-12 wrapper">
+                <div class="title">
+                  <h4>Autonomy with Support</h4>
+                </div>
+                <div class="ry-text">
+                  <p>You bring the expertise—we trust you to use it. At Zellig, clinicians have the freedom to craft individualized care plans while still having access to collaborative support when they need it.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="col-xs-12 module-apply">
+      <div class="col-xs-12 ry-container">
+        <div class="col-xs-12 content">
+          <div class="col-xs-12 col-lg-12 ry-flex">
+            <div class="col-xs-12 col-lg-5 each each-left">
+              <div class="col-xs-12 wrapper">
+                <div class="col-xs-12 top-block">
+                  <div class="ry-headline">
+                    <h2>Join Us</h2>
+                  </div>
+                  <div class="ry-text">
+                    <p>We accept applications on a rolling basis. If our mission resonates with you and you're looking for a place to grow and contribute meaningfully, we'd love to hear from you. Please submit your resume and a cover letter.</p>
                   </div>
                 </div>
-                <div class="col-xs-12 details">
-                  <div class="title">Join Our Team</div>
-                  <div class="col-xs-12 text">
-                    <p>At Zellig, we believe in practicing with purpose. We're looking for passionate mental health professionals who share our commitment to providing exceptional, patient-centered care.</p>
+                <div class="col-xs-12 top-block">
+                  <div class="ry-text">
+                    <h5>Please include in your cover letter:</h5>
+                    <ul>
+                      <li><p>Why you're interested in joining Zellig</p></li>
+                      <li><p>What draws you to our mission and approach to care</p></li>
+                      <li><p>How your experience and goals align with our work</p></li>
+                    </ul>
                   </div>
                 </div>
+              </div>
+            </div>
+            <div class="col-xs-12 col-lg-7 each each-right">
+              <div class="col-xs-12 wrapper">
+                <div class="headline">
+                  <h3 style="text-align: center;">APPLY TO JOIN</h3>
+                </div>
+                <form id="ApplicationLead" class="cmsForm" method="post" enctype="multipart/form-data">
+                  <div class="fieldset">
+                    <div class="col-xs-12 field-lg">
+                      <div class="form-group required">
+                        <input name="Name" type="text" id="Name" placeholder="Enter Name" class="form-control" required>
+                      </div>
+                    </div>
+                    <div class="col-xs-12 field-lg">
+                      <div class="form-group required">
+                        <input name="Phone_Number" type="tel" id="Phone_Number" placeholder="Phone Number" class="form-control" required>
+                      </div>
+                    </div>
+                    <div class="col-xs-12 field-lg">
+                      <div class="form-group required">
+                        <input name="Email" type="email" id="Email" placeholder="Email Address" class="form-control" required>
+                      </div>
+                    </div>
+                    <div class="col-xs-12 field-lg">
+                      <div class="upload form-group">
+                        <div class="container-1">
+                          <label for="UploadResume" class="contact_Upload_custom">Upload Resume</label>
+                          <input type="file" id="UploadResume" name="UploadResume" class="file-upload form-control">
+                        </div>
+                        <div class="container-2">
+                          <label for="UploadCL" class="contact_Upload_custom">Upload Cover Letter</label>
+                          <input type="file" id="UploadCL" name="UploadCL" class="file-upload form-control">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-xs-12">
+                      <div class="form-group">
+                        <input type="submit" id="careers_form" class="ry-btn ry-btn-primary" value="SUBMIT YOUR APPLICATION">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="container-fluid" style="padding: 0;">
+                    <div class="alert alert-success" style="display: none;">Thank you! We will connect with you shortly.</div>
+                    <div class="alert alert-danger alert-missing-fields" style="display: none;">You are missing required fields.</div>
+                    <div class="alert alert-danger alert-custom-errors" style="display: none;">Dynamic Error Description</div>
+                    <div class="alert alert-danger alert-processing-error" style="display: none;">There was an error processing this form.</div>
+                  </div>
+                  <?php wp_nonce_field('career_application_nonce', 'career_nonce'); ?>
+                </form>
               </div>
             </div>
           </div>
@@ -48,425 +203,26 @@ get_header(); ?>
   </div>
 </div>
 
-<!-- Original CSS and JavaScript -->
-<style>
-/* Practice With Purpose Page Styles - Exact Match */
-#ry-pg-banner {
-  position: relative;
-  overflow: hidden;
-}
+<?php get_footer(); ?>
 
-#ry-pg-banner .ry-bnr-wrp {
-  position: relative;
-  height: 300px;
-}
 
-#ry-pg-banner .ry-bnr-wrp img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-#ry-pg-banner .ry-pg-title {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-  width: 100%;
-  z-index: 2;
-}
-
-#ry-pg-banner .ry-pg-title h1 {
-  color: #fff;
-  font-size: 3rem;
-  font-weight: 700;
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-  margin: 0;
-  padding: 1rem;
-  background: rgba(0,0,0,0.3);
-  border-radius: 8px;
-  display: inline-block;
-}
-
-#ry-pg-content {
-  padding: 3rem 0;
-}
-
-#ry-pg-body {
-  background: #fff;
-}
-
-/* CTA Module Styles */
-.module-cta {
-  padding: 4rem 0;
-}
-
-.module-cta .content {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 3rem;
-}
-
-.module-cta .wrapper {
-  background: #f8f9fa;
-  border-radius: 12px;
-  padding: 2rem;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
-  height: 100%;
-}
-
-.module-cta .photo {
-  margin-bottom: 1.5rem;
-}
-
-.module-cta .photo img {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-  border-radius: 8px;
-}
-
-.module-cta .title {
-  font-size: 1.8rem;
-  font-weight: 600;
-  color: #333;
-  margin-bottom: 1rem;
-  font-family: 'Jost', sans-serif;
-}
-
-.module-cta .text {
-  margin-bottom: 2rem;
-  color: #555;
-  line-height: 1.6;
-}
-
-/* Form Styles */
-.ry-form {
-  margin-top: 2rem;
-}
-
-.ry-form .form-group {
-  margin-bottom: 1.5rem;
-}
-
-.ry-form label {
-  display: block;
-  margin-bottom: 0.5rem;
-  font-weight: 500;
-  color: #333;
-  font-family: 'Jost', sans-serif;
-}
-
-.ry-form input,
-.ry-form select,
-.ry-form textarea {
-  width: 100%;
-  padding: 12px 16px;
-  border: 2px solid #e9ecef;
-  border-radius: 8px;
-  font-size: 1rem;
-  font-family: 'Jost', sans-serif;
-  transition: border-color 0.3s ease;
-}
-
-.ry-form input:focus,
-.ry-form select:focus,
-.ry-form textarea:focus {
-  outline: none;
-  border-color: #007bff;
-  box-shadow: 0 0 0 3px rgba(0,123,255,0.1);
-}
-
-.ry-form small {
-  display: block;
-  margin-top: 0.25rem;
-  color: #666;
-  font-size: 0.875rem;
-}
-
-.checkbox-wrapper {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.5rem;
-}
-
-.checkbox-wrapper input[type="checkbox"] {
-  width: auto;
-  margin-top: 0.25rem;
-}
-
-.checkbox-wrapper label {
-  margin-bottom: 0;
-  font-weight: 400;
-  cursor: pointer;
-}
-
-.form-message {
-  margin-top: 1rem;
-  padding: 1rem;
-  border-radius: 8px;
-  display: none;
-}
-
-.form-message.success {
-  background: #d4edda;
-  color: #155724;
-  border: 1px solid #c3e6cb;
-}
-
-.form-message.error {
-  background: #f8d7da;
-  color: #721c24;
-  border: 1px solid #f5c6cb;
-}
-
-/* Button Styles */
-.ry-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 14px 28px;
-  border-radius: 8px;
-  font-weight: 500;
-  text-decoration: none;
-  transition: all 0.3s ease;
-  border: none;
-  cursor: pointer;
-  font-size: 1rem;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  font-family: 'Jost', sans-serif;
-}
-
-.ry-btn-primary {
-  background: #007bff;
-  color: #fff;
-  box-shadow: 0 4px 12px rgba(0,123,255,0.3);
-}
-
-.ry-btn-primary:hover {
-  background: #0056b3;
-  color: #fff;
-  text-decoration: none;
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(0,123,255,0.4);
-}
-
-.ry-btn:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
-  transform: none;
-}
-
-/* Original Layout Classes */
-.ry-flex {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-}
-
-.col-xs-12 {
-  position: relative;
-  min-height: 1px;
-  padding-right: 15px;
-  padding-left: 15px;
-}
-
-@media (min-width: 768px) {
-  .col-md-6 {
-    width: 50%;
-  }
-}
-
-@media (min-width: 992px) {
-  .col-lg-3 {
-    width: 25%;
-  }
   
-  .col-lg-9 {
-    width: 75%;
-  }
-}
+    
 
-.ry-container {
-  margin-right: auto;
-  margin-left: auto;
-  padding-left: 15px;
-  padding-right: 15px;
-}
-
-@media (min-width: 768px) {
-  .ry-container {
-    width: 750px;
-  }
-}
-
-@media (min-width: 992px) {
-  .ry-container {
-    width: 970px;
-  }
-}
-
-@media (min-width: 1200px) {
-  .ry-container {
-    width: 1170px;
-  }
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-  #ry-pg-banner .ry-bnr-wrp {
-    height: 250px;
-  }
   
-  #ry-pg-banner .ry-pg-title h1 {
-    font-size: 2rem;
-    padding: 0.75rem;
-  }
+
   
-  #ry-pg-content {
-    padding: 2rem 0;
-  }
+
   
-  .module-cta .content {
-    flex-direction: column;
-    gap: 2rem;
-  }
+
+        
+        
+    
+        
+
+    
   
-  .module-cta .wrapper {
-    padding: 1.5rem;
   }
-  
-  .module-cta .title {
-    font-size: 1.5rem;
-  }
-}
-
-@media (max-width: 576px) {
-  #ry-pg-banner .ry-bnr-wrp {
-    height: 200px;
-  }
-  
-  #ry-pg-banner .ry-pg-title h1 {
-    font-size: 1.75rem;
-  }
-  
-  .module-cta {
-    padding: 2rem 0;
-  }
-  
-  .module-cta .wrapper {
-    padding: 1rem;
-  }
-  
-  .module-cta .title {
-    font-size: 1.3rem;
-  }
-}
-
-/* Animation and Transitions */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.module-cta .wrapper {
-  animation: fadeInUp 0.6s ease-out;
-}
-
-/* Open Positions Styles */
-.module-positions {
-  padding: 4rem 0;
-  background: #f8f9fa;
-}
-
-.module-positions .title {
-  text-align: center;
-  margin-bottom: 3rem;
-}
-
-.module-positions .title h2 {
-  font-size: 2.5rem;
-  font-weight: 600;
-  color: #333;
-  margin-bottom: 1rem;
-  font-family: 'Jost', sans-serif;
-}
-
-.position-item {
-  background: #fff;
-  border-radius: 12px;
-  padding: 2rem;
-  margin-bottom: 2rem;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
-  transition: all 0.3s ease;
-}
-
-.position-item:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 24px rgba(0,0,0,0.15);
-}
-
-.position-details h3 {
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: #333;
-  margin-bottom: 1rem;
-  font-family: 'Jost', sans-serif;
-}
-
-.position-meta {
-  display: flex;
-  gap: 1rem;
-  margin-bottom: 1rem;
-}
-
-.position-meta span {
-  background: #e9ecef;
-  color: #666;
-  padding: 0.25rem 0.75rem;
-  border-radius: 20px;
-  font-size: 0.875rem;
-  font-weight: 500;
-}
-
-.position-description p {
-  color: #555;
-  line-height: 1.6;
-  margin-bottom: 0;
-}
-
-.position-actions {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-}
-
-@media (max-width: 768px) {
-  .position-meta {
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-  
-  .position-actions {
-    justify-content: flex-start;
-    margin-top: 1rem;
-  }
-  
-  .module-positions .title h2 {
-    font-size: 2rem;
-  }
-}
 </style>
 
 <script>

@@ -101,7 +101,7 @@ function zelligcare_create_sample_team_members() {
             'certifications' => 'Board Certified Psychiatric-Mental Health Nurse Practitioner<br>Basic Life Support (BLS) Certification',
             'languages' => 'English',
             'email' => 'kaye@zelligcare.com',
-            'phone' => '(012) 345-6789',
+            'phone' => '(215) 318-1821',
             'locations' => 'Pennsylvania, Texas, Virginia (Telehealth)',
             'menu_order' => 1
         ),
@@ -117,7 +117,7 @@ function zelligcare_create_sample_team_members() {
             'certifications' => 'National Certified Counselor<br>Trauma-Informed Care Certification',
             'languages' => 'English',
             'email' => 'sade@zelligcare.com',
-            'phone' => '(012) 345-6789',
+            'phone' => '(215) 318-1821',
             'locations' => 'Pennsylvania, Texas, Virginia (Telehealth)',
             'menu_order' => 2
         )

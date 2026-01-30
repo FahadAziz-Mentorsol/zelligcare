@@ -20,6 +20,17 @@ body {
   }
 }
 
+/* Original Zellig Color Scheme */
+:root {
+  --primary-color: #184f5a;
+  --secondary-color: #bd945a;
+  --accent-color: #bd945a;
+  --white-color: #ffffff;
+  --dark-gray: #333333;
+  --medium-gray: #666666;
+  --light-gray: #f8f9fa;
+}
+
 /* Header Styles */
 #ry-header {
   position: relative;
@@ -32,6 +43,53 @@ body {
   position: sticky;
   top: 0;
   transition: all 0.3s ease;
+  padding: 35px 0 20px;
+}
+
+#ry-section-header.module-43 {
+  position: relative;
+  z-index: 999;
+  -webkit-transition: all 600ms ease;
+  transition: all 600ms ease;
+}
+
+#ry-section-header.module-43.fixed {
+  position: fixed;
+  padding: 10px 0;
+  background: #fff;
+}
+
+.ry-container {
+  max-width: 83.33333%;
+  margin: 0 auto;
+  float: none;
+}
+
+@media (min-width: 992px) {
+  .ry-container {
+    max-width: 1600px;
+  }
+}
+
+@media screen and (min-width: 992px) and (max-width: 1700px) {
+  .ry-container {
+    max-width: 90%;
+  }
+}
+
+@media (max-width: 991px) {
+  .ry-container {
+    max-width: 90%;
+  }
+}
+
+#ry-section-header.module-43.fixed .ry-container {
+  max-width: 95%;
+}
+
+#ry-section-header.module-43.fixed .ry-logo,
+#ry-section-header.module-43.custom-sticky .ry-logo {
+  display: none !important;
 }
 
 .ry-sticky-menu {
@@ -72,7 +130,7 @@ body {
 }
 
 .ry-nav>li>a:hover {
-  color: #007bff;
+  color: var(--secondary-color);
 }
 
 .dropdown-menu {
@@ -118,7 +176,7 @@ body {
 }
 
 .dropdown-menu li a:hover {
-  background: #007bff;
+  background: var(--secondary-color);
   color: #fff;
 }
 
@@ -132,35 +190,6 @@ body {
   border-top: 4px solid;
   border-right: 4px solid transparent;
   border-left: 4px solid transparent;
-}
-
-/* Mobile Menu Dropdown */
-@media (max-width: 768px) {
-  .ry-nav {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .ry-nav>li {
-    margin: 5px 0;
-    width: 100%;
-  }
-
-  .dropdown-menu {
-    position: static;
-    opacity: 1;
-    visibility: visible;
-    transform: none;
-    box-shadow: none;
-    border: none;
-    background: #f8f9fa;
-    display: none;
-    margin-left: 20px;
-  }
-
-  .dropdown-menu li a {
-    padding: 10px 15px;
-  }
 }
 
 /* Phone Button */
@@ -185,31 +214,48 @@ body {
 }
 
 .ry-btn-primary {
-  background: #007bff;
+  background: var(--secondary-color);
   color: #fff;
-  box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
+  box-shadow: 0 4px 12px rgba(189, 148, 90, 0.3);
 }
 
 .ry-btn-primary:hover {
-  background: #0056b3;
+  background: var(--primary-color);
   color: #fff;
   text-decoration: none;
   transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(0, 123, 255, 0.4);
+  box-shadow: 0 8px 20px rgba(189, 148, 90, 0.4);
+}
+
+.ry-btn-secondary {
+  background: var(--primary-color);
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(24, 79, 90, 0.3);
+}
+
+.ry-btn-secondary:hover {
+  background: var(--secondary-color);
+  color: #fff;
+  text-decoration: none;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(24, 79, 90, 0.4);
 }
 
 /* Sticky Logo */
 #litlleLogo {
-  position: fixed;
-  top: 20px;
-  left: 20px;
-  z-index: 1001;
   display: none;
+  margin-right: 2em;
+  transition: all 0.3s ease;
 }
 
 #litlleLogo img {
-  max-width: 100px;
+  max-width: 100px !important;
   height: auto;
+  transition: transform 0.3s ease;
+}
+
+#litlleLogo:hover img {
+  transform: scale(1.1);
 }
 
 /* Mobile Header */
@@ -336,10 +382,25 @@ body {
 
 /* Footer Styles */
 #ry-footer {
-  background: #1a1a1a;
   color: #fff;
   position: relative;
-  overflow: hidden;
+  z-index: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+#ry-footer .module-footer {
+  position: relative;
+  z-index: 1;
+}
+
+#ry-footer .ry-footer-top {
+  padding-bottom: 80px;
 }
 
 .section-background img {
@@ -368,7 +429,7 @@ body {
 
 .footer-logo img {
   max-width: 200px;
-  margin-bottom: 20px;
+  margin: 0 auto 0;
 }
 
 .footer-title {
@@ -377,6 +438,8 @@ body {
   margin-bottom: 20px;
   color: #fff;
   font-family: 'Jost', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .footer-details {
@@ -386,17 +449,64 @@ body {
 .footer-details .icon {
   display: inline-block;
   margin-right: 10px;
-  color: #007bff;
+  color: var(--secondary-color);
 }
 
 .footer-details .text {
+  color: #ccc;
+}
+
+.footer-details .text a {
   color: #ccc;
   text-decoration: none;
   transition: color 0.3s ease;
 }
 
-.footer-details .text:hover {
+.footer-details .text a:hover {
   color: #fff;
+}
+
+.ry-divisor {
+  width: 100%;
+  margin: 40px 0;
+}
+
+.ry-social-icons {
+  padding: 0;
+  list-style: none;
+  max-width: 250px;
+  background: #333;
+  margin: 0 auto;
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+}
+
+.ry-social-icons li {
+  list-style: none;
+}
+
+.ry-social-icons a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  color: #fff;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.ry-social-icons a:hover {
+  background: var(--secondary-color);
+  transform: translateY(-3px);
+}
+
+.ry-social-icons svg {
+  width: 20px;
+  height: 20px;
 }
 
 /* Footer Sitemap Styles */
@@ -437,7 +547,7 @@ body {
 .footer-wrapper .icon {
   display: inline-block;
   margin-right: 10px;
-  color: #007bff;
+  color: var(--secondary-color);
 }
 
 .footer-wrapper .text {
@@ -478,7 +588,7 @@ body {
 }
 
 .footer-wrapper .custom-socmed a:hover {
-  background: #007bff;
+  background: var(--secondary-color);
   transform: translateY(-3px);
 }
 
@@ -512,7 +622,7 @@ body {
 }
 
 .custom-socmed a:hover {
-  background: #007bff;
+  background: var(--secondary-color);
   transform: translateY(-3px);
 }
 
@@ -523,9 +633,9 @@ body {
 
 /* Footer Bottom */
 .footer-bottom {
-  background: #0a0a0a;
+  background: rgba(0, 0, 0, 0.2);
   padding: 20px 0;
-  border-top: 1px solid #333;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .footer-bottom .content {
@@ -547,7 +657,7 @@ body {
 }
 
 .footer-bottom a:hover {
-  color: #007bff;
+  color: var(--secondary-color);
 }
 
 .powered {
@@ -720,25 +830,6 @@ body {
   backdrop-filter: blur(10px);
   box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
-}
-
-#litlleLogo {
-  position: fixed;
-  top: 20px;
-  left: 20px;
-  z-index: 1001;
-  display: none;
-  transition: all 0.3s ease;
-}
-
-#litlleLogo img {
-  max-width: 100px;
-  height: auto;
-  transition: transform 0.3s ease;
-}
-
-#litlleLogo:hover img {
-  transform: scale(1.1);
 }
 
 /* Mobile Header Sticky */
