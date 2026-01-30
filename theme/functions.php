@@ -43,6 +43,8 @@ function zelligcare_scripts() {
     wp_enqueue_style('mobile-header', get_template_directory_uri() . '/styles/mobile-header.css');
     
     // Scripts
+    // Use WordPress bundled jQuery instead of CDN to avoid conflicts
+    wp_deregister_script('jquery');
     wp_enqueue_script('jquery', 'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js', array(), '3.3.1', true);
     wp_enqueue_script('bootstrap', 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js', array('jquery'), '3.3.7', true);
     wp_enqueue_script('tailwind', 'https://cdn.tailwindcss.com', array(), null, false);
@@ -97,6 +99,17 @@ function zelligcare_scripts() {
     
     if (is_singular() && comments_open() && get_option('thread_comments')) {
         wp_enqueue_script('comment-reply');
+    }
+    
+    // Conditionally load page-specific CSS
+    // Check for About/Our Practice page
+    if (is_page_template('page-about.php') || is_page('about') || is_page('our-practice')) {
+        wp_enqueue_style('page-about', get_template_directory_uri() . '/css/page-about.css', array(), '1.0.0');
+    }
+    
+    // Check for Careers page
+    if (is_page_template('page-careers.php') || is_page('careers') || is_page('practice-with-purpose')) {
+        wp_enqueue_style('page-careers', get_template_directory_uri() . '/css/page-careers.css', array(), '1.0.0');
     }
 }
 add_action('wp_enqueue_scripts', 'zelligcare_scripts');
@@ -168,6 +181,9 @@ require get_template_directory() . '/inc/template-tags.php';
 // Custom functions that act independently of the theme templates
 require get_template_directory() . '/inc/extras.php';
 
+// Navigation module with dropdown support
+require get_template_directory() . '/inc/navigation-module.php';
+
 // Customizer additions
 require get_template_directory() . '/inc/customizer.php';
 
@@ -178,9 +194,158 @@ require get_template_directory() . '/inc/jetpack.php';
 function zelligcare_fallback_menu() {
     echo '<ul class="nav-menu ry-nav">';
     echo '<li class="current-menu-item"><a href="' . home_url() . '">Home</a></li>';
-    echo '<li class="dropdown"><a href="' . home_url('/about/') . '">About</a></li>';
+    
+    // Use the navigation module helper function for About dropdown
+    echo zelligcare_render_about_dropdown();
+    
     echo '<li><a href="' . home_url('/team/') . '">Our Team</a></li>';
     echo '<li class="dropdown"><a href="#">Specialties</a></li>';
     echo '<li><a href="' . home_url('/contact/') . '">Contact</a></li>';
     echo '</ul>';
 }
+
+// Auto-assign careers template to careers page
+function zelligcare_assign_careers_template($template) {
+    global $post;
+    
+    // Check by page slug
+    if ($post && (is_page('careers') || is_page('practice-with-purpose'))) {
+        $careers_template = locate_template('page-careers.php');
+        if ($careers_template) {
+            return $careers_template;
+        }
+    }
+    
+    // Check by page template meta
+    if ($post && get_page_template_slug($post->ID) === 'page-careers.php') {
+        $careers_template = locate_template('page-careers.php');
+        if ($careers_template) {
+            return $careers_template;
+        }
+    }
+    
+    return $template;
+}
+add_filter('template_include', 'zelligcare_assign_careers_template', 99);
+
+// Auto-create careers page if it doesn't exist
+function zelligcare_create_careers_page() {
+    // Check if page already exists by slug
+    $careers_page = get_page_by_path('careers');
+    
+    if (!$careers_page) {
+        $page_data = array(
+            'post_title'    => 'Careers',
+            'post_name'     => 'careers',
+            'post_content'  => '',
+            'post_status'   => 'publish',
+            'post_type'     => 'page',
+            'post_author'   => 1,
+        );
+        
+        $page_id = wp_insert_post($page_data);
+        
+        // Assign the template
+        if ($page_id && !is_wp_error($page_id)) {
+            update_post_meta($page_id, '_wp_page_template', 'page-careers.php');
+        }
+    } else {
+        // If page exists, ensure template is assigned
+        $current_template = get_page_template_slug($careers_page->ID);
+        if ($current_template !== 'page-careers.php') {
+            update_post_meta($careers_page->ID, '_wp_page_template', 'page-careers.php');
+        }
+    }
+}
+// Run on admin init and also on init for frontend
+add_action('admin_init', 'zelligcare_create_careers_page');
+add_action('init', 'zelligcare_create_careers_page', 20);
+
+// Flush rewrite rules when careers page is created
+function zelligcare_flush_rewrite_rules_on_careers_creation() {
+    $careers_page = get_page_by_path('careers');
+    $flushed = get_option('zelligcare_careers_flushed');
+    
+    if ($careers_page && !$flushed) {
+        flush_rewrite_rules(false);
+        update_option('zelligcare_careers_flushed', true);
+    }
+}
+add_action('init', 'zelligcare_flush_rewrite_rules_on_careers_creation', 25);
+
+// Handle careers application form submission
+function zelligcare_handle_careers_application() {
+    // Verify nonce for security (optional but recommended)
+    // if (!isset($_POST['_wpnonce']) || !wp_verify_nonce($_POST['_wpnonce'], 'careers_application')) {
+    //     wp_die('Security check failed');
+    // }
+    
+    // Sanitize form data
+    $name = isset($_POST['applicant_name']) ? sanitize_text_field($_POST['applicant_name']) : '';
+    $email = isset($_POST['applicant_email']) ? sanitize_email($_POST['applicant_email']) : '';
+    $phone = isset($_POST['applicant_phone']) ? sanitize_text_field($_POST['applicant_phone']) : '';
+    $cover_letter = isset($_POST['cover_letter']) ? sanitize_textarea_field($_POST['cover_letter']) : '';
+    
+    // Validate required fields
+    if (empty($name) || empty($email) || empty($cover_letter)) {
+        wp_redirect(add_query_arg('careers_error', 'missing_fields', home_url('/careers/')));
+        exit;
+    }
+    
+    // Handle file uploads
+    $resume_file = '';
+    $cover_letter_file = '';
+    
+    if (!empty($_FILES['resume']['name'])) {
+        $resume_upload = wp_handle_upload($_FILES['resume'], array('test_form' => false));
+        if ($resume_upload && !isset($resume_upload['error'])) {
+            $resume_file = $resume_upload['file'];
+        }
+    }
+    
+    if (!empty($_FILES['cover_letter_file']['name'])) {
+        $cover_upload = wp_handle_upload($_FILES['cover_letter_file'], array('test_form' => false));
+        if ($cover_upload && !isset($cover_upload['error'])) {
+            $cover_letter_file = $cover_upload['file'];
+        }
+    }
+    
+    // Prepare email
+    $to = get_option('admin_email'); // Or use a specific email
+    $subject = 'New Careers Application: ' . $name;
+    $message = "New careers application received:\n\n";
+    $message .= "Name: " . $name . "\n";
+    $message .= "Email: " . $email . "\n";
+    $message .= "Phone: " . $phone . "\n\n";
+    $message .= "Cover Letter:\n" . $cover_letter . "\n";
+    
+    $headers = array('Content-Type: text/plain; charset=UTF-8');
+    $attachments = array();
+    
+    if ($resume_file) {
+        $attachments[] = $resume_file;
+    }
+    if ($cover_letter_file) {
+        $attachments[] = $cover_letter_file;
+    }
+    
+    // Send email
+    $sent = wp_mail($to, $subject, $message, $headers, $attachments);
+    
+    // Clean up uploaded files after email is sent
+    if ($resume_file && file_exists($resume_file)) {
+        @unlink($resume_file);
+    }
+    if ($cover_letter_file && file_exists($cover_letter_file)) {
+        @unlink($cover_letter_file);
+    }
+    
+    if ($sent) {
+        wp_redirect(add_query_arg('careers_success', '1', home_url('/careers/')));
+    } else {
+        wp_redirect(add_query_arg('careers_error', 'send_failed', home_url('/careers/')));
+    }
+    exit;
+}
+add_action('admin_post_submit_careers_application', 'zelligcare_handle_careers_application');
+add_action('admin_post_nopriv_submit_careers_application', 'zelligcare_handle_careers_application');

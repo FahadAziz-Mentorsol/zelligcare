@@ -149,6 +149,9 @@
                                 <a href="<?php echo home_url('/about/'); ?>">Who We Are</a>
                               </li>
                               <li class=" " data-active>
+                                <a href="<?php echo home_url('/careers/'); ?>">Careers</a>
+                              </li>
+                              <li class=" " data-active>
                                 <a href="<?php echo home_url('/services/'); ?>">What We Offer</a>
                               </li>
                               <li class=" " data-active>

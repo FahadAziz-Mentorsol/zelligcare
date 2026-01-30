@@ -27,7 +27,7 @@
       href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&display=swap"
       rel="stylesheet"
     />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <?php /* jQuery is loaded via wp_enqueue_script in functions.php */ ?>
     <meta
       name="google-site-verification"
       content="fXeT9Xu4nPukAk04FkQg_8FTVN8XUjZVNJGmV8mSchw"
