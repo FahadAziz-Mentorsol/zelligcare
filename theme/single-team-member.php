@@ -5,15 +5,15 @@ Template Name: Team Member Single
 get_header(); ?>
 
 <div id="ry-pg-banner">
-  <div class="col-xs-12 ry-bnr-wrp ry-el-bg">
+  <div class="col-xs-12 ry-bnr-wrp ry-el-bg" style="background-image: url('https://static.royacdn.com/Site-656e9e6e-f19a-4ed1-9c29-85197594446c/Homepage_Assets/ib.jpg');">
     <div class="col-xs-12">
-      <img src="https://static.royacdn.com/Site-656e9e6e-f19a-4ed1-9c29-85197594446c/Homepage_Assets/ib.jpg" loading="lazy" alt class="img-responsive">
+      <img src="https://static.royacdn.com/Site-656e9e6e-f19a-4ed1-9c29-85197594446c/Homepage_Assets/ib.jpg" loading="lazy" alt="" class="img-responsive">
     </div>
-  </div>
-  <div class="col-xs-12 ry-pg-title">
-    <div class="col-xs-12 ry-container">
-      <div>
-        <h1><?php the_title(); ?></h1>
+    <div class="col-xs-12 ry-pg-title">
+      <div class="col-xs-12 ry-container">
+        <div>
+          <h1><?php the_title(); ?></h1>
+        </div>
       </div>
     </div>
   </div>

@@ -52,6 +52,18 @@ function zelligcare_scripts() {
     wp_enqueue_style('overrides', get_template_directory_uri() . '/styles/overrides.css');
     wp_enqueue_style('mobile-header', get_template_directory_uri() . '/styles/mobile-header.css');
     
+    // About page specific styles
+    if (is_page_template('page-about.php') || is_page('about') || (is_page() && get_page_template_slug() == 'page-about.php')) {
+        wp_enqueue_style('page-about', get_template_directory_uri() . '/styles/page-about.css', array('overrides'), '1.0.0');
+        // Initialize datePickerWidget for about page
+        wp_add_inline_script('zelligcare-datepicker', "jQuery(function($){if(typeof datePickerWidget !== 'undefined'){datePickerWidget.init('mm/dd/yyyy');}});");
+    }
+    
+    // Practice With Purpose page specific styles
+    if (is_page_template('page-practice-with-purpose.php') || is_page('practice-with-purpose') || (is_page() && get_page_template_slug() == 'page-practice-with-purpose.php')) {
+        wp_enqueue_style('page-practice-with-purpose', get_template_directory_uri() . '/styles/page-practice-with-purpose.css', array('overrides'), '1.0.0');
+    }
+    
     // Scripts - jQuery should be loaded first
     wp_enqueue_script('jquery', 'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js', array(), '3.3.1', false);
     wp_enqueue_script('bootstrap', 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js', array('jquery'), '3.3.7', true);

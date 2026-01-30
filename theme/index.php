@@ -726,6 +726,7 @@
       </div>
     </div>
   </div>
+</div> <!-- Close section-appointment (line 587) -->
   </div> <!-- Close col-xs-12 (line 4) -->
 </div> <!-- Close ry-main (line 3) -->
 

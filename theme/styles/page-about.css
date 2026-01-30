@@ -1,0 +1,90 @@
+/* About Page Specific Styles */
+
+/* Page Content and Body - Matching HTML structure */
+#ry-pg-content #ry-pg-body {
+	padding: 100px 0;
+}
+
+/* Body default div styles - matching page-specific CSS */
+body.default div {
+	text-align: left;
+	font-size: calc(18px + 2 * ((100vw - 500px) / 940));
+}
+
+@media screen and (max-width: 500px) {
+	body.default div {
+		font-size: 18px;
+	}
+}
+
+@media screen and (min-width: 1440px) {
+	body.default div {
+		font-size: 20px;
+	}
+}
+
+/* About Page Paragraphs - matching HTML structure */
+#ry-pg-content #ry-pg-body p {
+	text-align: left;
+	line-height: 35px;
+	font-size: calc(16px + 2 * ((100vw - 500px) / 940));
+	color: #403f40;
+	margin-bottom: 20px;
+}
+
+@media screen and (max-width: 500px) {
+	#ry-pg-content #ry-pg-body p {
+		font-size: 18px;
+	}
+}
+
+@media screen and (min-width: 1440px) {
+	#ry-pg-content #ry-pg-body p {
+		font-size: 18px;
+	}
+}
+
+/* About Page Content Structure */
+body.default #ry-pg-body[data-interior-layout="Sidebar"] {
+	padding: 100px 0;
+}
+
+body.default #ry-pg-body .ry-container {
+	max-width: 1200px;
+	margin: 0 auto;
+}
+
+body.default #ry-pg-body .ry-content.ry-flex {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+body.default #ry-pg-body .ry-content .col-xs-12.col-md-12.col-lg-12 {
+	width: 100%;
+}
+
+body.default #ry-pg-body .ry-content .col-xs-12.col-md-12.col-lg-12 > div {
+	width: 100%;
+}
+
+/* Responsive Styles */
+@media (max-width: 991px) {
+	#ry-pg-content #ry-pg-body {
+		padding: 60px 0;
+	}
+	
+	#ry-pg-content #ry-pg-body p {
+		font-size: 18px;
+	}
+}
+
+@media (max-width: 768px) {
+	#ry-pg-content #ry-pg-body {
+		padding: 40px 0;
+	}
+	
+	#ry-pg-content #ry-pg-body p {
+		font-size: 16px;
+		line-height: 1.5;
+	}
+}
