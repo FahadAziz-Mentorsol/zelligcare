@@ -142,6 +142,8 @@
   </div>
 </div>
 
+<?php get_template_part('template-parts/about-us-module'); ?>
+
 <div id="section-cta" class="col-xs-12">
   <div class="col-xs-12 sections">
     <div class="col-xs-12 module-cta custom">
@@ -724,6 +726,7 @@
       </div>
     </div>
   </div>
-</div>
+  </div> <!-- Close col-xs-12 (line 4) -->
+</div> <!-- Close ry-main (line 3) -->
 
 <?php get_footer(); ?>
