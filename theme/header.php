@@ -44,7 +44,7 @@
         <div class="col-xs-12">
           <div
             id="ry-section-header"
-            class="col-xs-12 hidden-xs hidden-sm module-43 ry-section ry-sticky-menu"
+            class="col-xs-12 hidden-xs hidden-sm module-43 ry-section"
           >
             <div class="col-xs-12"></div>
             <div class="col-xs-12 ry-container">
@@ -59,37 +59,8 @@
                   />
                 </div>
                 <div class="col-xs-12 col-md-10 col-lg-10 ry-right ry-flex">
-                  <div class="col-xs-12 ry-leads">
-                    <div class="col-xs-12 btn-wrapper">
-                      <div class="btn-wrap">
-                        <a
-                          href="tel:012.345.6789"
-                          data-toggle-value
-                          data-toggle-default-visible="false"
-                          data-toggle-show-animation
-                          data-toggle-hide-animation
-                          data-toggle-show-animation-options="{}"
-                          data-toggle-hide-animation-options="{}"
-                          class="ry-btn ry-btn-primary"
-                          target="_self"
-                          >(012) 345-6789</a
-                        >
-                      </div>
-                    </div>
-                  </div>
                   <div class="ry-menu">
-                    <div id="litlleLogo" style="display: none">
-                      <a href="<?php echo home_url(); ?>"
-                        ><img
-                          src="https://static.royacdn.com/Site-656e9e6e-f19a-4ed1-9c29-85197594446c/Homepage_Assets/zellig_new_logo.png"
-                          class="img-responsive"
-                          style="max-width: 100px"
-                      /></a>
-                    </div>
                     <ul class="nav-menu ry-nav">
-                      <li class=" " data-active>
-                        <a href="<?php echo home_url(); ?>">Home</a>
-                      </li>
                       <li class="dropdown" role="presentation">
                         <a
                           class="dropdown-toggle"
@@ -189,19 +160,23 @@
                           </li>
                         </ul>
                       </li>
+                      <li class="menu-button">
+                        <a
+                          href="tel:012.345.6789"
+                          data-toggle-value
+                          data-toggle-default-visible="false"
+                          data-toggle-show-animation
+                          data-toggle-hide-animation
+                          data-toggle-show-animation-options="{}"
+                          data-toggle-hide-animation-options="{}"
+                          id
+                          class="ry-btn ry-btn-primary"
+                          target="_self"
+                          ><i class="fa fa-phone" aria-hidden="true"></i>
+                          <span>(012) 345-6789</span></a
+                        >
+                      </li>
                     </ul>
-                    <script>
-                      litlleLogo = document.getElementById("litlleLogo");
-                      var myScrollFunc = function () {
-                        var y = window.scrollY;
-                        if (y >= 150) {
-                          litlleLogo.style.display = "block";
-                        } else {
-                          litlleLogo.style.display = "none";
-                        }
-                      };
-                      window.addEventListener("scroll", myScrollFunc);
-                    </script>
                   </div>
                 </div>
               </div>

@@ -1,7 +1,7 @@
 .ry-headline h2 {
 	font-size: 80px;
 	font-weight: 400 !important;
-	font-family: 'Tenor Sans' !important;
+	font-family: 'Fraunces' !important;
 	text-transform: uppercase;
 	letter-spacing: -0.5px;
 	line-height: 1;
@@ -95,7 +95,7 @@
 
 .module-hero .hero-text h1 {
 	font-size: 90px;
-	font-family: 'Tenor Sans' !important;
+	font-family: 'Fraunces' !important;
 	color: #fff;
 	line-height: 1;
 	font-weight: 400 !important;
@@ -222,7 +222,7 @@
 .ry-headline h2 {
 	font-size: 80px;
 	font-weight: 400 !important;
-	font-family: 'Tenor Sans' !important;
+	font-family: 'Fraunces' !important;
 	text-transform: uppercase;
 	letter-spacing: -0.5px;
 	line-height: 1;
@@ -864,7 +864,7 @@
 }
 
 .module-appointment.custom {
-	padding: 200px 0 200px;
+	padding: 200px 0 380px;
 }
 
 .module-appointment.custom .section-background {
