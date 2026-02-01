@@ -15,7 +15,6 @@ function zelligcare_scripts() {
     wp_enqueue_style('aos', 'https://unpkg.com/aos@2.3.1/dist/aos.css');
     
     wp_enqueue_style('google-fonts-fraunces', 'https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,100..900;1,100..900&display=swap');
-    wp_enqueue_style('site-overrides', get_template_directory_uri() . '/css/site-overrides.css');
     wp_enqueue_style('homepage-page', get_template_directory_uri() . '/css/homepage-page.css');
     
     // Theme styles
@@ -40,6 +39,8 @@ function zelligcare_scripts() {
     wp_enqueue_style('footer-2', get_template_directory_uri() . '/styles/footer-2.css');
     wp_enqueue_style('updates-css', get_template_directory_uri() . '/styles/updates-css.css');
     wp_enqueue_style('overrides', get_template_directory_uri() . '/styles/overrides.css');
+    // Load site-overrides.css last to ensure footer styles take precedence
+    wp_enqueue_style('site-overrides', get_template_directory_uri() . '/css/site-overrides.css', array('overrides'), '1.0.0');
     wp_enqueue_style('mobile-header', get_template_directory_uri() . '/styles/mobile-header.css');
     
     // Scripts
@@ -83,7 +84,7 @@ function zelligcare_scripts() {
         once: true
     });');
 
-    // Sticky Header Script
+    // Sticky Header Script - Note: litlleLogo script is inline in header.php to match HTML
     wp_add_inline_script('zelligcare-main', "
         window.addEventListener('scroll', function() {
             var header = document.querySelector('.module-43');

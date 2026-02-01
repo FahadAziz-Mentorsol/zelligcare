@@ -42,3 +42,134 @@ div.module-16.style2 #footer-row2 .ry-right img {
 		line-height: 12px;
 	}
 }
+
+/* Footer Bottom Base Styles - Matching zelligcare.com/styles/overrides.css */
+.footer-bottom {
+	padding: 30px 0;
+	background: #fff;
+}
+
+.footer-top .ry-container, .footer-bottom .ry-container {
+	max-width: 1280px;
+	width: 90%;
+}
+
+.footer-bottom .content {
+	display: flex;
+	gap: 10px;
+	justify-content: space-between;
+}
+
+.footer-bottom .content .ry-left, .footer-bottom .content .ry-right {
+	max-width: max-content;
+	width: auto;
+}
+
+.footer-bottom .content * {
+	font-size: 16px;
+	color: #666;
+	text-transform: uppercase;
+}
+
+.footer-bottom .content .powered {
+	display: flex;
+	gap: 10px;
+}
+
+.footer-bottom .content .powered img {
+	max-width: max-content;
+	object-fit: contain;
+}
+
+/* Module Footer Styles - Matching zelligcare.com/styles/overrides.css */
+.module-footer.custom .each .details:not(:nth-child(2)) {
+	align-items: center;
+}
+
+.module-footer.custom .each .details ul {
+	list-style: none;
+	padding-left: 0;
+}
+
+.module-footer.custom .each .details ul li:not(:last-child) {
+	margin-bottom: 15px;
+}
+
+.module-footer.custom .each .details ul li a {
+	font-size: 22px;
+	display: block;
+	line-height: 1;
+	color: #666;
+}
+
+.module-footer.custom .each.each-1:before {
+	content: "";
+	position: absolute;
+	right: -40%;
+	width: 1px;
+	height: 100%;
+	background: #bbb2a9;
+}
+
+/* Footer Bottom Responsive Styles for Extra Small Screens */
+@media (max-width: 575px) {
+	.footer-bottom {
+		padding: 20px 0;
+	}
+	
+	.footer-bottom .ry-container {
+		width: 95%;
+	}
+	
+	.footer-bottom .content {
+		flex-direction: column;
+		align-items: center;
+		text-align: center;
+		gap: 15px;
+	}
+	
+	.footer-bottom .content .ry-left,
+	.footer-bottom .content .ry-right {
+		width: 100%;
+		text-align: center;
+	}
+	
+	.footer-bottom .content .ry-left p {
+		font-size: 14px;
+		line-height: 1.6;
+	}
+	
+	.footer-bottom .content .ry-left .span-2 {
+		display: block;
+		margin-bottom: 8px;
+		margin-right: 0;
+	}
+	
+	.footer-bottom .content .ry-left a {
+		display: inline-block;
+		margin: 0 3px;
+		font-size: 14px;
+		word-break: break-word;
+		line-height: 1.8;
+	}
+	
+	.footer-bottom .content .ry-right {
+		margin-top: 5px;
+	}
+	
+	.footer-bottom .content .powered {
+		justify-content: center;
+		flex-direction: column;
+		align-items: center;
+		gap: 8px;
+	}
+	
+	.footer-bottom .content .powered p {
+		font-size: 14px;
+		margin-bottom: 5px;
+	}
+	
+	.footer-bottom .content .powered img {
+		max-width: 100px;
+	}
+}
