@@ -978,20 +978,68 @@ $(function(){
 			});
 		},
 		initScrollFixed:function(){
-			/* scroll event */
-			$( window ).scroll(function() {
+			/* scroll event - consolidated sticky header implementation */
+			var scrollHandler = function() {
 				var height = $(window).scrollTop();
-				var header = $('.ry-sticky-menu');
-
-				if(height  > 150) {
-					$('.ry-sticky-menu, .mobile-header.style-9').addClass('fixed');
-					$('body').addClass('header-fixed'); // Add class to body when header is fixed
-				}else{
-					$('.ry-sticky-menu, .mobile-header.style-9').removeClass('fixed');
-					$('body').removeClass('header-fixed'); // Remove class when header is not fixed
+				console.log('Scroll position:', height, 'Header elements found:');
+				
+				// Try multiple selectors to ensure we find the header
+				var header = $('#ry-section-header.module-43');
+				console.log('#ry-section-header.module-43 found:', header.length);
+				if (!header.length) {
+					header = $('.module-43.ry-sticky-menu');
+					console.log('.module-43.ry-sticky-menu found:', header.length);
 				}
+				if (!header.length) {
+					header = $('#ry-section-header');
+					console.log('#ry-section-header found:', header.length);
+				}
+				
+				var litlleLogo = $('#litlleLogo');
+				console.log('#litlleLogo found:', litlleLogo.length);
+				var body = $('body');
 
+				if (header.length) {
+					if(height > 150) {
+						console.log('Adding fixed class - scroll > 150');
+						header.addClass('fixed');
+						$('.mobile-header.style-9').addClass('fixed');
+						body.addClass('header-fixed'); // Add class to body when header is fixed
+						// Show small logo when sticky
+						if(litlleLogo.length) {
+							litlleLogo.css('display', 'block');
+							console.log('Showing little logo');
+						}
+					} else {
+						console.log('Removing fixed class - scroll <= 150');
+						header.removeClass('fixed');
+						$('.mobile-header.style-9').removeClass('fixed');
+						body.removeClass('header-fixed'); // Remove class when header is not fixed
+						// Hide small logo when not sticky
+						if(litlleLogo.length) {
+							litlleLogo.css('display', 'none');
+							console.log('Hiding little logo');
+						}
+					}
+				} else {
+					console.log('No header element found!');
+				}
+			};
+
+			// Run on scroll
+			$(window).on('scroll', scrollHandler);
+			
+			// Also run on load to handle initial scroll position
+			$(window).on('load', function() {
+				console.log('Window loaded - running scroll handler');
+				scrollHandler();
 			});
+			
+			// Run immediately if DOM is ready
+			if (document.readyState === 'complete' || document.readyState === 'interactive') {
+				console.log('DOM ready - running scroll handler');
+				setTimeout(scrollHandler, 100);
+			}
 		}
 
 

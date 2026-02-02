@@ -26,10 +26,9 @@ body.default #ry-section-header.module-43 {
   position: relative;
 }
 
-
 /* header */
 
-
+/* Base header styles matching actual HTML structure */
 .module-43 {
   top: 0;
   left: 0;
@@ -38,6 +37,87 @@ body.default #ry-section-header.module-43 {
   -webkit-transition: all 600ms ease;
   transition: all 600ms ease;
   position: absolute;
+}
+
+/* Sticky header state */
+.module-43.fixed {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  width: 100% !important;
+  background: #222 !important;
+  z-index: 999 !important;
+  padding: 15px 0 !important;
+  -webkit-transition: all 600ms ease !important;
+  transition: all 600ms ease !important;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Button wrapper - targeting the actual structure */
+.module-43 .ry-right .ry-leads .btn-wrapper {
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  flex-wrap: nowrap !important;
+  justify-content: flex-end !important;
+}
+
+.module-43 .ry-right .ry-leads .btn-wrapper .btn-wrap {
+  display: inline-block !important;
+  margin: 0 !important;
+  vertical-align: middle !important;
+}
+
+/* Fixed state adjustments */
+.module-43.fixed .ry-right {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  width: 100%;
+  max-width: none;
+  padding-left: 0;
+  align-items: center;
+  gap: 15px;
+}
+
+.module-43.fixed .ry-right .ry-leads {
+  margin-bottom: 0;
+  display: flex;
+  align-items: center;
+  order: 3;
+}
+
+.module-43.fixed .ry-right .ry-leads .btn-wrapper {
+  margin-bottom: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.module-43.fixed .ry-menu {
+  order: 1;
+  flex: 1;
+  margin-right: auto;
+}
+
+/* Hide/show logos in fixed state */
+.module-43.fixed .ry-left.ry-logo {
+  display: none !important;
+}
+
+.module-43.fixed #litlleLogo {
+  display: block !important;
+  margin-right: 20px;
+}
+
+/* Menu positioning in fixed state */
+.module-43.fixed .ry-right .ry-menu {
+  order: 2;
 }
 
 
@@ -60,6 +140,32 @@ body.default #ry-section-header.module-43 {
   }
 }
 
+.module-43.fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  background: #222;
+  z-index: 999;
+  padding: 15px 0;
+  -webkit-transition: all 600ms ease;
+  transition: all 600ms ease;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.module-43.fixed .ry-right .ry-menu {
+  display: flex;
+  gap: 20px;
+  justify-content: flex-start;
+}
+
+@media (max-width: 1440px) {
+  .module-43.fixed .ry-right {
+    width: 100%;
+  }
+}
+
 .module-43.fixed .ry-right {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -73,17 +179,6 @@ body.default #ry-section-header.module-43 {
   padding-left: 0;
   align-items: center;
   gap: 15px;
-}
-
-.module-43.fixed .ry-right .ry-menu {
-  display: flex;
-  gap: 20px;
-}
-
-@media (max-width: 1440px) {
-  .module-43.fixed .ry-right {
-    width: 100%;
-  }
 }
 
 .module-43.fixed .ry-right .btn-wrapper {
@@ -110,7 +205,7 @@ body.default #ry-section-header.module-43 {
     padding: 0;
     font-size: 0;
   }
-  
+
   .module-43.fixed a.ry-btn.ry-btn-primary:before,
   .module-43.fixed .ry-right a.ry-btn.ry-btn-secondary:before {
     font-size: 16px !important;
@@ -124,7 +219,7 @@ body.default #ry-section-header.module-43 {
     padding: 0;
     font-size: 0;
   }
-  
+
   .module-43.fixed a.ry-btn.ry-btn-primary:before,
   .module-43.fixed .ry-right a.ry-btn.ry-btn-secondary:before {
     font-size: 14px !important;
@@ -312,6 +407,14 @@ body.default #ry-section-header.module-43 {
   -ms-flex-align: center;
   align-items: center;
   width: auto;
+  gap: 10px;
+  flex-wrap: nowrap;
+}
+
+.module-43 .ry-right .btn-wrapper .btn-wrap {
+  display: inline-block;
+  margin: 0;
+  vertical-align: middle;
 }
 
 .module-43 .ry-right .btn-wrapper .btn-wrap:not(:last-child) {
@@ -890,8 +993,8 @@ body.default .module-43.fixed {
   min-width: 45px;
 }
 
-.module-43.fixed a.ry-btn.ry-btn-primary > *,
-.module-43.fixed .ry-right a.ry-btn.ry-btn-secondary > * {
+.module-43.fixed a.ry-btn.ry-btn-primary>*,
+.module-43.fixed .ry-right a.ry-btn.ry-btn-secondary>* {
   display: none;
 }
 

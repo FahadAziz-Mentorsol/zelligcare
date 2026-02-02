@@ -134,20 +134,29 @@ function zelligcare_scripts() {
         duration: 800,
         once: true
     });');
-
-    // Sticky Header Script - Note: litlleLogo script is inline in header.php to match HTML
-    wp_add_inline_script('zelligcare-main', "
-        window.addEventListener('scroll', function() {
-            var header = document.querySelector('.module-43');
-            if (header) {
-                if (window.scrollY > 0) {
-                    header.classList.add('custom-sticky');
-                } else {
-                    header.classList.remove('custom-sticky');
+    
+    // Initialize sticky header - ensure it runs after main.js loads
+    wp_add_inline_script('zelligcare-main', '
+    jQuery(document).ready(function($) {
+        // Ensure sticky header is initialized
+        if (typeof themeSettings !== "undefined" && typeof themeSettings.initScrollFixed === "function") {
+            themeSettings.initScrollFixed();
+            console.log("Sticky header initialized via inline script");
+        } else {
+            console.log("Theme settings not available, retrying...");
+            // Retry after a short delay
+            setTimeout(function() {
+                if (typeof themeSettings !== "undefined" && typeof themeSettings.initScrollFixed === "function") {
+                    themeSettings.initScrollFixed();
+                    console.log("Sticky header initialized via retry");
                 }
-            }
-        });
-    ");
+            }, 500);
+        }
+    });
+    ');
+
+    // Note: Sticky header is handled by jQuery in main.js (initScrollFixed function)
+    // This ensures consistent behavior with the 'fixed' class and 'header-fixed' body class
     
     if (is_singular() && comments_open() && get_option('thread_comments')) {
         wp_enqueue_script('comment-reply');
@@ -262,7 +271,23 @@ function zelligcare_fallback_menu() {
     // Use the navigation module helper function for Specialties dropdown
     echo zelligcare_render_specialties_dropdown();
     
+    // Add Patient Center dropdown
+    echo '<li class="dropdown" role="presentation">';
+    echo '<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Patient Center<span class="caret"></span></a>';
+    echo '<ul class="dropdown-menu">';
+    echo '<li><a href="' . home_url('/payment-options/') . '">Payment Options</a></li>';
+    echo '<li><a href="' . home_url('/reviews/') . '">Reviews</a></li>';
+    echo '<li><a href="' . home_url('/library/') . '">Zellig Library</a></li>';
+    echo '</ul></li>';
+    
+    // Add Contact Us dropdown
+    echo '<li class="dropdown" role="presentation">';
+    echo '<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Contact Us<span class="caret"></span></a>';
+    echo '<ul class="dropdown-menu">';
     echo '<li><a href="' . home_url('/contact-us/') . '">Contact Us</a></li>';
+    echo '<li><a href="' . home_url('/refer-a-patient/') . '">Refer a Patient</a></li>';
+    echo '</ul></li>';
+    
     echo '</ul>';
 }
 

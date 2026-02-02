@@ -285,10 +285,11 @@
 	text-align: left;
 }
 
-.module-offer .group-block .block:nth-child(odd) .each-photo img {
+/* .module-offer .group-block .block:nth-child(odd) .each-photo img styles commented out per design requirements */
+/* .module-offer .group-block .block:nth-child(odd) .each-photo img {
 	margin-left: -20px;
 	min-width: calc(100% + 20px);
-}
+} */
 
 .module-offer .group-block .block:nth-child(even) .each-photo img {
 	margin-right: -20px;
@@ -366,6 +367,21 @@
 	margin: 0;
 	min-width: unset;
 	border-top-right-radius: 20px;
+}
+
+/* Responsive image styles */
+.img-responsive {
+	width: 100%;
+}
+
+.img-responsive,
+.thumbnail>img,
+.thumbnail a>img,
+.carousel-inner>.item>img,
+.carousel-inner>.item>a>img {
+	display: block;
+	max-width: 100%;
+	height: auto;
 }
 
 .module-offer.inner-condition-template .group-block .content .each .photo:before {
@@ -1485,6 +1501,33 @@
 }
 
 
+.module-43 .ry-right .btn-wrapper {
+	display: flex !important;
+	gap: 15px !important;
+	align-items: center !important;
+	flex-wrap: nowrap !important;
+	margin-bottom: 0 !important;
+}
+
+.module-43 .ry-right .btn-wrapper .btn-wrap {
+	display: inline-block !important;
+	margin: 0 !important;
+	vertical-align: middle !important;
+}
+
+.module-43 .ry-right .btn-wrapper .btn-wrap .ry-btn {
+	display: inline-block !important;
+	white-space: nowrap !important;
+	text-decoration: none !important;
+	border: none !important;
+	cursor: pointer !important;
+	transition: all 0.3s ease !important;
+	min-height: 40px !important;
+	line-height: 1.2 !important;
+	text-align: center !important;
+	vertical-align: middle !important;
+}
+
 .module-43 .ry-right .btn-wrapper .ry-btn-primary:not(:hover) {
 	background: #bd945a !important;
 	color: #fff !important;
@@ -1535,6 +1578,9 @@
 .module-43 .ry-logo img {
 	max-width: 150px;
 	height: auto;
+	border: none !important;
+	outline: none !important;
+	box-shadow: none !important;
 }
 
 .module-43 .ry-right {
@@ -1620,15 +1666,136 @@
 }
 
 /* body.default overrides header to position: relative (takes up space) */
-body.default #ry-section-header.module-43 {
+#ry-section-header.module-43 {
 	position: relative;
 }
 
+/* Minimal sticky header fixes - matching actual HTML structure */
+
 /* When fixed, header becomes position: fixed */
-body.default #ry-section-header.module-43.fixed {
-	position: fixed;
-	padding: 10px 0;
-	background: #fff;
+body.default #ry-section-header.module-43.fixed,
+#ry-section-header.module-43.fixed,
+.module-43.ry-sticky-menu.fixed {
+	position: fixed !important;
+	top: 0 !important;
+	left: 0 !important;
+	right: 0 !important;
+	width: 100% !important;
+	background: #222 !important;
+	z-index: 999 !important;
+	padding: 15px 0 !important;
+	-webkit-transition: all 600ms ease !important;
+	transition: all 600ms ease !important;
+	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Fixed header content alignment */
+body.default #ry-section-header.module-43.fixed .ry-content.ry-flex,
+#ry-section-header.module-43.fixed .ry-content.ry-flex {
+	align-items: center !important;
+}
+
+body.default #ry-section-header.module-43.fixed .ry-right.ry-flex,
+#ry-section-header.module-43.fixed .ry-right.ry-flex {
+	display: flex !important;
+	align-items: center !important;
+	gap: 20px !important;
+}
+
+/* Hide main logo when sticky */
+body.default #ry-section-header.module-43.fixed .ry-left.ry-logo,
+#ry-section-header.module-43.fixed .ry-left.ry-logo {
+	display: none !important;
+}
+
+/* Show small logo when sticky */
+body.default #ry-section-header.module-43.fixed #litlleLogo,
+#ry-section-header.module-43.fixed #litlleLogo {
+	display: block !important;
+	margin-right: 20px !important;
+}
+
+/* Fix logo sizing conflicts - Main logo */
+.module-43 .ry-left.ry-logo,
+.module-43 .ry-left {
+	width: auto !important;
+	display: -webkit-box !important;
+	display: -ms-flexbox !important;
+	display: flex !important;
+	-webkit-box-align: center !important;
+	-ms-flex-align: center !important;
+	align-items: center !important;
+}
+
+.module-43 .ry-left.ry-logo img,
+.module-43 .ry-left img {
+	max-width: 150px !important;
+	max-height: 100px !important;
+	width: auto !important;
+	height: auto !important;
+	object-fit: contain !important;
+	margin-top: 0 !important;
+	margin-bottom: 0 !important;
+	border: none !important;
+	outline: none !important;
+	box-shadow: none !important;
+}
+
+/* Ensure responsive images don't override logo sizing */
+.module-43 .ry-left.ry-logo .img-responsive {
+	width: auto !important;
+	max-width: 150px !important;
+	height: auto !important;
+}
+
+/* Little logo sizing - consistent across all states */
+body.default #ry-section-header.module-43.fixed #litlleLogo img,
+#ry-section-header.module-43.fixed #litlleLogo img,
+.module-43.fixed #litlleLogo img,
+#litlleLogo img,
+.module-43 .ry-menu #litlleLogo img {
+	max-width: 80px !important;
+	max-height: 80px !important;
+	width: auto !important;
+	height: auto !important;
+	border: none !important;
+	outline: none !important;
+	box-shadow: none !important;
+	object-fit: contain !important;
+}
+
+/* Fixed header button layout - targeting actual structure */
+body.default #ry-section-header.module-43.fixed .ry-leads,
+#ry-section-header.module-43.fixed .ry-leads {
+	margin-bottom: 0 !important;
+	display: flex !important;
+	align-items: center !important;
+}
+
+body.default #ry-section-header.module-43.fixed .ry-leads .btn-wrapper,
+#ry-section-header.module-43.fixed .ry-leads .btn-wrapper {
+	display: flex !important;
+	gap: 15px !important;
+	align-items: center !important;
+	margin-bottom: 0 !important;
+	justify-content: flex-end !important;
+}
+
+body.default #ry-section-header.module-43.fixed .ry-leads .btn-wrapper .btn-wrap,
+#ry-section-header.module-43.fixed .ry-leads .btn-wrapper .btn-wrap {
+	display: inline-block !important;
+}
+
+body.default #ry-section-header.module-43.fixed .ry-leads .btn-wrapper .btn-wrap .ry-btn,
+#ry-section-header.module-43.fixed .ry-leads .btn-wrapper .btn-wrap .ry-btn {
+	display: inline-block !important;
+	font-size: 14px !important;
+	padding: 12px 18px !important;
+	min-width: auto !important;
+	white-space: nowrap !important;
+	text-decoration: none !important;
+	border-radius: 4px !important;
+	transition: all 0.3s ease !important;
 }
 
 /* Banner positioned relative to header container */
@@ -1650,8 +1817,8 @@ body.default #ry-section-header.module-43.fixed {
 
 	/* When header becomes fixed, add padding to account for fixed header height */
 	body.header-fixed #ry-pg-banner {
-		padding-top: 50px;
-		/* Account for fixed header (padding: 10px 0) */
+		padding-top: 70px;
+		/* Account for fixed header (padding: 15px 0 + content height ~55px) */
 	}
 }
 
@@ -2396,6 +2563,9 @@ body.default #ry-section-header.module-43.fixed {
 #litlleLogo img {
 	max-width: 100px !important;
 	max-height: 100px;
+	border: none !important;
+	outline: none !important;
+	box-shadow: none !important;
 }
 
 .module-43.fixed .ry-content {
@@ -3754,13 +3924,16 @@ body.default #ry-section-header.module-43.fixed {
 	border-radius: 5px !important;
 }
 
+/* DEPRECATED: .custom-sticky class - Now using .fixed class for consistency
+   Keeping for backward compatibility but functionality moved to .fixed class */
 .module-43.custom-sticky {
 	position: fixed;
 	top: 0;
 	width: 100%;
 	z-index: 9999;
-	background: rgba(255, 255, 255, 0.8) !important;
+	background: rgba(255, 255, 255, 0.95);
 	backdrop-filter: blur(10px);
+	-webkit-backdrop-filter: blur(10px);
 	transition: all 0.3s ease;
 	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 	padding: 15px 0 !important;
@@ -3790,6 +3963,10 @@ body.default #ry-section-header.module-43.fixed {
 /* Ensure litlleLogo image matches HTML inline style */
 #litlleLogo img {
 	max-width: 100px !important;
+	max-height: 100px;
+	border: none !important;
+	outline: none !important;
+	box-shadow: none !important;
 }
 
 /* Header Vertical Alignment & Padding Normalization */
@@ -3803,6 +3980,9 @@ body.default #ry-section-header.module-43.fixed {
 
 .module-43 .ry-logo img {
 	margin-bottom: 0 !important;
+	border: none !important;
+	outline: none !important;
+	box-shadow: none !important;
 }
 
 /* Header ry-leads and btn-wrapper styles */
@@ -3828,6 +4008,7 @@ body.default #ry-section-header.module-43.fixed {
 	display: flex;
 	align-items: center;
 	position: relative;
+	justify-content: flex-end;
 }
 
 .module-43 .ry-menu #litlleLogo {

@@ -21,61 +21,47 @@
         <div class="col-xs-12 ">
             <!-- Desktop Header -->
             <div id="ry-section-header" class="col-xs-12 hidden-xs hidden-sm module-43 ry-section ry-sticky-menu">
-                <div class="col-xs-12"></div>
                 <div class="col-xs-12 ry-container">
                     <div class="col-xs-12 ry-content ry-flex">
                         <div class="col-xs-12 col-md-2 col-lg-2 ry-left ry-logo">
-                            <img
-                                src="https://static.royacdn.com/Site-656e9e6e-f19a-4ed1-9c29-85197594446c/Homepage_Assets/zellig_new_logo.png"
-                                loading="lazy"
-                                alt
-                                class="img-responsive"
-                                data-url="<?php echo esc_url(home_url('/')); ?>"
-                            />
+                            <a href="<?php echo esc_url(home_url('/')); ?>">
+                                <img
+                                    src="https://static.royacdn.com/Site-656e9e6e-f19a-4ed1-9c29-85197594446c/Homepage_Assets/zellig_new_logo.png"
+                                    loading="lazy"
+                                    alt="<?php bloginfo('name'); ?> Logo"
+                                    class="img-responsive"
+                                />
+                            </a>
                         </div>
                         <div class="col-xs-12 col-md-10 col-lg-10 ry-right ry-flex">
                             <div class="col-xs-12 ry-leads">
                                 <div class="col-xs-12 btn-wrapper">
                                     <div class="btn-wrap">
                                         <a
-                                            data-cke-saved-href
-                                            href="tel:012.345.6789"
-                                            data-toggle-value
-                                            data-toggle-default-visible="false"
-                                            data-toggle-show-animation
-                                            data-toggle-hide-animation
-                                            data-toggle-show-animation-options="{}"
-                                            data-toggle-hide-animation-options="{}"
-                                            id
+                                            href="tel:0123456789"
                                             class="ry-btn ry-btn-primary"
-                                            target="_self"
+                                            aria-label="Call us at (012) 345-6789"
                                         >(012) 345-6789</a>
                                     </div>
                                     <div class="btn-wrap apt">
                                         <a
-                                            data-cke-saved-href="#"
                                             href="<?php echo esc_url(home_url('/request-an-appointment/')); ?>"
-                                            data-toggle-value
-                                            data-toggle-default-visible="false"
-                                            data-toggle-show-animation
-                                            data-toggle-hide-animation
-                                            data-toggle-show-animation-options="{}"
-                                            data-toggle-hide-animation-options="{}"
-                                            target="_blank"
-                                            id
                                             class="ry-btn ry-btn-secondary"
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            aria-label="Request an appointment"
                                         >REQUEST AN APPOINTMENT</a>
                                     </div>
                                 </div>
                             </div>
                             <div class="ry-menu">
                                 <div id="litlleLogo" style="display:none;">
-                                    <a href="<?php echo esc_url(home_url('/')); ?>">
+                                    <a href="<?php echo esc_url(home_url('/')); ?>" aria-label="<?php bloginfo('name'); ?> Home">
                                         <img
                                             src="https://static.royacdn.com/Site-656e9e6e-f19a-4ed1-9c29-85197594446c/Homepage_Assets/zellig_new_logo.png"
                                             class="img-responsive"
-                                            style="max-width: 100px;"
-                                            alt
+                                            style="max-width: 80px; height: auto;"
+                                            alt="<?php bloginfo('name'); ?> Logo"
                                         />
                                     </a>
                                 </div>
@@ -91,18 +77,7 @@
                                     zelligcare_fallback_menu();
                                 }
                                 ?>
-                                <script>
-                                    litlleLogo = document.getElementById("litlleLogo");
-                                    var myScrollFunc = function () {
-                                        var y = window.scrollY;
-                                        if (y >= 150) {
-                                            litlleLogo.style.display = "block";
-                                        } else {
-                                            litlleLogo.style.display = "none";
-                                        }
-                                    };
-                                    window.addEventListener("scroll", myScrollFunc);
-                                </script>
+                                <?php /* Logo visibility is handled by jQuery in main.js (initScrollFixed function) */ ?>
                             </div>
                         </div>
                     </div>

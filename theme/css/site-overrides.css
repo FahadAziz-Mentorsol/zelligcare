@@ -194,15 +194,107 @@ div.module-16.style2 #footer-row2 .ry-right img {
 }
 
 /* body.default overrides header to position: relative (takes up space) */
-body.default #ry-section-header.module-43 {
+/* Base header positioning */
+body.default #ry-section-header.module-43,
+#ry-section-header.module-43 {
 	position: relative;
 }
 
-/* When fixed, header becomes position: fixed */
-body.default #ry-section-header.module-43.fixed {
-	position: fixed;
-	padding: 10px 0;
-	background: #fff;
+/* When fixed, header becomes position: fixed - Consolidated sticky header styles */
+body.default #ry-section-header.module-43.fixed,
+#ry-section-header.module-43.fixed,
+.module-43.ry-sticky-menu.fixed {
+	position: fixed !important;
+	top: 0 !important;
+	left: 0 !important;
+	width: 100% !important;
+	z-index: 9999 !important;
+	padding: 15px 0 !important;
+	background: rgba(255, 255, 255, 0.95) !important;
+	backdrop-filter: blur(10px);
+	-webkit-backdrop-filter: blur(10px);
+	transition: all 0.3s ease;
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Fixed header content alignment */
+body.default #ry-section-header.module-43.fixed .ry-content.ry-flex,
+#ry-section-header.module-43.fixed .ry-content.ry-flex,
+.module-43.ry-sticky-menu.fixed .ry-content.ry-flex {
+	align-items: center !important;
+	padding: 0;
+}
+
+body.default #ry-section-header.module-43.fixed .ry-right.ry-flex,
+#ry-section-header.module-43.fixed .ry-right.ry-flex,
+.module-43.ry-sticky-menu.fixed .ry-right.ry-flex {
+	display: flex;
+	align-items: center;
+	gap: 20px;
+}
+
+/* Hide main logo when sticky */
+body.default #ry-section-header.module-43.fixed .ry-logo,
+#ry-section-header.module-43.fixed .ry-logo,
+.module-43.ry-sticky-menu.fixed .ry-logo {
+	display: none !important;
+}
+
+/* Show small logo when sticky */
+body.default #ry-section-header.module-43.fixed #litlleLogo,
+#ry-section-header.module-43.fixed #litlleLogo,
+.module-43.ry-sticky-menu.fixed #litlleLogo {
+	display: block !important;
+}
+
+/* Remove borders from header images */
+body.default #ry-section-header.module-43 .ry-logo img,
+body.default #ry-section-header.module-43 #litlleLogo img,
+body.default #ry-section-header.module-43 .img-responsive {
+	border: none !important;
+	outline: none !important;
+	box-shadow: none !important;
+}
+
+/* Fixed header button layout - ensure buttons display properly */
+body.default #ry-section-header.module-43.fixed .ry-leads,
+#ry-section-header.module-43.fixed .ry-leads,
+.module-43.ry-sticky-menu.fixed .ry-leads {
+	margin-bottom: 0;
+	display: flex;
+	align-items: center;
+}
+
+body.default #ry-section-header.module-43.fixed .ry-leads .btn-wrapper,
+#ry-section-header.module-43.fixed .ry-leads .btn-wrapper,
+.module-43.ry-sticky-menu.fixed .ry-leads .btn-wrapper {
+	display: flex;
+	gap: 15px;
+	align-items: center;
+	flex-wrap: wrap;
+	margin-bottom: 0;
+}
+
+body.default #ry-section-header.module-43.fixed .ry-leads .btn-wrapper .btn-wrap,
+#ry-section-header.module-43.fixed .ry-leads .btn-wrapper .btn-wrap,
+.module-43.ry-sticky-menu.fixed .ry-leads .btn-wrapper .btn-wrap {
+	display: inline-block;
+}
+
+body.default #ry-section-header.module-43.fixed .ry-leads .btn-wrapper .btn-wrap .ry-btn,
+#ry-section-header.module-43.fixed .ry-leads .btn-wrapper .btn-wrap .ry-btn,
+.module-43.ry-sticky-menu.fixed .ry-leads .btn-wrapper .btn-wrap .ry-btn {
+	font-size: 14px;
+	padding: 10px 15px;
+	display: inline-block;
+	white-space: nowrap;
+	text-decoration: none;
+	border: none;
+	cursor: pointer;
+	transition: all 0.3s ease;
+	min-height: 40px;
+	line-height: 1.2;
+	text-align: center;
 }
 
 /* Banner positioned relative to header container */
@@ -222,7 +314,7 @@ body.default #ry-section-header.module-43.fixed {
 	
 	/* When header becomes fixed, add padding to account for fixed header height */
 	body.header-fixed #ry-pg-banner {
-		padding-top: 50px; /* Account for fixed header (padding: 10px 0) */
+		padding-top: 70px; /* Account for fixed header (padding: 15px 0 + content height ~55px) */
 	}
 }
 
