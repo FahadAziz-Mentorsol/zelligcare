@@ -823,7 +823,14 @@ $(function(){
 			});
 		},
 		initAOS:function(){
-			AOS.init();
+			// AOS is already initialized in functions.php with custom settings
+			// Only initialize if AOS hasn't been initialized yet
+			if (typeof AOS !== 'undefined' && !AOS.initialized) {
+				AOS.init({
+					duration: 800,
+					once: true
+				});
+			}
 		},
 		initTextTruncate:function(){
 			var _this = this;

@@ -134,6 +134,75 @@ function zelligcare_render_about_dropdown( $menu_items = array() ) {
 }
 
 /**
+ * Render Specialties Dropdown Menu
+ * 
+ * Helper function to render the Specialties dropdown menu with all specialty pages
+ * 
+ * @param array $menu_items Array of menu items with 'title', 'url', and optional 'children'
+ * @return string HTML output
+ */
+function zelligcare_render_specialties_dropdown( $menu_items = array() ) {
+    // Default specialty menu items if none provided
+    if ( empty( $menu_items ) ) {
+        $menu_items = array(
+            array(
+                'title' => 'Anxiety',
+                'url' => home_url( '/anxiety/' ),
+            ),
+            array(
+                'title' => 'ADHD',
+                'url' => home_url( '/adhd/' ),
+            ),
+            array(
+                'title' => 'Bipolar',
+                'url' => home_url( '/bipolar/' ),
+            ),
+            array(
+                'title' => 'Depression',
+                'url' => home_url( '/depression/' ),
+            ),
+            array(
+                'title' => 'Insomnia',
+                'url' => home_url( '/insomnia/' ),
+            ),
+            array(
+                'title' => 'Life Transitions',
+                'url' => home_url( '/life-transitions/' ),
+            ),
+            array(
+                'title' => 'OCD',
+                'url' => home_url( '/ocd/' ),
+            ),
+            array(
+                'title' => 'Trauma & PTSD',
+                'url' => home_url( '/trauma-ptsd/' ),
+            ),
+            array(
+                'title' => 'Autism & Neurodivergence',
+                'url' => home_url( '/autism-neurodivergence/' ),
+            ),
+        );
+    }
+    
+    $output = '<li class="dropdown" role="presentation">';
+    $output .= '<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">';
+    $output .= 'Specialties<span class="caret"></span>';
+    $output .= '</a>';
+    $output .= '<ul class="dropdown-menu">';
+    
+    foreach ( $menu_items as $item ) {
+        $output .= '<li>';
+        $output .= '<a href="' . esc_url( $item['url'] ) . '">' . esc_html( $item['title'] ) . '</a>';
+        $output .= '</li>';
+    }
+    
+    $output .= '</ul>';
+    $output .= '</li>';
+    
+    return $output;
+}
+
+/**
  * Get Navigation Menu Items
  * 
  * Retrieves menu items for the primary navigation

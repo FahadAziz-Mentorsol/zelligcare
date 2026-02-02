@@ -7,10 +7,15 @@
 function zelligcare_scripts() {
     wp_enqueue_style('bootstrap', get_template_directory_uri() . '/css/bootstrap.min.css');
     wp_enqueue_style('common-global', get_template_directory_uri() . '/css/common-global.css');
-    wp_enqueue_style('font-awesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css');
+    // Font Awesome - matching original HTML (multiple versions for compatibility)
+    wp_enqueue_style('font-awesome-6', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css', array(), '6.2.0', 'all');
+    wp_enqueue_style('font-awesome-5', 'https://use.fontawesome.com/releases/v5.6.3/css/all.css', array(), '5.6.3', 'all');
+    wp_enqueue_style('font-awesome-4', 'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css', array(), '4.7.0', 'all');
+    // Google Fonts - matching original HTML
     wp_enqueue_style('google-fonts-cinzel', 'https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&display=swap');
     wp_enqueue_style('google-fonts-jost', 'https://fonts.googleapis.com/css?family=Jost:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i');
     wp_enqueue_style('google-fonts-tenor', 'https://fonts.googleapis.com/css?family=Tenor+Sans:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i');
+    wp_enqueue_style('google-fonts-jost-tenor-updated', 'https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&family=Tenor+Sans&display=swap');
     wp_enqueue_style('slick-carousel', 'https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css');
     wp_enqueue_style('aos', 'https://unpkg.com/aos@2.3.1/dist/aos.css');
     
@@ -42,6 +47,52 @@ function zelligcare_scripts() {
     // Load site-overrides.css last to ensure footer styles take precedence
     wp_enqueue_style('site-overrides', get_template_directory_uri() . '/css/site-overrides.css', array('overrides'), '1.0.0');
     wp_enqueue_style('mobile-header', get_template_directory_uri() . '/styles/mobile-header.css');
+    
+    // Enqueue specialty page CSS files conditionally
+    if (is_page()) {
+        $page_template = get_page_template_slug();
+        $page_slug = get_post_field('post_name', get_queried_object_id());
+        
+        $specialty_css = array(
+            'page-anxiety.php' => 'page-anxiety.css',
+            'page-adhd.php' => 'page-adhd.css',
+            'page-bipolar.php' => 'page-bipolar.css',
+            'page-depression.php' => 'page-depression.css',
+            'page-insomnia.php' => 'page-insomnia.css',
+            'page-life-transitions.php' => 'page-life-transitions.css',
+            'page-ocd.php' => 'page-ocd.css',
+            'page-trauma-ptsd.php' => 'page-trauma-ptsd.css',
+            'page-autism-neurodivergence.php' => 'page-autism-neurodivergence.css',
+        );
+        
+        // Map page slugs to templates as fallback
+        $slug_to_template = array(
+            'anxiety' => 'page-anxiety.php',
+            'adhd' => 'page-adhd.php',
+            'bipolar' => 'page-bipolar.php',
+            'depression' => 'page-depression.php',
+            'insomnia' => 'page-insomnia.php',
+            'life-transitions' => 'page-life-transitions.php',
+            'ocd' => 'page-ocd.php',
+            'trauma-ptsd' => 'page-trauma-ptsd.php',
+            'autism-neurodivergence' => 'page-autism-neurodivergence.php',
+        );
+        
+        // Try to get template from page template first, then fallback to slug
+        $template_to_use = $page_template;
+        if (empty($template_to_use) && !empty($page_slug) && isset($slug_to_template[$page_slug])) {
+            $template_to_use = $slug_to_template[$page_slug];
+        }
+        
+        if (!empty($template_to_use) && isset($specialty_css[$template_to_use])) {
+            wp_enqueue_style(
+                'specialty-' . str_replace(array('page-', '.php'), '', $template_to_use),
+                get_template_directory_uri() . '/css/' . $specialty_css[$template_to_use],
+                array('site-overrides'),
+                '1.0.0'
+            );
+        }
+    }
     
     // Scripts
     // Use WordPress bundled jQuery instead of CDN to avoid conflicts
@@ -199,9 +250,12 @@ function zelligcare_fallback_menu() {
     // Use the navigation module helper function for About dropdown
     echo zelligcare_render_about_dropdown();
     
-    echo '<li><a href="' . home_url('/team/') . '">Our Team</a></li>';
-    echo '<li class="dropdown"><a href="#">Specialties</a></li>';
-    echo '<li><a href="' . home_url('/contact/') . '">Contact</a></li>';
+    echo '<li><a href="' . home_url('/meet-our-team/') . '">Our Team</a></li>';
+    
+    // Use the navigation module helper function for Specialties dropdown
+    echo zelligcare_render_specialties_dropdown();
+    
+    echo '<li><a href="' . home_url('/contact-us/') . '">Contact Us</a></li>';
     echo '</ul>';
 }
 
@@ -228,6 +282,350 @@ function zelligcare_assign_careers_template($template) {
     return $template;
 }
 add_filter('template_include', 'zelligcare_assign_careers_template', 99);
+
+// Extract content from HTML file for specialty pages
+function zelligcare_get_specialty_content_from_html($html_file) {
+    // Try multiple possible paths
+    $possible_paths = array(
+        get_template_directory() . '/../zelligcare.com/' . $html_file,
+        get_template_directory() . '/../../zelligcare.com/' . $html_file,
+        ABSPATH . '../zelligcare.com/' . $html_file,
+        dirname(get_template_directory()) . '/zelligcare.com/' . $html_file,
+    );
+    
+    $html_path = '';
+    foreach ($possible_paths as $path) {
+        if (file_exists($path)) {
+            $html_path = $path;
+            break;
+        }
+    }
+    
+    if (empty($html_path) || !file_exists($html_path)) {
+        return '';
+    }
+    
+    $html_content = file_get_contents($html_path);
+    
+    // The HTML is minified on one line, so we need a more flexible pattern
+    // First, find the start position of the module-offer section
+    $start_pos = strpos($html_content, '<div class="col-xs-12 module-offer inner-condition-template">');
+    
+    if ($start_pos === false) {
+        return '';
+    }
+    
+    // Find the matching closing divs - we need to count divs to find the right closing tag
+    $content_start = $start_pos + strlen('<div class="col-xs-12 module-offer inner-condition-template">');
+    $depth = 1;
+    $pos = $content_start;
+    $end_pos = false;
+    
+    while ($pos < strlen($html_content) && $depth > 0) {
+        $next_open = strpos($html_content, '<div', $pos);
+        $next_close = strpos($html_content, '</div>', $pos);
+        
+        if ($next_close === false) {
+            break;
+        }
+        
+        if ($next_open !== false && $next_open < $next_close) {
+            $depth++;
+            $pos = $next_open + 4;
+        } else {
+            $depth--;
+            if ($depth === 0) {
+                $end_pos = $next_close;
+                break;
+            }
+            $pos = $next_close + 6;
+        }
+    }
+    
+    if ($end_pos === false) {
+        // Fallback to regex if div counting fails
+        $pattern = '/<div class="col-xs-12 module-offer inner-condition-template">(.*?)<\/div><\/div>\s*<\/div>/s';
+        preg_match($pattern, $html_content, $matches);
+        if (!empty($matches[1])) {
+            $content = $matches[1];
+        } else {
+            return '';
+        }
+    } else {
+        $content = substr($html_content, $content_start, $end_pos - $content_start);
+    }
+    
+    // Extract just the group-block content if it exists
+    $group_start = strpos($content, '<div class="col-xs-12 group-block">');
+    if ($group_start !== false) {
+        $group_start += strlen('<div class="col-xs-12 group-block">');
+        $group_depth = 1;
+        $group_pos = $group_start;
+        $group_end = false;
+        
+        while ($group_pos < strlen($content) && $group_depth > 0) {
+            $next_open = strpos($content, '<div', $group_pos);
+            $next_close = strpos($content, '</div>', $group_pos);
+            
+            if ($next_close === false) {
+                break;
+            }
+            
+            if ($next_open !== false && $next_open < $next_close) {
+                $group_depth++;
+                $group_pos = $next_open + 4;
+            } else {
+                $group_depth--;
+                if ($group_depth === 0) {
+                    $group_end = $next_close;
+                    break;
+                }
+                $group_pos = $next_close + 6;
+            }
+        }
+        
+        if ($group_end !== false) {
+            $content = substr($content, $group_start, $group_end - $group_start);
+        }
+    }
+    
+    // Clean up the content - remove script tags and other unwanted elements
+    $content = preg_replace('/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/mi', '', $content);
+    $content = preg_replace('/<style\b[^<]*(?:(?!<\/style>)<[^<]*)*<\/style>/mi', '', $content);
+    
+    // Fix HTML entities (decode common ones)
+    $content = str_replace('&rsquo;', "'", $content);
+    $content = str_replace('&mdash;', '—', $content);
+    $content = str_replace('&ldquo;', '"', $content);
+    $content = str_replace('&rdquo;', '"', $content);
+    $content = html_entity_decode($content, ENT_QUOTES | ENT_HTML5, 'UTF-8');
+    
+    return trim($content);
+}
+
+// Force update all specialty pages with content from HTML files
+function zelligcare_update_all_specialty_pages_content() {
+    $specialties = array(
+        array('slug' => 'anxiety', 'html_file' => 'anxiety.html'),
+        array('slug' => 'adhd', 'html_file' => 'adhd.html'),
+        array('slug' => 'bipolar', 'html_file' => 'bipolar.html'),
+        array('slug' => 'depression', 'html_file' => 'depression.html'),
+        array('slug' => 'insomnia', 'html_file' => 'insomnia.html'),
+        array('slug' => 'life-transitions', 'html_file' => 'life-transitions.html'),
+        array('slug' => 'ocd', 'html_file' => 'ocd.html'),
+        array('slug' => 'trauma-ptsd', 'html_file' => 'trauma-ptsd.html'),
+        array('slug' => 'autism-neurodivergence', 'html_file' => 'autism-neurodivergence.html'),
+    );
+    
+    $updated = 0;
+    // Disable content filtering to preserve raw HTML
+    remove_filter('content_save_pre', 'wp_filter_post_kses');
+    
+    foreach ($specialties as $specialty) {
+        $page = get_page_by_path($specialty['slug']);
+        if ($page) {
+            $content = zelligcare_get_specialty_content_from_html($specialty['html_file']);
+            if (!empty($content)) {
+                wp_update_post(array(
+                    'ID' => $page->ID,
+                    'post_content' => $content,
+                ));
+                $updated++;
+            }
+        }
+    }
+    
+    // Re-enable content filtering
+    add_filter('content_save_pre', 'wp_filter_post_kses');
+    
+    return $updated;
+}
+
+// Auto-create specialty pages and add to menu
+function zelligcare_create_specialty_pages() {
+    $specialties = array(
+        array(
+            'title' => 'Anxiety',
+            'slug' => 'anxiety',
+            'template' => 'page-anxiety.php',
+            'html_file' => 'anxiety.html',
+        ),
+        array(
+            'title' => 'ADHD',
+            'slug' => 'adhd',
+            'template' => 'page-adhd.php',
+            'html_file' => 'adhd.html',
+        ),
+        array(
+            'title' => 'Bipolar',
+            'slug' => 'bipolar',
+            'template' => 'page-bipolar.php',
+            'html_file' => 'bipolar.html',
+        ),
+        array(
+            'title' => 'Depression',
+            'slug' => 'depression',
+            'template' => 'page-depression.php',
+            'html_file' => 'depression.html',
+        ),
+        array(
+            'title' => 'Insomnia',
+            'slug' => 'insomnia',
+            'template' => 'page-insomnia.php',
+            'html_file' => 'insomnia.html',
+        ),
+        array(
+            'title' => 'Life Transitions',
+            'slug' => 'life-transitions',
+            'template' => 'page-life-transitions.php',
+            'html_file' => 'life-transitions.html',
+        ),
+        array(
+            'title' => 'OCD',
+            'slug' => 'ocd',
+            'template' => 'page-ocd.php',
+            'html_file' => 'ocd.html',
+        ),
+        array(
+            'title' => 'Trauma & PTSD',
+            'slug' => 'trauma-ptsd',
+            'template' => 'page-trauma-ptsd.php',
+            'html_file' => 'trauma-ptsd.html',
+        ),
+        array(
+            'title' => 'Autism & Neurodivergence',
+            'slug' => 'autism-neurodivergence',
+            'template' => 'page-autism-neurodivergence.php',
+            'html_file' => 'autism-neurodivergence.html',
+        ),
+    );
+    
+    $created_pages = array();
+    
+    foreach ($specialties as $specialty) {
+        // Check if page already exists by slug
+        $page = get_page_by_path($specialty['slug']);
+        
+        // Get content from HTML file
+        $page_content = zelligcare_get_specialty_content_from_html($specialty['html_file']);
+        
+        if (!$page) {
+            $page_data = array(
+                'post_title'    => $specialty['title'],
+                'post_name'     => $specialty['slug'],
+                'post_content'  => $page_content,
+                'post_status'   => 'publish',
+                'post_type'     => 'page',
+                'post_author'   => 1,
+            );
+            
+            $page_id = wp_insert_post($page_data);
+            
+            if ($page_id && !is_wp_error($page_id)) {
+                // Assign the template
+                update_post_meta($page_id, '_wp_page_template', $specialty['template']);
+                $created_pages[] = $page_id;
+            }
+        } else {
+            // Page exists, ensure template is set and update content if empty
+            update_post_meta($page->ID, '_wp_page_template', $specialty['template']);
+            
+            // Always update content if we have it from HTML file
+            if (!empty($page_content)) {
+                $existing_content = get_post_field('post_content', $page->ID);
+                // Update if empty or if content is different (to handle updates)
+                if (empty(trim(strip_tags($existing_content))) || $existing_content !== $page_content) {
+                    // Use wp_update_post with raw content - disable filters to preserve HTML
+                    remove_filter('content_save_pre', 'wp_filter_post_kses');
+                    wp_update_post(array(
+                        'ID' => $page->ID,
+                        'post_content' => $page_content,
+                    ));
+                    add_filter('content_save_pre', 'wp_filter_post_kses');
+                }
+            }
+            
+            $created_pages[] = $page->ID;
+        }
+    }
+    
+    // Add pages to menu if menu exists
+    if (!empty($created_pages)) {
+        zelligcare_add_specialties_to_menu($created_pages);
+    }
+    
+    return $created_pages;
+}
+
+// Add specialty pages to the primary menu
+function zelligcare_add_specialties_to_menu($page_ids = array()) {
+    // Get the primary menu location
+    $menu_locations = get_nav_menu_locations();
+    
+    if (isset($menu_locations['primary'])) {
+        $menu_id = $menu_locations['primary'];
+        $menu = wp_get_nav_menu_object($menu_id);
+        
+        if ($menu) {
+            // Check if Specialties parent menu item exists
+            $menu_items = wp_get_nav_menu_items($menu_id);
+            $specialties_parent = null;
+            
+            foreach ($menu_items as $item) {
+                if ($item->title === 'Specialties' && $item->menu_item_parent == 0) {
+                    $specialties_parent = $item->ID;
+                    break;
+                }
+            }
+            
+            // If no Specialties parent exists, create it
+            if (!$specialties_parent) {
+                $parent_item = wp_update_nav_menu_item($menu_id, 0, array(
+                    'menu-item-title' => 'Specialties',
+                    'menu-item-url' => '#',
+                    'menu-item-status' => 'publish',
+                    'menu-item-type' => 'custom',
+                ));
+                
+                if (!is_wp_error($parent_item)) {
+                    $specialties_parent = $parent_item;
+                }
+            }
+            
+            // Add specialty pages as children of Specialties
+            if ($specialties_parent) {
+                foreach ($page_ids as $page_id) {
+                    // Check if menu item already exists for this page
+                    $exists = false;
+                    foreach ($menu_items as $item) {
+                        if ($item->object_id == $page_id && $item->object == 'page') {
+                            $exists = true;
+                            // Update parent if needed
+                            if ($item->menu_item_parent != $specialties_parent) {
+                                wp_update_nav_menu_item($menu_id, $item->ID, array(
+                                    'menu-item-parent-id' => $specialties_parent,
+                                ));
+                            }
+                            break;
+                        }
+                    }
+                    
+                    // Create menu item if it doesn't exist
+                    if (!$exists) {
+                        wp_update_nav_menu_item($menu_id, 0, array(
+                            'menu-item-title' => get_the_title($page_id),
+                            'menu-item-object-id' => $page_id,
+                            'menu-item-object' => 'page',
+                            'menu-item-type' => 'post_type',
+                            'menu-item-status' => 'publish',
+                            'menu-item-parent-id' => $specialties_parent,
+                        ));
+                    }
+                }
+            }
+        }
+    }
+}
 
 // Auto-create careers page if it doesn't exist
 function zelligcare_create_careers_page() {
@@ -261,6 +659,44 @@ function zelligcare_create_careers_page() {
 // Run on admin init and also on init for frontend
 add_action('admin_init', 'zelligcare_create_careers_page');
 add_action('init', 'zelligcare_create_careers_page', 20);
+
+// Auto-create specialty pages and add to menu
+add_action('admin_init', 'zelligcare_create_specialty_pages');
+add_action('init', 'zelligcare_create_specialty_pages', 20);
+
+// Add admin notice with link to update content
+add_action('admin_notices', 'zelligcare_specialty_content_update_notice');
+function zelligcare_specialty_content_update_notice() {
+    $screen = get_current_screen();
+    if ($screen && ($screen->id === 'edit-page' || $screen->id === 'page')) {
+        if (isset($_GET['updated'])) {
+            $count = intval($_GET['updated']);
+            echo '<div class="notice notice-success is-dismissible">';
+            echo '<p><strong>Success!</strong> Updated ' . $count . ' specialty page(s) with content.</p>';
+            echo '</div>';
+        } else {
+            $update_url = admin_url('admin-post.php?action=update_specialty_content');
+            $update_url = wp_nonce_url($update_url, 'update_specialty_content');
+            echo '<div class="notice notice-info is-dismissible">';
+            echo '<p><strong>Specialty Pages:</strong> <a href="' . esc_url($update_url) . '" class="button button-primary">Update All Specialty Pages Content</a></p>';
+            echo '</div>';
+        }
+    }
+}
+
+// Update the handler to use nonce
+add_action('admin_post_update_specialty_content', 'zelligcare_handle_update_specialty_content');
+function zelligcare_handle_update_specialty_content() {
+    if (!current_user_can('edit_pages')) {
+        wp_die('Unauthorized');
+    }
+    
+    check_admin_referer('update_specialty_content');
+    
+    $updated = zelligcare_update_all_specialty_pages_content();
+    wp_redirect(admin_url('edit.php?post_type=page&updated=' . $updated));
+    exit;
+}
 
 // Flush rewrite rules when careers page is created
 function zelligcare_flush_rewrite_rules_on_careers_creation() {
