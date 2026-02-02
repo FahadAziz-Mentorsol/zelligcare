@@ -36,21 +36,12 @@
                         <div class="col-xs-12 col-md-10 col-lg-10 ry-right ry-flex">
                             <div class="col-xs-12 ry-leads">
                                 <div class="col-xs-12 btn-wrapper">
-                                    <div class="btn-wrap">
+                                    <div class="btn-wrap tel">
                                         <a
                                             href="tel:0123456789"
                                             class="ry-btn ry-btn-primary"
                                             aria-label="Call us at (012) 345-6789"
                                         >(012) 345-6789</a>
-                                    </div>
-                                    <div class="btn-wrap apt">
-                                        <a
-                                            href="<?php echo esc_url(home_url('/request-an-appointment/')); ?>"
-                                            class="ry-btn ry-btn-secondary"
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            aria-label="Request an appointment"
-                                        >REQUEST AN APPOINTMENT</a>
                                     </div>
                                 </div>
                             </div>
@@ -111,9 +102,6 @@
                                 <div class="mobile-button">
                                     <a href="tel:0123456789">
                                         <i class="fa fa-phone" aria-hidden="true"></i>
-                                    </a>
-                                    <a href="<?php echo esc_url(home_url('/request-an-appointment/')); ?>" target="_blank">
-                                        <i class="fa fa-calendar" aria-hidden="true"></i>
                                     </a>
                                 </div>
                             </div>

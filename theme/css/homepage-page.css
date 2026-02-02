@@ -4898,19 +4898,13 @@ body ol li {
     width: 100%;
 }
 
-.module-offer .photo {
+.module-offer:not(.inner-condition-template) .photo {
     overflow: hidden;
 }
 
-.module-offer .photo img {
-    width: 100%;
-    height: auto;
-    max-height: 350px;
-    object-fit: cover;
-    transition: transform 0.3s ease;
-}
+/* Removed problematic .module-offer .photo img rule that conflicts with specialty pages */
 
-.module-offer .photo img:hover {
+.module-offer:not(.inner-condition-template) .photo img:hover {
     transform: scale(1.05);
 }
 
@@ -4985,9 +4979,7 @@ body ol li {
         font-size: 1rem;
     }
 
-    .module-offer .photo img {
-        max-height: 280px;
-    }
+    /* max-height removed from .module-offer .photo img for better display */
 }
 
 @media (max-width: 767px) {
@@ -5068,9 +5060,7 @@ body ol li {
         font-size: 1rem;
     }
 
-    .module-offer .photo img {
-        max-height: 280px;
-    }
+    /* max-height removed from .module-offer .photo img for better display */
 }
 
 @media (max-width: 767px) {

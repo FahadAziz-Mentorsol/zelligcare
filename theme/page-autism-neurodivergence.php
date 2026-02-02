@@ -42,7 +42,7 @@ get_header(); ?>
                         <div class="col-xs-12 col-lg-6 each each-photo">
                             <div class="col-xs-12 wrapper">
                                 <div class="col-xs-12 photo">
-                                    <img src="https://static.royacdn.com/Site-656e9e6e-f19a-4ed1-9c29-85197594446c/Condition_Template/Autism_Neurodivergence_001.jpg" loading="lazy" alt class="img-responsive">
+                                    <img src="https://static.royacdn.com/Site-656e9e6e-f19a-4ed1-9c29-85197594446c/Condition_Template/bipolar_001.jpg" loading="lazy" alt="Autism & Neurodivergence" class="img-responsive">
                                 </div>
                             </div>
                         </div>
@@ -72,7 +72,7 @@ get_header(); ?>
                         <div class="col-xs-12 col-lg-6 each each-photo">
                             <div class="col-xs-12 wrapper">
                                 <div class="col-xs-12 photo">
-                                    <img src="https://static.royacdn.com/Site-656e9e6e-f19a-4ed1-9c29-85197594446c/Condition_Template/Autism_Neurodivergence_002.jpg" loading="lazy" alt class="img-responsive">
+                                    <img src="https://static.royacdn.com/Site-656e9e6e-f19a-4ed1-9c29-85197594446c/Condition_Template/bipolar_002.jpg" loading="lazy" alt="Autism & Neurodivergence" class="img-responsive">
                                 </div>
                             </div>
                         </div>
@@ -102,7 +102,7 @@ get_header(); ?>
                         <div class="col-xs-12 col-lg-6 each each-photo">
                             <div class="col-xs-12 wrapper">
                                 <div class="col-xs-12 photo">
-                                    <img src="https://static.royacdn.com/Site-656e9e6e-f19a-4ed1-9c29-85197594446c/Condition_Template/Autism_Neurodivergence_003.jpg" loading="lazy" alt class="img-responsive">
+                                    <img src="https://static.royacdn.com/Site-656e9e6e-f19a-4ed1-9c29-85197594446c/Condition_Template/bipolar_003.jpg" loading="lazy" alt="Autism & Neurodivergence" class="img-responsive">
                                 </div>
                             </div>
                         </div>

@@ -291,7 +291,8 @@
 	min-width: calc(100% + 20px);
 } */
 
-.module-offer .group-block .block:nth-child(even) .each-photo img {
+/* Only apply to non-inner-condition-template .module-offer instances */
+.module-offer:not(.inner-condition-template) .group-block .block:nth-child(even) .each-photo img {
 	margin-right: -20px;
 	min-width: calc(100% + 20px);
 }
@@ -352,9 +353,11 @@
 	padding: 0;
 }
 
+/* Comprehensive specialty page image border fix */
 .module-offer.inner-condition-template .group-block .content .each .photo {
 	position: relative;
 	padding-bottom: 75%;
+	overflow: visible;
 }
 
 .module-offer.inner-condition-template .group-block .content .each .photo img {
@@ -365,8 +368,56 @@
 	height: 100%;
 	object-fit: cover;
 	margin: 0;
-	min-width: unset;
+	min-width: calc(100% - 20px);
 	border-top-right-radius: 20px;
+}
+
+.module-offer.inner-condition-template .group-block .content .each .photo:before {
+	position: absolute;
+	right: -10px;
+	top: -10px;
+	width: calc(100% - 20px);
+	height: calc(100% - 20px);
+	border: 1px solid #bd945a;
+	content: "";
+	border-top-right-radius: 30px;
+	border-top-left-radius: 0;
+	z-index: 0;
+	pointer-events: none;
+	display: block;
+}
+
+/* Target fade-left blocks (odd) - extend image to the left */
+.module-offer.inner-condition-template .group-block .block[data-aos*="fade-left"] .each-photo img,
+.module-offer.inner-condition-template .group-block .block:nth-child(odd) .each-photo img {
+	margin-left: -10px !important;
+	min-width: calc(100% + 20px) !important;
+	left: -10px !important;
+	height: 100% !important;
+	position: absolute !important;
+	top: 0 !important;
+	object-fit: cover !important;
+}
+
+/* Target fade-right blocks (even) - extend image to the right */
+.module-offer.inner-condition-template .group-block .block[data-aos*="fade-right"] .each-photo img,
+.module-offer.inner-condition-template .group-block .block:nth-child(even) .each-photo img {
+	margin-right: -20px !important;
+	min-width: calc(100% - 20px) !important;
+	right: -20px !important;
+	height: 100% !important;
+	position: absolute !important;
+	top: 0 !important;
+	object-fit: cover !important;
+}
+
+/* Fallback for any other structure variations */
+.module-offer.inner-condition-template .group-block .block .each-photo img {
+	position: absolute !important;
+	top: 0 !important;
+	width: 100% !important;
+	height: 100% !important;
+	object-fit: cover !important;
 }
 
 /* Responsive image styles */
@@ -382,29 +433,6 @@
 	display: block;
 	max-width: 100%;
 	height: auto;
-}
-
-.module-offer.inner-condition-template .group-block .content .each .photo:before {
-	position: absolute;
-	right: -10px;
-	top: -10px;
-	width: calc(100% - 20px);
-	height: calc(100% - 20px);
-	border: 1px solid #bd945a;
-	content: "";
-	border-top-right-radius: 30px;
-	border-top-left-radius: 0;
-	z-index: 1;
-}
-
-.module-offer.inner-condition-template .group-block .block:nth-child(odd) .each-photo img {
-	margin-left: -20px;
-	min-width: calc(100% + 20px);
-}
-
-.module-offer.inner-condition-template .group-block .block:nth-child(even) .each-photo img {
-	margin-right: -20px;
-	min-width: calc(100% + 20px);
 }
 
 .module-services.custom {
@@ -4216,4 +4244,259 @@ body.default #ry-section-header.module-43.fixed .ry-leads .btn-wrapper .btn-wrap
 	background-color: #bd945a !important;
 	color: #fff !important;
 	box-shadow: 0 8px 25px rgba(189, 148, 90, 0.4) !important;
+}
+
+/* ========================================
+   COMPREHENSIVE BANNER CSS FOR ALL PAGES
+   ======================================== */
+
+#ry-pg-banner {
+	position: relative;
+	z-index: 1;
+	width: 100%;
+	overflow: hidden;
+}
+
+#ry-pg-banner .ry-bnr-wrp {
+	width: 100%;
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+#ry-pg-banner .ry-bnr-wrp img {
+	display: none;
+	/* Hide the img tag, use background image instead */
+}
+
+#ry-pg-banner .ry-pg-title {
+	position: absolute;
+	bottom: 10%;
+	left: 50%;
+	transform: translateX(-50%);
+	width: 100%;
+	text-align: center;
+	z-index: 10;
+	visibility: visible !important;
+}
+
+#ry-pg-banner .ry-pg-title .ry-container {
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 0 20px;
+}
+
+#ry-pg-banner .ry-pg-title h1,
+#ry-pg-banner .ry-pg-title h1.ry-responsive-title {
+	color: #bd945a !important;
+	text-transform: uppercase;
+	font-weight: 400 !important;
+	letter-spacing: 5px;
+	margin: 0;
+	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* ========================================
+   DESKTOP BANNER STYLES
+   ======================================== */
+
+/* Large Desktop (1600px and up) */
+@media (min-width: 1600px) {
+	#ry-pg-banner .ry-bnr-wrp {
+		height: 400px;
+		background-position: center;
+	}
+
+	#ry-pg-banner .ry-pg-title h1,
+	#ry-pg-banner .ry-pg-title h1.ry-responsive-title {
+		font-size: 60px;
+	}
+}
+
+/* Medium Desktop (1200px - 1599px) */
+@media (min-width: 1200px) and (max-width: 1599px) {
+	#ry-pg-banner .ry-bnr-wrp {
+		height: 350px;
+		background-position: center;
+	}
+
+	#ry-pg-banner .ry-pg-title h1,
+	#ry-pg-banner .ry-pg-title h1.ry-responsive-title {
+		font-size: 50px;
+	}
+}
+
+/* Small Desktop (992px - 1199px) */
+@media (min-width: 992px) and (max-width: 1199px) {
+	#ry-pg-banner .ry-bnr-wrp {
+		height: 320px;
+		background-position: center;
+	}
+
+	#ry-pg-banner .ry-pg-title h1,
+	#ry-pg-banner .ry-pg-title h1.ry-responsive-title {
+		font-size: 45px;
+	}
+}
+
+/* ========================================
+   TABLET BANNER STYLES
+   ======================================== */
+
+/* Large Tablet (768px - 991px) */
+@media (min-width: 768px) and (max-width: 991px) {
+	#ry-pg-banner .ry-bnr-wrp {
+		height: 300px;
+		background-position: center;
+		margin-top: 0;
+	}
+
+	#ry-pg-banner .ry-pg-title {
+		bottom: 15%;
+	}
+
+	#ry-pg-banner .ry-pg-title h1,
+	#ry-pg-banner .ry-pg-title h1.ry-responsive-title {
+		font-size: 40px;
+		letter-spacing: 3px;
+	}
+}
+
+/* Small Tablet (500px - 767px) */
+@media (min-width: 500px) and (max-width: 767px) {
+	#ry-pg-banner .ry-bnr-wrp {
+		height: 260px;
+		background-position: center;
+		margin-top: 0;
+	}
+
+	#ry-pg-banner .ry-pg-title {
+		bottom: 20%;
+	}
+
+	#ry-pg-banner .ry-pg-title h1,
+	#ry-pg-banner .ry-pg-title h1.ry-responsive-title {
+		font-size: 35px;
+		letter-spacing: 2px;
+	}
+}
+
+/* ========================================
+   MOBILE BANNER STYLES
+   ======================================== */
+
+/* Large Mobile (400px - 499px) */
+@media (min-width: 400px) and (max-width: 499px) {
+	#ry-pg-banner .ry-bnr-wrp {
+		height: 220px;
+		background-position: center;
+		margin-top: 0;
+	}
+
+	#ry-pg-banner .ry-pg-title {
+		bottom: 25%;
+	}
+
+	#ry-pg-banner .ry-pg-title h1,
+	#ry-pg-banner .ry-pg-title h1.ry-responsive-title {
+		font-size: 30px;
+		letter-spacing: 1px;
+		line-height: 1.2;
+	}
+}
+
+/* Small Mobile (399px and below) */
+@media (max-width: 399px) {
+	#ry-pg-banner .ry-bnr-wrp {
+		height: 200px;
+		background-position: center;
+		margin-top: 0;
+	}
+
+	#ry-pg-banner .ry-pg-title {
+		bottom: 30%;
+	}
+
+	#ry-pg-banner .ry-pg-title h1,
+	#ry-pg-banner .ry-pg-title h1.ry-responsive-title {
+		font-size: 25px;
+		letter-spacing: 1px;
+		line-height: 1.1;
+	}
+}
+
+/* ========================================
+   BANNER OVERLAY EFFECTS
+   ======================================== */
+
+#ry-pg-banner .ry-bnr-wrp:before {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: rgba(0, 0, 0, 0.3);
+	z-index: 1;
+}
+
+/* ========================================
+   HEADER INTERACTION WITH BANNER
+   ======================================== */
+
+/* Desktop: Header is position: relative initially, no padding needed */
+@media (min-width: 992px) {
+	#ry-pg-banner {
+		padding-top: 0;
+		transition: padding-top 0.3s ease;
+	}
+
+	/* When header becomes fixed, add padding to account for fixed header */
+	body.header-fixed #ry-pg-banner {
+		padding-top: 70px;
+	}
+}
+
+/* Mobile: Header is fixed, no additional padding needed */
+@media (max-width: 991px) {
+	#ry-pg-banner {
+		padding-top: 0;
+	}
+}
+
+/* ========================================
+   BANNER RESPONSIVE FONT SIZING
+   ======================================== */
+
+/* Fluid typography for responsive titles */
+@media (min-width: 500px) and (max-width: 991px) {
+
+	#ry-pg-banner .ry-pg-title h1,
+	#ry-pg-banner .ry-pg-title h1.ry-responsive-title {
+		font-size: calc(30px + 20 * ((100vw - 500px) / 491));
+	}
+}
+
+/* ========================================
+   BROWSER COMPATIBILITY
+   ======================================== */
+
+/* IE/Edge specific fixes */
+@media screen and (-ms-high-contrast: active),
+(-ms-high-contrast: none) {
+	#ry-pg-banner .ry-pg-title {
+		transform: translateX(-50%) translateY(0);
+	}
+}
+
+/* Safari specific fixes */
+@supports (-webkit-appearance: none) {
+	#ry-pg-banner .ry-bnr-wrp {
+		-webkit-background-size: cover;
+		background-size: cover;
+	}
 }
