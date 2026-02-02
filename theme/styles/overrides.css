@@ -219,6 +219,12 @@
 	padding: 100px 0 150px;
 }
 
+#ry-pg-banner .ry-pg-title .ry-container {
+	max-width: 95%;
+	margin: 0 auto;
+	padding: 0 20px;
+}
+
 /* Note: .ry-headline h2 already defined at line 1 */
 
 .module-services.custom .ry-headline h2 .span-1 {
@@ -1604,7 +1610,6 @@
 }
 
 .module-43 .ry-logo img {
-	max-width: 150px;
 	height: auto;
 	border: none !important;
 	outline: none !important;
@@ -1757,8 +1762,6 @@ body.default #ry-section-header.module-43.fixed #litlleLogo,
 
 .module-43 .ry-left.ry-logo img,
 .module-43 .ry-left img {
-	max-width: 150px !important;
-	max-height: 100px !important;
 	width: auto !important;
 	height: auto !important;
 	object-fit: contain !important;
@@ -1772,7 +1775,6 @@ body.default #ry-section-header.module-43.fixed #litlleLogo,
 /* Ensure responsive images don't override logo sizing */
 .module-43 .ry-left.ry-logo .img-responsive {
 	width: auto !important;
-	max-width: 150px !important;
 	height: auto !important;
 }
 
@@ -1782,7 +1784,6 @@ body.default #ry-section-header.module-43.fixed #litlleLogo img,
 .module-43.fixed #litlleLogo img,
 #litlleLogo img,
 .module-43 .ry-menu #litlleLogo img {
-	max-width: 80px !important;
 	max-height: 80px !important;
 	width: auto !important;
 	height: auto !important;
@@ -4174,6 +4175,17 @@ body.default #ry-section-header.module-43.fixed .ry-leads .btn-wrapper .btn-wrap
 	}
 }
 
+.module-43 .ry-left img {
+	margin-top: -20px;
+	margin-bottom: -20px;
+	max-height: 140px;
+}
+
+.module-43 .ry-left.ry-logo .img-responsive {
+	width: auto !important;
+	height: auto !important;
+}
+
 /* Header Button Styling */
 .module-43 .menu-button .ry-btn {
 	background: #bd945a !important;
@@ -4275,9 +4287,9 @@ body.default #ry-section-header.module-43.fixed .ry-leads .btn-wrapper .btn-wrap
 
 #ry-pg-banner .ry-pg-title {
 	position: absolute;
-	bottom: 10%;
+	top: 50%;
 	left: 50%;
-	transform: translateX(-50%);
+	transform: translate(-50%, -50%);
 	width: 100%;
 	text-align: center;
 	z-index: 10;
@@ -4285,9 +4297,11 @@ body.default #ry-section-header.module-43.fixed .ry-leads .btn-wrapper .btn-wrap
 }
 
 #ry-pg-banner .ry-pg-title .ry-container {
-	max-width: 1200px;
+	padding: 20px 30px;
+	border-radius: 10px;
+	display: inline-block;
+	max-width: 95%;
 	margin: 0 auto;
-	padding: 0 20px;
 }
 
 #ry-pg-banner .ry-pg-title h1,
@@ -4297,7 +4311,6 @@ body.default #ry-section-header.module-43.fixed .ry-leads .btn-wrapper .btn-wrap
 	font-weight: 400 !important;
 	letter-spacing: 5px;
 	margin: 0;
-	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 /* ========================================
@@ -4356,7 +4369,8 @@ body.default #ry-section-header.module-43.fixed .ry-leads .btn-wrapper .btn-wrap
 	}
 
 	#ry-pg-banner .ry-pg-title {
-		bottom: 15%;
+		top: 50%;
+		transform: translate(-50%, -50%);
 	}
 
 	#ry-pg-banner .ry-pg-title h1,
@@ -4375,7 +4389,8 @@ body.default #ry-section-header.module-43.fixed .ry-leads .btn-wrapper .btn-wrap
 	}
 
 	#ry-pg-banner .ry-pg-title {
-		bottom: 20%;
+		top: 50%;
+		transform: translate(-50%, -50%);
 	}
 
 	#ry-pg-banner .ry-pg-title h1,
@@ -4398,7 +4413,8 @@ body.default #ry-section-header.module-43.fixed .ry-leads .btn-wrapper .btn-wrap
 	}
 
 	#ry-pg-banner .ry-pg-title {
-		bottom: 25%;
+		top: 50%;
+		transform: translate(-50%, -50%);
 	}
 
 	#ry-pg-banner .ry-pg-title h1,
@@ -4418,7 +4434,8 @@ body.default #ry-section-header.module-43.fixed .ry-leads .btn-wrapper .btn-wrap
 	}
 
 	#ry-pg-banner .ry-pg-title {
-		bottom: 30%;
+		top: 50%;
+		transform: translate(-50%, -50%);
 	}
 
 	#ry-pg-banner .ry-pg-title h1,
@@ -4440,7 +4457,6 @@ body.default #ry-section-header.module-43.fixed .ry-leads .btn-wrapper .btn-wrap
 	left: 0;
 	right: 0;
 	bottom: 0;
-	background: rgba(0, 0, 0, 0.3);
 	z-index: 1;
 }
 

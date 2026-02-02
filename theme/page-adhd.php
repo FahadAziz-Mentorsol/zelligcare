@@ -23,11 +23,11 @@ get_header(); ?>
         <div class="col-xs-12 ">
             <img src="<?php echo esc_url($banner_image); ?>" loading="lazy" alt="<?php the_title_attribute(); ?>" class="img-responsive">
         </div>
-        <div class="col-xs-12 ry-pg-title">
-            <div class="col-xs-12 ry-container">
-                <div>
-                    <h1><?php the_title(); ?></h1>
-                </div>
+    </div>
+    <div class="col-xs-12 ry-pg-title">
+        <div class="col-xs-12 ry-container">
+            <div>
+                <h1><?php the_title(); ?></h1>
             </div>
         </div>
     </div>
