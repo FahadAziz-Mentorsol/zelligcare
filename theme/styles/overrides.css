@@ -1593,10 +1593,80 @@
 	position: absolute;
 	bottom: 10%;
 	transform: translateY(-50%);
-	z-index: 9;
+	z-index: 10;
+	/* Increased to ensure visibility above overlays but below header */
 	visibility: visible;
 	width: 100%;
 	left: 0;
+}
+
+/* Header and Banner Relative Positioning */
+/* Make header container establish positioning context */
+#ry-pg-header {
+	position: relative;
+	width: 100%;
+}
+
+/* Header positioning - matches original */
+/* Base module-43 styles */
+.module-43 {
+	top: 0;
+	left: 0;
+	z-index: 999;
+	padding: 35px 0 20px;
+	-webkit-transition: all 600ms ease;
+	transition: all 600ms ease;
+	position: absolute;
+}
+
+/* body.default overrides header to position: relative (takes up space) */
+body.default #ry-section-header.module-43 {
+	position: relative;
+}
+
+/* When fixed, header becomes position: fixed */
+body.default #ry-section-header.module-43.fixed {
+	position: fixed;
+	padding: 10px 0;
+	background: #fff;
+}
+
+/* Banner positioned relative to header container */
+#ry-pg-banner {
+	position: relative;
+	z-index: 1;
+	/* Lower than header (z-index: 999) */
+	width: 100%;
+}
+
+/* On desktop: Header is position: relative initially (takes up space), so no padding needed */
+/* When header becomes fixed, it no longer takes up space, so banner needs padding */
+@media (min-width: 992px) {
+	#ry-pg-banner {
+		padding-top: 0;
+		/* Header is relative, takes up space */
+		transition: padding-top 0.3s ease;
+	}
+
+	/* When header becomes fixed, add padding to account for fixed header height */
+	body.header-fixed #ry-pg-banner {
+		padding-top: 50px;
+		/* Account for fixed header (padding: 10px 0) */
+	}
+}
+
+/* On mobile: Header is fixed, spacing handled by banner wrapper */
+@media (max-width: 991px) {
+	#ry-pg-banner {
+		padding-top: 0;
+		/* Mobile spacing handled by banner wrapper margin-top */
+	}
+}
+
+/* Ensure banner title is visible above banner overlays but header will still be on top */
+#ry-pg-banner .ry-pg-title {
+	z-index: 10;
+	/* Visible above banner overlays, but header (z-index: 999) will still be on top */
 }
 
 #ry-pg-banner .ry-bnr-wrp .ry-pg-title h1.ry-responsive-title,

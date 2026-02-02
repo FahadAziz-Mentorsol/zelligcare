@@ -17,8 +17,8 @@
 <body <?php body_class(); ?>>
 <?php wp_body_open(); ?>
 <div class="site-content">
-    <div id="ry-header">
-        <div class="col-xs-12">
+    <div id="ry-pg-header">
+        <div class="col-xs-12 ">
             <!-- Desktop Header -->
             <div id="ry-section-header" class="col-xs-12 hidden-xs hidden-sm module-43 ry-section ry-sticky-menu">
                 <div class="col-xs-12"></div>
@@ -50,6 +50,21 @@
                                             class="ry-btn ry-btn-primary"
                                             target="_self"
                                         >(012) 345-6789</a>
+                                    </div>
+                                    <div class="btn-wrap apt">
+                                        <a
+                                            data-cke-saved-href="#"
+                                            href="<?php echo esc_url(home_url('/request-an-appointment/')); ?>"
+                                            data-toggle-value
+                                            data-toggle-default-visible="false"
+                                            data-toggle-show-animation
+                                            data-toggle-hide-animation
+                                            data-toggle-show-animation-options="{}"
+                                            data-toggle-hide-animation-options="{}"
+                                            target="_blank"
+                                            id
+                                            class="ry-btn ry-btn-secondary"
+                                        >REQUEST AN APPOINTMENT</a>
                                     </div>
                                 </div>
                             </div>
@@ -121,6 +136,9 @@
                                 <div class="mobile-button">
                                     <a href="tel:0123456789">
                                         <i class="fa fa-phone" aria-hidden="true"></i>
+                                    </a>
+                                    <a href="<?php echo esc_url(home_url('/request-an-appointment/')); ?>" target="_blank">
+                                        <i class="fa fa-calendar" aria-hidden="true"></i>
                                     </a>
                                 </div>
                             </div>

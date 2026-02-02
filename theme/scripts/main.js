@@ -322,6 +322,7 @@ $(function(){
 			this.initMod6Fix();
 			this.initMultiLevelMenu();
 			this.initFixMobileMenuDropdown();
+			this.initScrollFixed();
 
 			if($('#map').length > 0){
 				this.initMap();
@@ -974,6 +975,22 @@ $(function(){
 					e.preventDefault();
 					$(this).siblings(".mm-btn_next").trigger("click")
 				});
+			});
+		},
+		initScrollFixed:function(){
+			/* scroll event */
+			$( window ).scroll(function() {
+				var height = $(window).scrollTop();
+				var header = $('.ry-sticky-menu');
+
+				if(height  > 150) {
+					$('.ry-sticky-menu, .mobile-header.style-9').addClass('fixed');
+					$('body').addClass('header-fixed'); // Add class to body when header is fixed
+				}else{
+					$('.ry-sticky-menu, .mobile-header.style-9').removeClass('fixed');
+					$('body').removeClass('header-fixed'); // Remove class when header is not fixed
+				}
+
 			});
 		}
 

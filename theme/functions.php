@@ -166,6 +166,13 @@ function zelligcare_scripts() {
 }
 add_action('wp_enqueue_scripts', 'zelligcare_scripts');
 
+// Add 'default' class to body for header positioning
+function zelligcare_add_default_body_class($classes) {
+    $classes[] = 'default';
+    return $classes;
+}
+add_filter('body_class', 'zelligcare_add_default_body_class');
+
 // Theme setup
 function zelligcare_setup() {
     // Add default posts and comments RSS feed links to head.
