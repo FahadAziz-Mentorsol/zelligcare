@@ -39,7 +39,7 @@ get_header(); ?>
         <div class="col-xs-12 ry-container">
             <div class="col-xs-12 ry-content ry-flex">
                 <div class="col-xs-12 col-md-12 col-lg-12 ">
-                    <div style="display: block !important; visibility: visible !important; opacity: 1 !important;">
+                    <div style="display: block !important; visibility: visible !important; opacity: 1 !important;" data-aos-duration="1500" data-aos="fade-up">
                         <?php 
                         // Output WordPress content if available, otherwise show default
                         $has_content = false;

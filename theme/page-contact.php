@@ -41,10 +41,10 @@ get_header(); ?>
                 <div class="col-xs-12 ry-container module-314">
                     <div class="col-xs-12 ry-content ry-flex">
                         <div class="col-xs-12 col-md-12 col-lg-12 ry-left">
-                            <div>
-                                <h2>Get In Touch<br></h2>
+                            <div data-aos-duration="1500" data-aos="fade-up" class="ry-headline" style="margin-bottom: 40px;">
+                                <h2>Get In Touch</h2>
                             </div>
-                            <div class="col-xs-12 ry-form ry-form-box">
+                            <div class="col-xs-12 ry-form ry-form-box" data-aos-duration="1500" data-aos="fade-up" data-aos-delay="300">
                                 <?php
                                 // Check if Contact Form 7 is available
                                 if (function_exists('wpcf7_contact_form')) {

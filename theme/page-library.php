@@ -39,6 +39,9 @@ get_header(); ?>
             <div><br></div>
             <div class="col-xs-12 ry-content">
                 <div class="col-xs-12 col-md-12 col-lg-12 library-wrapper">
+                    <div data-aos-duration="1500" data-aos="fade-up" class="ry-headline" style="text-align: center; margin-bottom: 60px;">
+                        <h2><?php the_title(); ?></h2>
+                    </div>
                     <div class="col-xs-12 ry-flex">
                         <?php
                         // Query for blog posts
@@ -52,13 +55,14 @@ get_header(); ?>
                         ));
 
                         if ($blog_query->have_posts()) :
+                            $post_index = 0;
                             while ($blog_query->have_posts()) : $blog_query->the_post();
                                 $thumbnail_url = get_the_post_thumbnail_url(get_the_ID(), 'large');
                                 if (empty($thumbnail_url)) {
                                     $thumbnail_url = 'https://static.royacdn.com/Site-656e9e6e-f19a-4ed1-9c29-85197594446c/Homepage_Assets/ib.jpg';
                                 }
                                 ?>
-                                <div class="col-xs-12 col-lg-6 each">
+                                <div class="col-xs-12 col-lg-6 each" data-aos-duration="1500" data-aos="fade-up" data-aos-delay="<?php echo ($post_index * 200); ?>">
                                     <div class="col-xs-12 col-lg-12 each-container">
                                         <div class="col-xs-12 ry-photo">
                                             <img src="<?php echo esc_url($thumbnail_url); ?>" loading="lazy" alt="<?php the_title_attribute(); ?>" class="img-responsive">
@@ -78,6 +82,7 @@ get_header(); ?>
                                     </div>
                                 </div>
                             <?php
+                                $post_index++;
                             endwhile;
                             wp_reset_postdata();
 
@@ -126,9 +131,9 @@ get_header(); ?>
                                 ),
                             );
                             
-                            foreach ($default_posts as $post) :
+                            foreach ($default_posts as $index => $post) :
                                 ?>
-                                <div class="col-xs-12 col-lg-6 each">
+                                <div class="col-xs-12 col-lg-6 each" data-aos-duration="1500" data-aos="fade-up" data-aos-delay="<?php echo ($index * 200); ?>">
                                     <div class="col-xs-12 col-lg-12 each-container">
                                         <div class="col-xs-12 ry-photo">
                                             <img src="<?php echo esc_url($post['image']); ?>" loading="lazy" alt="<?php echo esc_attr($post['title']); ?>" class="img-responsive">
