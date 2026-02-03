@@ -45,6 +45,7 @@ class ZelligCare_Bootstrap_Nav_Walker extends Walker_Nav_Menu {
         // Add dropdown class if has children
         if ( $has_children && $depth === 0 ) {
             $classes[] = 'dropdown';
+            $classes[] = 'primary'; // Add primary class to match original HTML structure
         }
         
         $class_names = join( ' ', apply_filters( 'nav_menu_css_class', array_filter( $classes ), $item, $args ) );
@@ -103,6 +104,12 @@ class ZelligCare_Bootstrap_Nav_Walker extends Walker_Nav_Menu {
 function zelligcare_render_about_dropdown( $menu_items = array() ) {
     // Default menu items if none provided
     if ( empty( $menu_items ) ) {
+        $careers_page = get_page_by_path('practice-with-purpose');
+        if (!$careers_page) {
+            $careers_page = get_page_by_path('careers'); // Fallback
+        }
+        $careers_url = $careers_page ? get_permalink($careers_page->ID) : home_url('/practice-with-purpose/');
+        
         $menu_items = array(
             array(
                 'title' => 'Our Practice',
@@ -110,7 +117,7 @@ function zelligcare_render_about_dropdown( $menu_items = array() ) {
             ),
             array(
                 'title' => 'Careers',
-                'url' => home_url( '/careers/' ),
+                'url' => $careers_url,
             ),
         );
     }

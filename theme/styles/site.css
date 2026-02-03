@@ -455,7 +455,10 @@ body.default h6 {
 
 @media screen and (min-width: 1440px) {
 	#ry-pg-body h2 {
-		font-size: 30px;
+		font-size: 30px !important;
+		font-weight: 600 !important;
+		text-align: center !important;
+		text-transform: uppercase !important;
 	}
 }
 

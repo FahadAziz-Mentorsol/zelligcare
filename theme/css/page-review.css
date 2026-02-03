@@ -55,13 +55,17 @@
 }
 
 .rev-heading h2 {
-    color: #bd945a !important; /* Override #ry-pg-body h2 color */
-    line-height: 1 !important; /* Match the original line-height */
-    font-size: calc(28px + 2 * ((100vw - 320px) / 1120)) !important; /* Responsive font-size matching #ry-pg-body h2 */
+    color: #bd945a !important;
+    /* Override #ry-pg-body h2 color */
+    line-height: 1 !important;
+    /* Match the original line-height */
+    font-size: calc(28px + 2 * ((100vw - 320px) / 1120)) !important;
+    /* Responsive font-size matching #ry-pg-body h2 */
     font-weight: 400 !important;
     font-family: 'Jost', sans-serif !important;
     margin-bottom: 15px;
     text-align: center;
+    text-transform: uppercase;
 }
 
 .rev-heading p {
@@ -70,7 +74,8 @@
     color: #666;
     line-height: 1.6;
     margin: 0;
-    text-align: center;
+    text-align: center !important;
+    text-transform: uppercase !important;
 }
 
 /* Button Wrapper - Matching original exactly */
@@ -88,10 +93,7 @@
 }
 
 .button-wrapper.good-button {
-    display: flex;
-    flex-wrap: wrap;
     padding-top: 30px;
-    justify-content: center;
     gap: 2em !important;
 }
 
@@ -100,10 +102,12 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 15px 25px; /* 15px top/bottom, 25px left/right - matching original */
+    padding: 15px 25px;
+    /* 15px top/bottom, 25px left/right - matching original */
     font-size: 18px !important;
     font-weight: 400;
-    font-family: 'Jost' !important; /* Matching original updates-css.css line 17 */
+    font-family: 'Jost' !important;
+    /* Matching original updates-css.css line 17 */
     text-transform: uppercase;
     letter-spacing: 0;
     border-radius: 10px !important;
@@ -145,19 +149,21 @@
 .button-wrapper.good-button a.ry-btn.ry-btn-primary {
     width: 47% !important;
     max-width: 280px !important;
-    min-width: 280px !important; /* Ensure consistent width for both buttons */
+    min-width: 280px !important;
+    /* Ensure consistent width for both buttons */
     height: 340px !important;
     flex-direction: column;
     gap: 1em 0;
     font-size: 25px !important;
     font-weight: 500 !important;
-    font-family: 'Jost' !important; /* Ensure same font family as base - matching updates-css.css line 17 */
+    font-family: 'Jost' !important;
+    /* Ensure same font family as base - matching updates-css.css line 17 */
     border-radius: 30px !important;
-    padding: 0 !important; /* Reset padding for column layout */
+    padding: 0 !important;
+    /* Reset padding for column layout */
     display: flex !important;
-    align-items: center;
-    justify-content: center;
-    text-transform: uppercase !important; /* Ensure text transform is applied */
+    text-transform: uppercase !important;
+    /* Ensure text transform is applied */
 }
 
 /* SVG Icons in Buttons */
@@ -198,6 +204,15 @@
 @media screen and (min-width: 1440px) {
     .rev-heading h2 {
         font-size: 30px !important;
+        font-weight: 600 !important;
+        text-align: center !important;
+        text-transform: uppercase !important;
+    }
+
+    #ry-pg-body h2 {
+        font-weight: 600 !important;
+        text-align: center !important;
+        text-transform: uppercase !important;
     }
 }
 
@@ -206,16 +221,16 @@
     .rev-heading {
         padding: 40px 0 30px;
     }
-    
+
     .rev-heading p {
         font-size: 18px !important;
     }
-    
+
     .button-wrapper {
         flex-direction: column;
         gap: 15px;
     }
-    
+
     .button-wrapper .ry-btn {
         width: 100%;
         max-width: 300px;
@@ -227,15 +242,15 @@
     #ry-pg-banner .ry-pg-title h1 {
         font-size: 40px;
     }
-    
+
     .rev-heading {
         padding: 40px 0 30px;
     }
-    
+
     .rev-heading p {
         font-size: 16px !important;
     }
-    
+
     .button-wrapper .ry-btn {
         padding: 12px 25px;
         font-size: 16px;

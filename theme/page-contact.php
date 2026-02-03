@@ -64,7 +64,7 @@ get_header(); ?>
                                                 </div>
                                             </div>
                                             <div class="col-xs-12 ">
-                                                <div class="form-group required" data-validation="^[a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$" data-errormsg="Invalid Email Address" data-type="text" data-required="true">
+                                                <div class="form-group required" data-validation="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" data-errormsg="Invalid Email Address" data-type="text" data-required="true">
                                                     <input name="Email" value="" id="Email" type="email" placeholder="Enter Email*" class="form-control" required>
                                                 </div>
                                             </div>

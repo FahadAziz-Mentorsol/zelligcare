@@ -1,6 +1,6 @@
 /**
- * Contact Us Page Styles
- * Custom styles for the Contact Us page
+ * Feedback Page Styles
+ * Custom styles for the Feedback page
  */
 
 /* Page Banner Styles */
@@ -44,11 +44,7 @@
     text-transform: uppercase;
 }
 
-/* Contact Form Styles */
-.module-314 {
-    padding: 60px 0;
-}
-
+/* Feedback Form Styles */
 .ry-form-box {
     background: #f9f9f9;
     padding: 40px;
@@ -56,10 +52,20 @@
     margin-top: 30px;
 }
 
-.ry-form-box h2 {
-    font-size: 36px;
-    margin-bottom: 20px;
+.ry-form-box h3 {
+    font-size: 28px;
+    margin-bottom: 15px;
     color: #333;
+    font-family: 'Jost', sans-serif;
+    font-weight: 600;
+}
+
+.ry-form-box p {
+    font-size: 16px;
+    margin-bottom: 30px;
+    color: #666;
+    font-family: 'Jost', sans-serif;
+    line-height: 1.6;
 }
 
 .cmsForm .form-group {
@@ -134,6 +140,39 @@
 .cmsForm textarea.form-control {
     min-height: 120px;
     resize: vertical;
+    height: auto !important;
+    padding: 12px 15px;
+    border: 1px solid #ddd !important;
+    border-radius: 0 !important;
+    font-size: 16px;
+    font-family: 'Jost', sans-serif;
+    color: #333 !important;
+}
+
+.cmsForm textarea.form-control:focus {
+    outline: none;
+    border-color: #b08d57 !important;
+    box-shadow: none;
+}
+
+.cmsForm textarea.form-control::-webkit-input-placeholder {
+    color: #cecece !important;
+}
+
+.cmsForm textarea.form-control:-ms-input-placeholder {
+    color: #cecece !important;
+}
+
+.cmsForm textarea.form-control::-ms-input-placeholder {
+    color: #cecece !important;
+}
+
+.cmsForm textarea.form-control::placeholder {
+    color: #cecece !important;
+}
+
+.ry-margin-btm-30 {
+    margin-bottom: 30px;
 }
 
 .ry-btn-primary {
@@ -145,6 +184,7 @@
     font-size: 16px;
     cursor: pointer;
     transition: background 0.3s ease;
+    font-family: 'Jost', sans-serif;
 }
 
 .ry-btn-primary:hover {
@@ -173,6 +213,19 @@
     display: none;
 }
 
+/* Sidebar Styles */
+#ry-sidebar .ry-sb-main {
+    margin-bottom: 30px;
+}
+
+#ry-sidebar .search-bar-widget {
+    margin-bottom: 20px;
+}
+
+#ry-sidebar .ry-cta-wrp {
+    margin-bottom: 20px;
+}
+
 @media (max-width: 768px) {
     #ry-pg-banner .ry-pg-title h1 {
         font-size: 40px;
@@ -180,5 +233,9 @@
     
     .ry-form-box {
         padding: 20px;
+    }
+    
+    .ry-form-box h3 {
+        font-size: 24px;
     }
 }
