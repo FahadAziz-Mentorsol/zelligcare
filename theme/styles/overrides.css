@@ -232,9 +232,14 @@
 }
 
 .module-services.custom .ry-headline h2 {
+	font-size: 80px !important;
 	color: #fff !important;
 	font-family: 'Tenor Sans' !important;
 	font-weight: 400 !important;
+}
+
+#section-services {
+	background-color: #d1e2e2 !important;
 }
 
 .module-services.custom .section-background {
@@ -432,6 +437,7 @@
 	z-index: 1;
 	position: relative;
 	margin-top: 0;
+	background-color: #d1e2e2 !important;
 }
 
 .module-services.custom .ry-flex {
@@ -567,6 +573,10 @@
 .module-locations.custom .ry-headline {
 	text-align: center;
 	width: 100%;
+}
+
+.module-locations.custom .ry-headline h2 {
+	font-size: 80px !important;
 }
 
 .module-locations.custom .locations-grid {
@@ -785,6 +795,10 @@
 	/* z-index: -1; */
 }
 
+.module-team.custom .ry-headline h2 {
+	font-size: 80px !important;
+}
+
 .module-team.custom .ry-container {
 	max-width: 780px;
 	width: 90%;
@@ -990,6 +1004,10 @@
 	flex-wrap: wrap;
 }
 
+.module-insurance.custom .ry-headline h2 {
+	font-size: 80px !important;
+}
+
 .module-insurance.custom .ry-headline h2 span {
 	color: #bd945a;
 }
@@ -1020,6 +1038,7 @@
 }
 
 .module-appointment.custom .ry-container .ry-headline h2 {
+	font-size: 80px !important;
 	text-align: center;
 	font-family: 'Tenor Sans' !important;
 	font-weight: 400 !important;

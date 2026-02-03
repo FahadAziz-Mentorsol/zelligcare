@@ -148,7 +148,7 @@
       <div class="col-xs-12 ry-container">
         <div class="col-xs-12 content">
           <div class="col-xs-12 ry-flex">
-            <div class="col-xs-12 col-lg-3 each each-1 aos-init aos-animate" data-aos-duration="1500" data-aos="fade-up">
+            <div class="col-xs-12 col-lg-3 each each-1" data-aos-duration="1500" data-aos="fade-up">
               <div class="col-xs-12 wrapper">
                 <div class="title">
                   <h3 style="color: #b08d57;">WHAT WE<br>OFFER</h3>
@@ -166,7 +166,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-xs-12 col-lg-3 each each-2 aos-init aos-animate" data-aos-duration="1500" data-aos-delay="300" data-aos="fade-up">
+            <div class="col-xs-12 col-lg-3 each each-2" data-aos-duration="1500" data-aos-delay="300" data-aos="fade-up">
               <div class="col-xs-12 icon">
                 <i class="fa-solid fa-leaf"></i>
               </div>
@@ -185,7 +185,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-xs-12 col-lg-3 each each-2 aos-init aos-animate" data-aos-duration="1500" data-aos-delay="500" data-aos="fade-up">
+            <div class="col-xs-12 col-lg-3 each each-2" data-aos-duration="1500" data-aos-delay="500" data-aos="fade-up">
               <div class="col-xs-12 icon">
                 <i class="fa-solid fa-seedling"></i>
               </div>
@@ -203,7 +203,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-xs-12 col-lg-3 each each-2 aos-init aos-animate" data-aos-duration="1500" data-aos="fade-up" data-aos-delay="700">
+            <div class="col-xs-12 col-lg-3 each each-2" data-aos-duration="1500" data-aos="fade-up" data-aos-delay="700">
               <div class="col-xs-12 icon">
                 <i class="fa-solid fa-tree"></i>
               </div>
@@ -230,7 +230,7 @@
 </div>
 
 
-<div id="section-services" class="col-xs-12">
+<div id="section-services" class="col-xs-12" style="background-color: #d1e2e2;">
   <div class="col-xs-12 sections">
     <div class="col-xs-12 module-services custom" data-style="Featured Photo">
       <div class="col-xs-12 section-background">

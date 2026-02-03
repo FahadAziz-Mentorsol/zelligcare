@@ -35,16 +35,21 @@ get_header(); ?>
 </div>
 
 <div id="ry-pg-content">
-    <div id="ry-pg-body" class="col-xs-12 ry-section services-grid">
-        <div class="col-xs-12 ry-container">
-            <div class="col-xs-12 ry-content ry-flex">
-                <div class="col-xs-12 col-md-12 col-lg-12 ">
-                    <div class="col-xs-12 ">
-                        <div class="ry-text">
-                            <h3 style="text-align: center;">Specialties In , </h3>
-                            <p style="text-align: center;">We offer a wide variety of specialties services to the community. Contact us with any questions about our services.</p>
-                        </div>
-                        <div class="col-xs-12 module-services style1">
+    <div id="section-services" class="col-xs-12">
+        <div class="col-xs-12 sections">
+            <div class="col-xs-12 module-services custom" data-style="Featured Photo">
+                <div class="col-xs-12 section-background">
+                    <img src="https://static.royacdn.com/Site-656e9e6e-f19a-4ed1-9c29-85197594446c/Homepage_Assets/os_bg.png" loading="lazy" alt="" class="img-responsive">
+                </div>
+                <div class="col-xs-12 ry-container">
+                    <div class="col-xs-12 ry-content">
+                        <div class="col-xs-12 content">
+                            <div data-aos-duration="1500" data-aos="fade-up" class="ry-headline">
+                                <h2 style="text-align: center; color: white">
+                                    <span class="span-1">EXPERTISE THAT MATTERS</span> OUR SPECIALTIES
+                                </h2>
+                            </div>
+                            <div class="col-xs-12 ry-flex" data-aos-duration="1500" data-aos="fade-up" style="justify-content: center">
                             <?php
                             // Define specialties with their details
                             $specialties = array(
@@ -95,31 +100,25 @@ get_header(); ?>
                                 $page = get_page_by_path($specialty['slug']);
                                 $page_url = $page ? get_permalink($page->ID) : home_url('/' . $specialty['slug'] . '/');
                                 ?>
-                                <div class="col-xs-12 col-lg-4 ry-each">
-                                    <div class="col-xs-12 photo">
-                                        <div class="col-xs-12 " style="z-index:9999;"></div>
-                                        <img src="<?php echo esc_url($specialty['image']); ?>" loading="lazy" alt="<?php echo esc_attr($specialty['title']); ?>" class="img-responsive" style="margin-bottom:10px;width:210px;height:140px;object-fit: cover;margin: 0 auto;">
-                                    </div>
-                                    <div class="col-xs-12 block-container">
-                                        <div class="col-xs-12 ry-icon-contain">
-                                            <div class="ry-headline"><?php echo esc_html($specialty['title']); ?></div>
+                                <div class="col-xs-12 col-lg-3 each">
+                                    <div class="col-xs-12 wrapper">
+                                        <div class="col-xs-12 photo">
+                                            <img src="<?php echo esc_url($specialty['image']); ?>" loading="lazy" alt="<?php echo esc_attr($specialty['title']); ?>" class="img-responsive">
                                         </div>
-                                        <div class="col-xs-12 ry-icon-block">
-                                            <div>
-                                                <h4><?php echo esc_html($specialty['title']); ?></h4>
-                                                <p style="text-align: justify;"></p>
+                                        <div class="service-title">
+                                            <div style="text-align: center">
+                                                <?php echo esc_html(strtoupper($specialty['title'])); ?>
                                             </div>
-                                            <div class="col-xs-12 ">
-                                                <div>
-                                                    <a href="<?php echo esc_url($page_url); ?>" class="ry-btn ry-btn-primary">Learn More <span class="arrow-right-custom"></span></a>
-                                                </div>
-                                            </div>
+                                        </div>
+                                        <div class="link">
+                                            <a href="<?php echo esc_url($page_url); ?>" target="_self"><?php echo esc_html(strtoupper($specialty['title'])); ?></a>
                                         </div>
                                     </div>
                                 </div>
                                 <?php
                             }
                             ?>
+                            </div>
                         </div>
                     </div>
                 </div>
