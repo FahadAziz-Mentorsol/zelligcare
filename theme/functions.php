@@ -48,12 +48,14 @@ function zelligcare_scripts() {
     wp_enqueue_style('site-overrides', get_template_directory_uri() . '/css/site-overrides.css', array('overrides'));
     wp_enqueue_style('mobile-header', get_template_directory_uri() . '/styles/mobile-header.css');
     
-    // Enqueue specialty page CSS files conditionally
+    // Enqueue page-specific CSS files conditionally
     if (is_page()) {
         $page_template = get_page_template_slug();
         $page_slug = get_post_field('post_name', get_queried_object_id());
         
-        $specialty_css = array(
+        // All page templates and their CSS files
+        $page_css = array(
+            // Specialty pages
             'page-anxiety.php' => 'page-anxiety.css',
             'page-adhd.php' => 'page-adhd.css',
             'page-bipolar.php' => 'page-bipolar.css',
@@ -63,6 +65,21 @@ function zelligcare_scripts() {
             'page-ocd.php' => 'page-ocd.css',
             'page-trauma-ptsd.php' => 'page-trauma-ptsd.css',
             'page-autism-neurodivergence.php' => 'page-autism-neurodivergence.css',
+            // Other pages
+            'page-about.php' => 'page-about.css',
+            'page-careers.php' => 'page-careers.css',
+            'page-services.php' => 'page-services.css',
+            'page-contact.php' => 'page-contact.css',
+            'page-team.php' => 'page-team.css',
+            'page-appointment.php' => 'page-appointment.css',
+            'page-refer-patient.php' => 'page-refer-patient.css',
+            'page-payment.php' => 'page-payment.css',
+            'page-review.php' => 'page-review.css',
+            'page-leave-review.php' => 'page-leave-review.css',
+            'page-library.php' => 'page-library.css',
+            'page-privacy.php' => 'page-privacy.css',
+            'page-accessibility.php' => 'page-accessibility.css',
+            'page-search-result.php' => 'page-search-result.css',
         );
         
         // Map page slugs to templates as fallback
@@ -76,6 +93,22 @@ function zelligcare_scripts() {
             'ocd' => 'page-ocd.php',
             'trauma-ptsd' => 'page-trauma-ptsd.php',
             'autism-neurodivergence' => 'page-autism-neurodivergence.php',
+            'about' => 'page-about.php',
+            'careers' => 'page-careers.php',
+            'practice-with-purpose' => 'page-careers.php',
+            'services' => 'page-services.php',
+            'contact-us' => 'page-contact.php',
+            'meet-our-team' => 'page-team.php',
+            'request-an-appointment' => 'page-appointment.php',
+            'refer-a-patient' => 'page-refer-patient.php',
+            'payment-options' => 'page-payment.php',
+            'review' => 'page-review.php',
+            'reviews' => 'page-review.php',
+            'leave-a-review' => 'page-leave-review.php',
+            'library' => 'page-library.php',
+            'privacy-policy' => 'page-privacy.php',
+            'accessibility-statement' => 'page-accessibility.php',
+            'search-result' => 'page-search-result.php',
         );
         
         // Try to get template from page template first, then fallback to slug
@@ -84,10 +117,13 @@ function zelligcare_scripts() {
             $template_to_use = $slug_to_template[$page_slug];
         }
         
-        if (!empty($template_to_use) && isset($specialty_css[$template_to_use])) {
+        // Enqueue CSS if template exists in our array
+        if (!empty($template_to_use) && isset($page_css[$template_to_use])) {
+            $css_file = $page_css[$template_to_use];
+            $handle = 'page-' . str_replace(array('page-', '.php', '.css'), '', $template_to_use);
             wp_enqueue_style(
-                'specialty-' . str_replace(array('page-', '.php'), '', $template_to_use),
-                get_template_directory_uri() . '/css/' . $specialty_css[$template_to_use],
+                $handle,
+                get_template_directory_uri() . '/css/' . $css_file,
                 array('site-overrides'),
                 '1.0.0'
             );
@@ -114,6 +150,32 @@ function zelligcare_scripts() {
     // Common and utility scripts
     wp_enqueue_script('zelligcare-common', get_template_directory_uri() . '/js/common.js', array('jquery'), null, true);
     wp_enqueue_script('zelligcare-datepicker', get_template_directory_uri() . '/js/datePickerWidget.js', array('jquery'), null, true);
+    
+    // Search functionality - handle search form submissions
+    wp_add_inline_script('jquery', '
+        jQuery(document).ready(function($) {
+            // Handle search form submissions
+            $(document).on("click", ".search-btn", function(e) {
+                e.preventDefault();
+                var $form = $(this).closest(".search-bar-widget");
+                var $input = $form.find("input[type=\'text\']");
+                var searchTerm = $input.val().trim();
+                var searchUrl = $form.data("url") || "' . home_url('/search-result/') . '";
+                
+                if (searchTerm) {
+                    window.location.href = searchUrl + "?s=" + encodeURIComponent(searchTerm);
+                }
+            });
+            
+            // Handle Enter key in search input
+            $(document).on("keypress", ".search-bar-widget input[type=\'text\']", function(e) {
+                if (e.which === 13) {
+                    e.preventDefault();
+                    $(this).closest(".search-bar-widget").find(".search-btn").click();
+                }
+            });
+        });
+    ');
     
     // Theme-specific scripts
     wp_enqueue_script('zelligcare-main', get_template_directory_uri() . '/scripts/main.js', array('jquery'), null, true);
@@ -271,7 +333,7 @@ function zelligcare_fallback_menu() {
     // Use the navigation module helper function for Specialties dropdown
     echo zelligcare_render_specialties_dropdown();
     
-    // Add Patient Center dropdown
+    // Add Patient Center dropdown (matching original HTML structure)
     echo '<li class="dropdown" role="presentation">';
     echo '<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Patient Center<span class="caret"></span></a>';
     echo '<ul class="dropdown-menu">';
@@ -289,6 +351,595 @@ function zelligcare_fallback_menu() {
     echo '</ul></li>';
     
     echo '</ul>';
+}
+
+// Rebuild menu completely - delete all items and recreate
+function zelligcare_rebuild_menu() {
+    $menu_name = 'Primary Menu';
+    $menu = wp_get_nav_menu_object($menu_name);
+    
+    if (!$menu) {
+        return;
+    }
+    
+    $menu_items = wp_get_nav_menu_items($menu->term_id);
+    if (!$menu_items) {
+        return;
+    }
+    
+    $has_issues = false;
+    
+    // Check if Patient Center or Contact Us items are top-level instead of children
+    foreach ($menu_items as $item) {
+        $title_lower = strtolower(trim($item->title));
+        if (($title_lower === 'payment options' || $title_lower === 'reviews' || $title_lower === 'zellig library' || 
+             $title_lower === 'contact us' || $title_lower === 'refer a patient') && $item->menu_item_parent == 0) {
+            $has_issues = true;
+            break;
+        }
+    }
+    
+    // Check for duplicate specialty items
+    if (!$has_issues) {
+        $specialty_urls = array();
+        foreach ($menu_items as $item) {
+            if ($item->menu_item_parent != 0) {
+                $parent_item = null;
+                foreach ($menu_items as $parent) {
+                    if ($parent->ID == $item->menu_item_parent) {
+                        $parent_item = $parent;
+                        break;
+                    }
+                }
+                if ($parent_item && strtolower(trim($parent_item->title)) === 'specialties') {
+                    $normalized_url = rtrim($item->url, '/');
+                    if (isset($specialty_urls[$normalized_url])) {
+                        $has_issues = true;
+                        break;
+                    }
+                    $specialty_urls[$normalized_url] = true;
+                }
+            }
+        }
+    }
+    
+    // Check if About dropdown is missing "Our Practice"
+    if (!$has_issues) {
+        $about_has_our_practice = false;
+        foreach ($menu_items as $item) {
+            if ($item->menu_item_parent != 0) {
+                $parent_item = null;
+                foreach ($menu_items as $parent) {
+                    if ($parent->ID == $item->menu_item_parent) {
+                        $parent_item = $parent;
+                        break;
+                    }
+                }
+                if ($parent_item && strtolower(trim($parent_item->title)) === 'about') {
+                    if (strtolower(trim($item->title)) === 'our practice') {
+                        $about_has_our_practice = true;
+                        break;
+                    }
+                }
+            }
+        }
+        if (!$about_has_our_practice) {
+            $has_issues = true;
+        }
+    }
+    
+    // Only rebuild if issues are found
+    if ($has_issues) {
+        // Delete all existing menu items
+        foreach ($menu_items as $item) {
+            wp_delete_post($item->ID, true);
+        }
+        
+        // Delete transient to force menu recreation
+        delete_transient('zelligcare_menu_created');
+    }
+}
+
+// Auto-create menu with all pages
+function zelligcare_create_main_menu() {
+    // Check if menu already exists
+    $menu_name = 'Primary Menu';
+    $menu_exists = wp_get_nav_menu_object($menu_name);
+    
+    // If menu exists, check if it needs rebuilding
+    if ($menu_exists) {
+        $menu_items = wp_get_nav_menu_items($menu_exists->term_id);
+        $has_issues = false;
+        
+        if ($menu_items) {
+            // Check if Patient Center or Contact Us items are top-level instead of children
+            foreach ($menu_items as $item) {
+                $title_lower = strtolower(trim($item->title));
+                if (($title_lower === 'payment options' || $title_lower === 'reviews' || $title_lower === 'zellig library' || 
+                     $title_lower === 'contact us' || $title_lower === 'refer a patient') && $item->menu_item_parent == 0) {
+                    $has_issues = true;
+                    break;
+                }
+            }
+            
+            // Check for duplicate specialty items
+            if (!$has_issues) {
+                $specialty_urls = array();
+                foreach ($menu_items as $item) {
+                    if ($item->menu_item_parent != 0) {
+                        $parent_item = null;
+                        foreach ($menu_items as $parent) {
+                            if ($parent->ID == $item->menu_item_parent) {
+                                $parent_item = $parent;
+                                break;
+                            }
+                        }
+                        if ($parent_item && strtolower(trim($parent_item->title)) === 'specialties') {
+                            $normalized_url = rtrim($item->url, '/');
+                            if (isset($specialty_urls[$normalized_url])) {
+                                $has_issues = true;
+                                break;
+                            }
+                            $specialty_urls[$normalized_url] = true;
+                        }
+                    }
+                }
+            }
+            
+            // Check if About dropdown is missing "Our Practice"
+            if (!$has_issues) {
+                $about_has_our_practice = false;
+                foreach ($menu_items as $item) {
+                    if ($item->menu_item_parent != 0) {
+                        $parent_item = null;
+                        foreach ($menu_items as $parent) {
+                            if ($parent->ID == $item->menu_item_parent) {
+                                $parent_item = $parent;
+                                break;
+                            }
+                        }
+                        if ($parent_item && strtolower(trim($parent_item->title)) === 'about') {
+                            if (strtolower(trim($item->title)) === 'our practice') {
+                                $about_has_our_practice = true;
+                                break;
+                            }
+                        }
+                    }
+                }
+                if (!$about_has_our_practice) {
+                    $has_issues = true;
+                }
+            }
+        }
+        
+        if ($has_issues) {
+            // Delete all items and recreate
+            if ($menu_items) {
+                foreach ($menu_items as $item) {
+                    wp_delete_post($item->ID, true);
+                }
+            }
+            delete_transient('zelligcare_menu_created');
+            // Use existing menu ID
+            $menu_id = $menu_exists->term_id;
+        } else {
+            // Menu is fine, just clean up duplicates
+            zelligcare_cleanup_menu();
+            // Set transient if not set
+            if (!get_transient('zelligcare_menu_created')) {
+                set_transient('zelligcare_menu_created', true, DAY_IN_SECONDS);
+            }
+            return;
+        }
+    } else {
+        // Menu doesn't exist, create it
+        $menu_id = wp_create_nav_menu($menu_name);
+        if (is_wp_error($menu_id)) {
+            return;
+        }
+    }
+    
+    // Create menu items (either new menu or rebuilding existing)
+    if (isset($menu_id) && $menu_id) {
+            // Menu items structure - using page IDs for proper linking
+            $menu_items = array();
+            
+            // Home
+            $home_page = get_option('page_on_front') ? get_post(get_option('page_on_front')) : null;
+            if (!$home_page) {
+                $menu_items[] = array('title' => 'Home', 'url' => home_url('/'), 'type' => 'custom');
+            } else {
+                $menu_items[] = array('title' => 'Home', 'object_id' => $home_page->ID, 'type' => 'post_type');
+            }
+            
+            // About dropdown - parent links to about page, children are Our Practice and Careers
+            $about_page = get_page_by_path('about');
+            $careers_page = get_page_by_path('careers');
+            
+            if ($about_page) {
+                $about_id = $about_page->ID;
+                $careers_id = $careers_page ? $careers_page->ID : null;
+                
+                $about_children = array();
+                // Our Practice (same as About page)
+                $about_children[] = array('title' => 'Our Practice', 'object_id' => $about_id, 'type' => 'post_type');
+                // Careers
+                if ($careers_id) {
+                    $about_children[] = array('title' => 'Careers', 'object_id' => $careers_id, 'type' => 'post_type');
+                } else {
+                    $about_children[] = array('title' => 'Careers', 'url' => home_url('/careers/'), 'type' => 'custom');
+                }
+                
+                $menu_items[] = array(
+                    'title' => 'About',
+                    'object_id' => $about_id, // About parent links to about page
+                    'type' => 'post_type',
+                    'children' => $about_children
+                );
+            } else {
+                $menu_items[] = array(
+                    'title' => 'About',
+                    'url' => home_url('/about/'),
+                    'type' => 'custom',
+                    'children' => array(
+                        array('title' => 'Our Practice', 'url' => home_url('/about/'), 'type' => 'custom'),
+                        array('title' => 'Careers', 'url' => home_url('/careers/'), 'type' => 'custom'),
+                    )
+                );
+            }
+            
+            // Our Team
+            $team_page = get_page_by_path('meet-our-team');
+            if ($team_page) {
+                $menu_items[] = array('title' => 'Our Team', 'object_id' => $team_page->ID, 'type' => 'post_type');
+            } else {
+                $menu_items[] = array('title' => 'Our Team', 'url' => home_url('/meet-our-team/'), 'type' => 'custom');
+            }
+            
+            // Specialties dropdown - matching exact order from index.html
+            $specialty_pages = array(
+                'anxiety' => 'Anxiety',
+                'adhd' => 'ADHD',
+                'bipolar' => 'Bipolar',
+                'depression' => 'Depression',
+                'insomnia' => 'Insomnia',
+                'life-transitions' => 'Life Transitions',
+                'ocd' => 'OCD',
+                'trauma-ptsd' => 'Trauma & PTSD',
+                'autism-neurodivergence' => 'Autism & Neurodivergence',
+            );
+            
+            $specialty_children = array();
+            foreach ($specialty_pages as $slug => $title) {
+                $spec_page = get_page_by_path($slug);
+                if ($spec_page) {
+                    $specialty_children[] = array('title' => $title, 'object_id' => $spec_page->ID, 'type' => 'post_type');
+                } else {
+                    $specialty_children[] = array('title' => $title, 'url' => home_url('/' . $slug . '/'), 'type' => 'custom');
+                }
+            }
+            
+            $menu_items[] = array(
+                'title' => 'Specialties',
+                'url' => '#',
+                'type' => 'custom',
+                'children' => $specialty_children
+            );
+            
+            // Patient Center dropdown (matching original HTML - no Services or Request Appointment)
+            $patient_center_children = array();
+            $patient_pages = array(
+                'payment-options' => 'Payment Options',
+                'reviews' => 'Reviews',
+                'library' => 'Zellig Library',
+            );
+            
+            foreach ($patient_pages as $slug => $title) {
+                $page = get_page_by_path($slug);
+                if ($page) {
+                    $patient_center_children[] = array('title' => $title, 'object_id' => $page->ID, 'type' => 'post_type');
+                } else {
+                    $patient_center_children[] = array('title' => $title, 'url' => home_url('/' . $slug . '/'), 'type' => 'custom');
+                }
+            }
+            
+            $menu_items[] = array(
+                'title' => 'Patient Center',
+                'url' => '#',
+                'type' => 'custom',
+                'children' => $patient_center_children
+            );
+            
+            // Contact Us dropdown
+            $contact_children = array();
+            $contact_pages = array(
+                'contact-us' => 'Contact Us',
+                'refer-a-patient' => 'Refer a Patient',
+            );
+            
+            foreach ($contact_pages as $slug => $title) {
+                $page = get_page_by_path($slug);
+                if ($page) {
+                    $contact_children[] = array('title' => $title, 'object_id' => $page->ID, 'type' => 'post_type');
+                } else {
+                    $contact_children[] = array('title' => $title, 'url' => home_url('/' . $slug . '/'), 'type' => 'custom');
+                }
+            }
+            
+            $menu_items[] = array(
+                'title' => 'Contact Us',
+                'url' => '#',
+                'type' => 'custom',
+                'children' => $contact_children
+            );
+            
+            // Add menu items
+            foreach ($menu_items as $item) {
+                if ($item['type'] === 'post_type' && isset($item['object_id'])) {
+                    $menu_item_data = array(
+                        'menu-item-title' => $item['title'],
+                        'menu-item-object-id' => $item['object_id'],
+                        'menu-item-object' => 'page',
+                        'menu-item-type' => 'post_type',
+                        'menu-item-status' => 'publish',
+                    );
+                } else {
+                    $menu_item_data = array(
+                        'menu-item-title' => $item['title'],
+                        'menu-item-url' => isset($item['url']) ? $item['url'] : (isset($item['slug']) ? home_url('/' . $item['slug'] . '/') : '#'),
+                        'menu-item-status' => 'publish',
+                        'menu-item-type' => 'custom',
+                    );
+                }
+                
+                $parent_id = wp_update_nav_menu_item($menu_id, 0, $menu_item_data);
+                
+                // Add children if they exist
+                if (isset($item['children']) && $parent_id && !is_wp_error($parent_id)) {
+                    foreach ($item['children'] as $child) {
+                        if ($child['type'] === 'post_type') {
+                            // Try to get page by slug if object_id not set
+                            if (!isset($child['object_id']) && isset($child['slug'])) {
+                                $child_page = get_page_by_path($child['slug']);
+                                if ($child_page) {
+                                    $child['object_id'] = $child_page->ID;
+                                }
+                            }
+                            
+                            if (isset($child['object_id'])) {
+                                $child_data = array(
+                                    'menu-item-title' => $child['title'],
+                                    'menu-item-object-id' => $child['object_id'],
+                                    'menu-item-object' => 'page',
+                                    'menu-item-type' => 'post_type',
+                                    'menu-item-status' => 'publish',
+                                    'menu-item-parent-id' => $parent_id,
+                                );
+                            } else {
+                                $child_data = array(
+                                    'menu-item-title' => $child['title'],
+                                    'menu-item-url' => isset($child['url']) ? $child['url'] : (isset($child['slug']) ? home_url('/' . $child['slug'] . '/') : '#'),
+                                    'menu-item-status' => 'publish',
+                                    'menu-item-type' => 'custom',
+                                    'menu-item-parent-id' => $parent_id,
+                                );
+                            }
+                        } else {
+                            $child_data = array(
+                                'menu-item-title' => $child['title'],
+                                'menu-item-url' => isset($child['url']) ? $child['url'] : (isset($child['slug']) ? home_url('/' . $child['slug'] . '/') : '#'),
+                                'menu-item-status' => 'publish',
+                                'menu-item-type' => 'custom',
+                                'menu-item-parent-id' => $parent_id,
+                            );
+                        }
+                        wp_update_nav_menu_item($menu_id, 0, $child_data);
+                    }
+                }
+            }
+            
+            // Assign menu to location
+            $locations = get_theme_mod('nav_menu_locations');
+            if (!is_array($locations)) {
+                $locations = array();
+            }
+            $locations['primary'] = $menu_id;
+            set_theme_mod('nav_menu_locations', $locations);
+            
+            // Set transient to mark menu as created
+            set_transient('zelligcare_menu_created', true, DAY_IN_SECONDS);
+            
+            // Clean up any duplicates
+            zelligcare_cleanup_menu();
+        }
+}
+
+// Clean up menu - remove duplicates and extra items, fix hierarchy
+function zelligcare_cleanup_menu() {
+    $menu_name = 'Primary Menu';
+    $menu = wp_get_nav_menu_object($menu_name);
+    
+    if (!$menu) {
+        return;
+    }
+    
+    $menu_items = wp_get_nav_menu_items($menu->term_id);
+    if (!$menu_items) {
+        return;
+    }
+    
+    // Find Patient Center parent ID
+    $patient_center_parent_id = 0;
+    foreach ($menu_items as $item) {
+        if (strtolower(trim($item->title)) === 'patient center' && $item->menu_item_parent == 0) {
+            $patient_center_parent_id = $item->ID;
+            break;
+        }
+    }
+    
+    // Fix Patient Center children - ensure they're under Patient Center, not Payment Options
+    $patient_center_children = array('payment options', 'reviews', 'zellig library');
+    foreach ($menu_items as $item) {
+        $title_lower = strtolower(trim($item->title));
+        if (in_array($title_lower, $patient_center_children)) {
+            // If this item is a child of Payment Options instead of Patient Center, fix it
+            if ($item->menu_item_parent != 0) {
+                $parent_item = null;
+                foreach ($menu_items as $parent) {
+                    if ($parent->ID == $item->menu_item_parent) {
+                        $parent_item = $parent;
+                        break;
+                    }
+                }
+                // If parent is Payment Options but Patient Center exists, move to Patient Center
+                if ($parent_item && strtolower(trim($parent_item->title)) === 'payment options' && $patient_center_parent_id > 0) {
+                    wp_update_nav_menu_item($menu->term_id, $item->ID, array(
+                        'menu-item-parent-id' => $patient_center_parent_id,
+                    ));
+                }
+                // If parent is not Patient Center but Patient Center exists, move to Patient Center
+                elseif ($parent_item && strtolower(trim($parent_item->title)) !== 'patient center' && $patient_center_parent_id > 0) {
+                    wp_update_nav_menu_item($menu->term_id, $item->ID, array(
+                        'menu-item-parent-id' => $patient_center_parent_id,
+                    ));
+                }
+            }
+            // If item is top-level but Patient Center exists, make it a child of Patient Center
+            elseif ($item->menu_item_parent == 0 && $patient_center_parent_id > 0) {
+                wp_update_nav_menu_item($menu->term_id, $item->ID, array(
+                    'menu-item-parent-id' => $patient_center_parent_id,
+                ));
+            }
+        }
+    }
+    
+    // List of slugs/pages that should NOT be in menu
+    $excluded_slugs = array(
+        'services', 'request-an-appointment', 'leave-a-review', 'search-result',
+        'feedback', 'privacy-policy', 'accessibility-statement'
+    );
+    
+    // Top-level items that should NOT have children (should be single links, not dropdowns)
+    $single_link_items = array(
+        'home', 'our team', 'meet-our-team'
+    );
+    
+    // Items that SHOULD be dropdowns
+    $dropdown_items = array(
+        'about' => array('our practice', 'careers'),
+        'specialties' => array('anxiety', 'adhd', 'bipolar', 'depression', 'insomnia', 'life transitions', 'ocd', 'trauma & ptsd', 'autism & neurodivergence'),
+        'patient center' => array('payment options', 'reviews', 'zellig library'),
+        'contact us' => array('contact us', 'refer a patient')
+    );
+    
+    $seen_urls = array();
+    $items_to_delete = array();
+    $items_to_fix = array();
+    
+    foreach ($menu_items as $item) {
+        $item_url = $item->url;
+        $item_title_lower = strtolower(trim($item->title));
+        $item_id = $item->ID;
+        $item_parent = $item->menu_item_parent;
+        
+        // Check if item should be excluded by slug
+        $should_exclude = false;
+        foreach ($excluded_slugs as $excluded_slug) {
+            if (strpos($item_url, '/' . $excluded_slug . '/') !== false || 
+                strpos($item_url, '/' . $excluded_slug) !== false ||
+                $item->post_name === $excluded_slug) {
+                $should_exclude = true;
+                break;
+            }
+        }
+        
+        // Check for duplicates by URL (normalize URL for comparison)
+        $normalized_url = rtrim($item_url, '/');
+        if (isset($seen_urls[$normalized_url]) && $item_parent == 0) {
+            // Only exclude top-level duplicates
+            $should_exclude = true;
+        } else {
+            $seen_urls[$normalized_url] = true;
+        }
+        
+        // Check if single-link item incorrectly has children
+        if ($item_parent == 0 && in_array($item_title_lower, $single_link_items)) {
+            // Check if this item has children (it shouldn't)
+            foreach ($menu_items as $child_item) {
+                if ($child_item->menu_item_parent == $item_id) {
+                    // Delete the child items
+                    $items_to_delete[] = $child_item->ID;
+                }
+            }
+        }
+        
+        // Check if dropdown item has incorrect children
+        if ($item_parent == 0) {
+            foreach ($dropdown_items as $dropdown_title => $allowed_children) {
+                if ($item_title_lower === $dropdown_title) {
+                    // Check all children of this dropdown
+                    foreach ($menu_items as $child_item) {
+                        if ($child_item->menu_item_parent == $item_id) {
+                            $child_title_lower = strtolower(trim($child_item->title));
+                            // If child is not in allowed list, delete it
+                            if (!in_array($child_title_lower, $allowed_children)) {
+                                $items_to_delete[] = $child_item->ID;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        
+        if ($should_exclude) {
+            $items_to_delete[] = $item->ID;
+        }
+    }
+    
+    // Delete excluded items and incorrectly nested children
+    foreach ($items_to_delete as $item_id) {
+        wp_delete_post($item_id, true);
+    }
+    
+    // Fix Patient Center children hierarchy - ensure they're under Patient Center, not Payment Options
+    $menu_items = wp_get_nav_menu_items($menu->term_id); // Refresh after deletions
+    if ($menu_items) {
+        $patient_center_parent_id = 0;
+        $payment_options_id = 0;
+        
+        // Find Patient Center and Payment Options IDs
+        foreach ($menu_items as $item) {
+            $title_lower = strtolower(trim($item->title));
+            if ($title_lower === 'patient center' && $item->menu_item_parent == 0) {
+                $patient_center_parent_id = $item->ID;
+            }
+            if ($title_lower === 'payment options') {
+                $payment_options_id = $item->ID;
+            }
+        }
+        
+        // Fix Patient Center children if they're incorrectly nested under Payment Options
+        if ($patient_center_parent_id > 0 && $payment_options_id > 0) {
+            $patient_center_children = array('payment options', 'reviews', 'zellig library');
+            foreach ($menu_items as $item) {
+                $title_lower = strtolower(trim($item->title));
+                if (in_array($title_lower, $patient_center_children)) {
+                    // If this item is a child of Payment Options, move it to Patient Center
+                    if ($item->menu_item_parent == $payment_options_id) {
+                        wp_update_nav_menu_item($menu->term_id, $item->ID, array(
+                            'menu-item-parent-id' => $patient_center_parent_id,
+                        ));
+                    }
+                    // If this item is top-level but Patient Center exists, make it a child
+                    elseif ($item->menu_item_parent == 0 && $title_lower !== 'patient center') {
+                        wp_update_nav_menu_item($menu->term_id, $item->ID, array(
+                            'menu-item-parent-id' => $patient_center_parent_id,
+                        ));
+                    }
+                }
+            }
+        }
+    }
 }
 
 // Auto-assign careers template to careers page
@@ -692,9 +1343,141 @@ function zelligcare_create_careers_page() {
 add_action('admin_init', 'zelligcare_create_careers_page');
 add_action('init', 'zelligcare_create_careers_page', 20);
 
-// Auto-create specialty pages and add to menu
-add_action('admin_init', 'zelligcare_create_specialty_pages');
-add_action('init', 'zelligcare_create_specialty_pages', 20);
+// Auto-create all main pages
+function zelligcare_create_all_pages() {
+    $pages = array(
+        array(
+            'title' => 'Services',
+            'slug' => 'services',
+            'template' => 'page-services.php',
+        ),
+        array(
+            'title' => 'Contact Us',
+            'slug' => 'contact-us',
+            'template' => 'page-contact.php',
+        ),
+        array(
+            'title' => 'Meet Our Team',
+            'slug' => 'meet-our-team',
+            'template' => 'page-team.php',
+        ),
+        array(
+            'title' => 'Request an Appointment',
+            'slug' => 'request-an-appointment',
+            'template' => 'page-appointment.php',
+        ),
+        array(
+            'title' => 'Refer a Patient',
+            'slug' => 'refer-a-patient',
+            'template' => 'page-refer-patient.php',
+        ),
+        array(
+            'title' => 'Payment Options',
+            'slug' => 'payment-options',
+            'template' => 'page-payment.php',
+        ),
+        array(
+            'title' => 'Reviews',
+            'slug' => 'reviews',
+            'template' => 'page-review.php',
+        ),
+        array(
+            'title' => 'Leave a Review',
+            'slug' => 'leave-a-review',
+            'template' => 'page-leave-review.php',
+        ),
+        array(
+            'title' => 'Zellig Library',
+            'slug' => 'library',
+            'template' => 'page-library.php',
+        ),
+        array(
+            'title' => 'Privacy Policy',
+            'slug' => 'privacy-policy',
+            'template' => 'page-privacy.php',
+        ),
+        array(
+            'title' => 'Accessibility Statement',
+            'slug' => 'accessibility-statement',
+            'template' => 'page-accessibility.php',
+        ),
+        array(
+            'title' => 'Our Practice',
+            'slug' => 'about',
+            'template' => 'page-about.php',
+        ),
+        array(
+            'title' => 'Search Results',
+            'slug' => 'search-result',
+            'template' => 'page-search-result.php',
+        ),
+    );
+    
+    $created_pages = array();
+    
+    foreach ($pages as $page_data) {
+        $page = get_page_by_path($page_data['slug']);
+        
+        if (!$page) {
+            $new_page = array(
+                'post_title'    => $page_data['title'],
+                'post_name'     => $page_data['slug'],
+                'post_content'  => '',
+                'post_status'   => 'publish',
+                'post_type'     => 'page',
+                'post_author'   => 1,
+            );
+            
+            $page_id = wp_insert_post($new_page);
+            
+            if ($page_id && !is_wp_error($page_id)) {
+                update_post_meta($page_id, '_wp_page_template', $page_data['template']);
+                $created_pages[] = $page_id;
+            }
+        } else {
+            // Ensure template is set even if page exists
+            $current_template = get_page_template_slug($page->ID);
+            if ($current_template !== $page_data['template']) {
+                update_post_meta($page->ID, '_wp_page_template', $page_data['template']);
+            }
+            $created_pages[] = $page->ID;
+        }
+    }
+    
+    // Update menu after pages are created
+    if (!empty($created_pages)) {
+        // Force menu recreation on next load
+        delete_transient('zelligcare_menu_created');
+    }
+    
+    return $created_pages;
+}
+
+// Auto-create all main pages first (priority 10)
+add_action('admin_init', 'zelligcare_create_all_pages', 10);
+add_action('init', 'zelligcare_create_all_pages', 10);
+
+// Auto-create specialty pages and add to menu (priority 15)
+add_action('admin_init', 'zelligcare_create_specialty_pages', 15);
+add_action('init', 'zelligcare_create_specialty_pages', 15);
+
+// Create menu after pages are created (priority 25)
+add_action('init', 'zelligcare_create_main_menu', 25);
+
+// Force menu recreation on first load (clear transient)
+add_action('init', function() {
+    // Only clear transient once on first load
+    if (!get_option('zelligcare_menu_initialized')) {
+        delete_transient('zelligcare_menu_created');
+        update_option('zelligcare_menu_initialized', true);
+    }
+}, 5);
+
+// Clean up menu duplicates on admin pages
+add_action('admin_init', 'zelligcare_cleanup_menu', 30);
+
+// Rebuild menu on admin init if needed (priority 20, before cleanup)
+add_action('admin_init', 'zelligcare_rebuild_menu', 20);
 
 // Add admin notice with link to update content
 add_action('admin_notices', 'zelligcare_specialty_content_update_notice');
