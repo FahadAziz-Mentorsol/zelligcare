@@ -1,7 +1,7 @@
 .ry-headline h2 {
 	font-size: 80px;
 	font-weight: 400 !important;
-	font-family: 'Fraunces' !important;
+	font-family: 'Tenor Sans' !important;
 	text-transform: uppercase;
 	letter-spacing: -0.5px;
 	line-height: 1;
@@ -10,7 +10,7 @@
 .ry-headline h2 span {
 	display: block;
 	font-size: 30px;
-	font-family: 'Jost';
+	font-family: 'Jost', sans-serif !important;
 	letter-spacing: 5px;
 	color: #184f5a;
 }
@@ -95,7 +95,7 @@
 
 .module-hero .hero-text h1 {
 	font-size: 90px;
-	font-family: 'Fraunces' !important;
+	font-family: 'Jost', sans-serif !important;
 	color: #fff;
 	line-height: 1;
 	font-weight: 400 !important;
@@ -105,14 +105,12 @@
 
 .module-hero .hero-text h1 span {
 	font-size: 36px;
-	font-family: 'Jost';
+	font-family: 'Jost', sans-serif !important;
 	display: block;
 	text-transform: uppercase;
 	letter-spacing: 5px;
 	margin-top: 20px;
 }
-
-
 
 .module-welcome.custom {
 	position: relative;
@@ -137,7 +135,6 @@
 	font-size: 24px !important;
 	color: #555 !important;
 }
-
 
 .module-welcome.custom .button-wrapper .ry-btn {
 	margin: auto;
@@ -186,11 +183,10 @@
 	flex-direction: column;
 }
 
-
 .module-cta.custom .ry-flex .each .title h4 {
 	font-size: 26px;
 	font-weight: 400 !important;
-	font-family: 'Tenor Sans' !important;
+	font-family: 'Jost', sans-serif !important;
 	line-height: 1.1;
 	text-transform: uppercase;
 	color: #3e4f5f;
@@ -225,8 +221,6 @@
 	padding: 0 20px;
 }
 
-/* Note: .ry-headline h2 already defined at line 1 */
-
 .module-services.custom .ry-headline h2 .span-1 {
 	display: block;
 	font-size: 30px;
@@ -239,6 +233,8 @@
 
 .module-services.custom .ry-headline h2 {
 	color: #fff !important;
+	font-family: 'Tenor Sans' !important;
+	font-weight: 400 !important;
 }
 
 .module-services.custom .section-background {
@@ -283,6 +279,8 @@
 	font-size: 46px;
 	color: #184f5a;
 	line-height: 1.1;
+	font-family: 'Tenor Sans' !important;
+	font-weight: 400 !important;
 }
 
 .module-offer .group-block .content .each.each-text .ry-text p {
@@ -291,14 +289,7 @@
 	text-align: left;
 }
 
-/* .module-offer .group-block .block:nth-child(odd) .each-photo img styles commented out per design requirements */
-/* .module-offer .group-block .block:nth-child(odd) .each-photo img {
-	margin-left: -20px;
-	min-width: calc(100% + 20px);
-} */
-
-/* Only apply to non-inner-condition-template .module-offer instances */
-.module-offer:not(.inner-condition-template) .group-block .block:nth-child(even) .each-photo img {
+.module-offer .group-block .block:nth-child(even) .each-photo img {
 	margin-right: -20px;
 	min-width: calc(100% + 20px);
 }
@@ -327,7 +318,7 @@
 }
 
 .module-offer.inner-condition-template .group-block .content .each.each-text .ry-text h3 {
-	font-family: 'Tenor Sans' !important;
+	font-family: 'Jost', sans-serif !important;
 	font-weight: 400 !important;
 	color: #18505a;
 	line-height: 1;
@@ -359,7 +350,6 @@
 	padding: 0;
 }
 
-/* Comprehensive specialty page image border fix */
 .module-offer.inner-condition-template .group-block .content .each .photo {
 	position: relative;
 	padding-bottom: 75%;
@@ -393,7 +383,6 @@
 	display: block;
 }
 
-/* Target fade-left blocks (odd) - extend image to the left */
 .module-offer.inner-condition-template .group-block .block[data-aos*="fade-left"] .each-photo img,
 .module-offer.inner-condition-template .group-block .block:nth-child(odd) .each-photo img {
 	margin-left: -10px !important;
@@ -405,7 +394,6 @@
 	object-fit: cover !important;
 }
 
-/* Target fade-right blocks (even) - extend image to the right */
 .module-offer.inner-condition-template .group-block .block[data-aos*="fade-right"] .each-photo img,
 .module-offer.inner-condition-template .group-block .block:nth-child(even) .each-photo img {
 	margin-right: -20px !important;
@@ -417,7 +405,6 @@
 	object-fit: cover !important;
 }
 
-/* Fallback for any other structure variations */
 .module-offer.inner-condition-template .group-block .block .each-photo img {
 	position: absolute !important;
 	top: 0 !important;
@@ -426,7 +413,6 @@
 	object-fit: cover !important;
 }
 
-/* Responsive image styles */
 .img-responsive {
 	width: 100%;
 }
@@ -447,13 +433,6 @@
 	position: relative;
 	margin-top: 0;
 }
-
-/* Note: .section-background already defined at line 52 */
-
-#section-services {
-	background-color: #d1e2e2;
-}
-
 
 .module-services.custom .ry-flex {
 	display: flex;
@@ -525,7 +504,7 @@
 	font-size: 24px;
 	line-height: 1.1;
 	text-transform: uppercase;
-	font-family: 'Tenor Sans' !important;
+	font-family: 'Jost', sans-serif !important;
 	color: #fff !important;
 	letter-spacing: 1px;
 	font-weight: 400;
@@ -539,7 +518,7 @@
 	color: #fff;
 	text-decoration: none;
 	font-size: 16px;
-	font-family: 'Tenor Sans' !important;
+	font-family: 'Jost', sans-serif !important;
 	text-transform: uppercase;
 	letter-spacing: 1px;
 	transition: all 0.3s ease;
@@ -551,7 +530,7 @@
 }
 
 .module-footer.custom .each .title {
-	font-family: Fraunces;
+	font-family: 'Jost', sans-serif !important;
 	font-weight: 400;
 	font-style: Regular;
 	font-size: 24px;
@@ -563,7 +542,7 @@
 }
 
 .location-item h3 {
-	font-family: 'Tenor Sans', sans-serif !important;
+	font-family: 'Jost', sans-serif !important;
 	font-size: 20px;
 	color: #184f5a;
 	text-transform: uppercase;
@@ -657,9 +636,6 @@
 	box-shadow: 0 8px 25px rgba(24, 79, 90, 0.4) !important;
 }
 
-
-
-
 .module-services.custom .hero-cta-badge {
 	background-color: #bd945a !important;
 	color: #fff !important;
@@ -698,7 +674,7 @@
 	color: #fff;
 	text-decoration: none;
 	font-size: 16px;
-	font-family: 'Tenor Sans' !important;
+	font-family: 'Jost', sans-serif !important;
 	text-transform: uppercase;
 	letter-spacing: 1px;
 	transition: all 0.3s ease;
@@ -708,7 +684,6 @@
 	color: #bd945a;
 	text-decoration: underline;
 }
-
 
 .module-cta.custom .ry-flex .each .wrapper {
 	display: flex;
@@ -726,7 +701,7 @@
 }
 
 .module-cta.custom .card-link a {
-	font-family: 'Jost';
+	font-family: 'Jost', sans-serif !important;
 	text-transform: uppercase;
 	letter-spacing: 2px;
 	font-weight: 500;
@@ -749,7 +724,6 @@
 	color: #fff !important;
 }
 
-
 .module-cta.custom .each-1 .card-link a {
 	background-color: #fff;
 	color: #184f5a;
@@ -765,14 +739,9 @@
 	border-color: #fff !important;
 }
 
-
-
-
-
-
 .module-cta.custom .ry-flex .each.each-1 h3 {
 	font-size: 50px;
-	font-family: 'Tenor Sans' !important;
+	font-family: 'Jost', sans-serif !important;
 	font-weight: 400 !important;
 	line-height: 1;
 	text-transform: uppercase;
@@ -790,7 +759,6 @@
 	padding-left: 60px;
 	padding-right: 60px;
 }
-
 
 .module-cta.custom .ry-flex .each.each-1:before {
 	content: "";
@@ -829,14 +797,11 @@
 	gap: 30px;
 }
 
-
 .module-team.custom .ry-flex .each {
 	max-width: 620px;
 	display: flex;
 	flex-direction: column;
 }
-
-
 
 .module-team.custom .ry-flex .each .photo {
 	margin-bottom: 15px;
@@ -854,7 +819,7 @@
 .module-team.custom .ry-flex .each .title p span {
 	display: block;
 	font-size: 24px;
-	font-family: 'Jost';
+	font-family: 'Tenor Sans' !important;
 	text-transform: initial;
 	margin-top: 15px;
 	margin-bottom: 30px;
@@ -865,14 +830,10 @@
 	margin-top: auto;
 }
 
-
-
-
 .module-team.custom .ry-flex .each {
 	display: flex;
 	flex-direction: column;
 }
-
 
 .module-team.custom .ry-flex .each h5 {
 	font-size: 20px !important;
@@ -899,7 +860,6 @@
 	flex: 1;
 }
 
-
 .module-team.custom .ry-flex .each .photo {
 	max-width: 260px;
 	z-index: 2;
@@ -915,7 +875,6 @@
 	align-items: center;
 	height: 100%;
 }
-
 
 .module-team.custom .ry-flex {
 	justify-content: center;
@@ -965,7 +924,7 @@
 
 .module-faq .faq-wrapper .ry-heading div {
 	font-size: 30px;
-	font-family: 'Tenor Sans' !important;
+	font-family: 'Jost', sans-serif !important;
 	line-height: 1;
 	text-transform: uppercase;
 	letter-spacing: -1px;
@@ -1062,6 +1021,8 @@
 
 .module-appointment.custom .ry-container .ry-headline h2 {
 	text-align: center;
+	font-family: 'Tenor Sans' !important;
+	font-weight: 400 !important;
 }
 
 .module-appointment.custom .ry-container .ry-headline h2 span {
@@ -1087,10 +1048,6 @@
 	padding-top: 20px;
 }
 
-/* ============================================
-   FOOTER STYLES - Matching index.html Structure
-   ============================================ */
-
 .module-footer.custom {
 	width: 100%;
 	max-width: 100%;
@@ -1098,7 +1055,6 @@
 	background-color: #bd945a;
 }
 
-/* Background image using :before pseudo-element (matching footer-2.css) */
 .module-footer.custom:before {
 	content: "";
 	position: absolute;
@@ -1146,25 +1102,6 @@
 	z-index: 1;
 }
 
-
-/* Footer Container Styles */
-
-@media (min-width: 1366px) {
-
-	.module-footer.custom .footer-top .ry-container,
-	.module-footer.custom .footer-bottom .ry-container {
-		max-width: 1280px;
-	}
-}
-
-@media (max-width: 1200px) {
-
-	.module-footer.custom .footer-top .ry-container,
-	.module-footer.custom .footer-bottom .ry-container {
-		max-width: 95%;
-	}
-}
-
 .module-footer.custom .footer-top .ry-container,
 .module-footer.custom .footer-bottom .ry-container {
 	max-width: 1280px;
@@ -1180,7 +1117,6 @@
 	align-items: flex-start;
 }
 
-/* Footer Each Column */
 .module-footer.custom .each {
 	max-width: 300px;
 	width: max-content;
@@ -1190,7 +1126,6 @@
 	width: 100%;
 }
 
-/* Each-1: Logo and Social Media */
 .module-footer.custom .each.each-1 .photo {
 	margin-bottom: 20px;
 }
@@ -1234,11 +1169,10 @@
 	fill: #fff;
 }
 
-/* Each-2: Contact Info and Sitemap */
 .module-footer.custom .each .title {
 	font-size: 34px;
 	text-transform: uppercase;
-	font-family: 'Tenor Sans' !important;
+	font-family: 'Jost', sans-serif !important;
 	margin-bottom: 20px;
 	color: rgb(102, 102, 102);
 }
@@ -1270,7 +1204,7 @@
 	font-size: 22px;
 	color: rgb(102, 102, 102);
 	line-height: 1.3;
-	font-family: 'Jost', sans-serif;
+	font-family: 'Jost', sans-serif !important;
 	font-weight: 300;
 	text-decoration: none;
 	transition: opacity 0.3s ease;
@@ -1293,7 +1227,6 @@
 	align-items: center;
 }
 
-/* Sitemap List Links */
 .module-footer.custom .each .details ul {
 	list-style: none;
 	padding-left: 0;
@@ -1308,7 +1241,7 @@
 	display: block;
 	line-height: 32px !important;
 	color: rgb(102, 102, 102);
-	font-family: 'Jost', sans-serif;
+	font-family: 'Jost', sans-serif !important;
 	font-weight: 300;
 	text-decoration: none;
 	transition: opacity 0.3s ease;
@@ -1317,9 +1250,6 @@
 .module-footer.custom .each .details ul li a:hover {
 	opacity: 0.8;
 }
-
-/* Footer Bottom Section */
-/* Note: .module-footer.custom .footer-bottom already defined above at line 959 */
 
 .module-footer.custom .footer-bottom .content {
 	display: flex;
@@ -1352,7 +1282,7 @@
 	justify-content: flex-end;
 }
 
-.module-footer.custom .footer-bottom .content .nopadding.powered>div {
+.module-footer.custom .footer-bottom .content .powered>div {
 	margin: 0;
 }
 
@@ -1399,90 +1329,8 @@
 	text-decoration: none;
 }
 
-/* Module-16 Footer Override */
 .module-16 #footer-row2 a {
 	color: rgb(102, 102, 102) !important;
-}
-
-/* Footer Responsive Styles */
-@media (max-width: 991px) {
-	.module-footer.custom .footer-top {
-		padding: 100px 0 120px;
-	}
-
-	.module-footer.custom .footer-top .ry-flex {
-		flex-direction: column;
-		align-items: center;
-		gap: 30px;
-	}
-
-	.module-footer.custom .each {
-		max-width: 280px;
-		width: 100%;
-		text-align: center;
-	}
-
-	.module-footer.custom .each.each-2 {
-		max-width: 100%;
-		width: 100%;
-	}
-
-	.module-footer.custom .each .custom-socmed {
-		justify-content: center;
-	}
-
-	.module-footer.custom .each .title {
-		font-size: 28px;
-		text-align: center;
-	}
-
-	.module-footer.custom .each .details:not(:last-child) {
-		margin-bottom: 20px;
-	}
-
-	.module-footer.custom .each .details {
-		gap: 10px;
-		flex-direction: column;
-		align-items: center;
-		justify-content: center;
-	}
-
-	.module-footer.custom .each .details .text,
-	.module-footer.custom .each .details .text a {
-		text-align: center;
-		font-size: 20px;
-	}
-
-	.module-footer.custom .each .details ul li a {
-		font-size: 20px;
-		text-align: center;
-	}
-
-	.module-footer.custom .footer-bottom .content {
-		flex-direction: column;
-		align-items: center;
-		justify-content: center;
-		gap: 0;
-	}
-
-	.module-footer.custom .footer-bottom .content * {
-		text-align: center;
-	}
-
-	.module-footer.custom .footer-bottom .content .powered {
-		flex-direction: column;
-		align-items: center;
-		gap: 0;
-	}
-}
-
-.module-footer.custom .each.each-1:before {
-	content: "";
-	position: absolute;
-	right: -40%;
-	width: 1px;
-	height: 100%;
-	background: #bbb2a9;
 }
 
 .module-43 {
@@ -1495,11 +1343,13 @@
 	font-weight: 400;
 	color: #555;
 	letter-spacing: initial;
+	font-family: 'Jost', sans-serif !important;
 }
 
 .module-43 .ry-right .ry-menu .nav-menu li .dropdown-menu a {
 	font-size: 18px;
 	text-transform: initial;
+	font-family: 'Jost', sans-serif !important;
 }
 
 .module-43 .ry-right .ry-menu .nav-menu li .dropdown-menu {
@@ -1533,7 +1383,6 @@
 	border-bottom: 10px solid #18505a;
 	display: block !important;
 }
-
 
 .module-43 .ry-right .btn-wrapper {
 	display: flex !important;
@@ -1573,8 +1422,6 @@
 	font-size: 18px 1im;
 }
 
-
-
 .module-43 .ry-nav>li {
 	white-space: nowrap;
 	display: flex;
@@ -1599,7 +1446,6 @@
 	vertical-align: middle;
 	line-height: normal;
 }
-
 
 .module-43 .ry-content.ry-flex {
 	justify-content: space-between;
@@ -1679,198 +1525,12 @@
 	left: 0;
 }
 
-/* Header and Banner Relative Positioning */
-/* Make header container establish positioning context */
-#ry-pg-header {
-	position: relative;
-	width: 100%;
-}
-
-/* Header positioning - matches original */
-/* Base module-43 styles */
-.module-43 {
-	top: 0;
-	left: 0;
-	z-index: 999;
-	padding: 35px 0 20px;
-	-webkit-transition: all 600ms ease;
-	transition: all 600ms ease;
-	position: absolute;
-}
-
-/* body.default overrides header to position: relative (takes up space) */
-#ry-section-header.module-43 {
-	position: relative;
-}
-
-/* Minimal sticky header fixes - matching actual HTML structure */
-
-/* When fixed, header becomes position: fixed */
-body.default #ry-section-header.module-43.fixed,
-#ry-section-header.module-43.fixed,
-.module-43.ry-sticky-menu.fixed {
-	position: fixed !important;
-	top: 0 !important;
-	left: 0 !important;
-	right: 0 !important;
-	width: 100% !important;
-	background: #222 !important;
-	z-index: 999 !important;
-	padding: 15px 0 !important;
-	-webkit-transition: all 600ms ease !important;
-	transition: all 600ms ease !important;
-	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1) !important;
-}
-
-/* Fixed header content alignment */
-body.default #ry-section-header.module-43.fixed .ry-content.ry-flex,
-#ry-section-header.module-43.fixed .ry-content.ry-flex {
-	align-items: center !important;
-}
-
-body.default #ry-section-header.module-43.fixed .ry-right.ry-flex,
-#ry-section-header.module-43.fixed .ry-right.ry-flex {
-	display: flex !important;
-	align-items: center !important;
-	gap: 20px !important;
-}
-
-/* Hide main logo when sticky */
-body.default #ry-section-header.module-43.fixed .ry-left.ry-logo,
-#ry-section-header.module-43.fixed .ry-left.ry-logo {
-	display: none !important;
-}
-
-/* Show small logo when sticky */
-body.default #ry-section-header.module-43.fixed #litlleLogo,
-#ry-section-header.module-43.fixed #litlleLogo {
-	display: block !important;
-	margin-right: 20px !important;
-}
-
-/* Fix logo sizing conflicts - Main logo */
-.module-43 .ry-left.ry-logo,
-.module-43 .ry-left {
-	width: auto !important;
-	display: -webkit-box !important;
-	display: -ms-flexbox !important;
-	display: flex !important;
-	-webkit-box-align: center !important;
-	-ms-flex-align: center !important;
-	align-items: center !important;
-}
-
-.module-43 .ry-left.ry-logo img,
-.module-43 .ry-left img {
-	width: auto !important;
-	height: auto !important;
-	object-fit: contain !important;
-	margin-top: 0 !important;
-	margin-bottom: 0 !important;
-	border: none !important;
-	outline: none !important;
-	box-shadow: none !important;
-}
-
-/* Ensure responsive images don't override logo sizing */
-.module-43 .ry-left.ry-logo .img-responsive {
-	width: auto !important;
-	height: auto !important;
-}
-
-/* Little logo sizing - consistent across all states */
-body.default #ry-section-header.module-43.fixed #litlleLogo img,
-#ry-section-header.module-43.fixed #litlleLogo img,
-.module-43.fixed #litlleLogo img,
-#litlleLogo img,
-.module-43 .ry-menu #litlleLogo img {
-	max-height: 80px !important;
-	width: auto !important;
-	height: auto !important;
-	border: none !important;
-	outline: none !important;
-	box-shadow: none !important;
-	object-fit: contain !important;
-}
-
-/* Fixed header button layout - targeting actual structure */
-body.default #ry-section-header.module-43.fixed .ry-leads,
-#ry-section-header.module-43.fixed .ry-leads {
-	margin-bottom: 0 !important;
-	display: flex !important;
-	align-items: center !important;
-}
-
-body.default #ry-section-header.module-43.fixed .ry-leads .btn-wrapper,
-#ry-section-header.module-43.fixed .ry-leads .btn-wrapper {
-	display: flex !important;
-	gap: 15px !important;
-	align-items: center !important;
-	margin-bottom: 0 !important;
-	justify-content: flex-end !important;
-}
-
-body.default #ry-section-header.module-43.fixed .ry-leads .btn-wrapper .btn-wrap,
-#ry-section-header.module-43.fixed .ry-leads .btn-wrapper .btn-wrap {
-	display: inline-block !important;
-}
-
-body.default #ry-section-header.module-43.fixed .ry-leads .btn-wrapper .btn-wrap .ry-btn,
-#ry-section-header.module-43.fixed .ry-leads .btn-wrapper .btn-wrap .ry-btn {
-	display: inline-block !important;
-	font-size: 14px !important;
-	padding: 12px 18px !important;
-	min-width: auto !important;
-	white-space: nowrap !important;
-	text-decoration: none !important;
-	border-radius: 4px !important;
-	transition: all 0.3s ease !important;
-}
-
-/* Banner positioned relative to header container */
-#ry-pg-banner {
-	position: relative;
-	z-index: 1;
-	/* Lower than header (z-index: 999) */
-	width: 100%;
-}
-
-/* On desktop: Header is position: relative initially (takes up space), so no padding needed */
-/* When header becomes fixed, it no longer takes up space, so banner needs padding */
-@media (min-width: 992px) {
-	#ry-pg-banner {
-		padding-top: 0;
-		/* Header is relative, takes up space */
-		transition: padding-top 0.3s ease;
-	}
-
-	/* When header becomes fixed, add padding to account for fixed header height */
-	body.header-fixed #ry-pg-banner {
-		padding-top: 70px;
-		/* Account for fixed header (padding: 15px 0 + content height ~55px) */
-	}
-}
-
-/* On mobile: Header is fixed, spacing handled by banner wrapper */
-@media (max-width: 991px) {
-	#ry-pg-banner {
-		padding-top: 0;
-		/* Mobile spacing handled by banner wrapper margin-top */
-	}
-}
-
-/* Ensure banner title is visible above banner overlays but header will still be on top */
-#ry-pg-banner .ry-pg-title {
-	z-index: 10;
-	/* Visible above banner overlays, but header (z-index: 999) will still be on top */
-}
-
 #ry-pg-banner .ry-bnr-wrp .ry-pg-title h1.ry-responsive-title,
 #ry-pg-banner .ry-bnr-wrp .ry-pg-title h1 {
 	font-size: 60px;
 	font-weight: 400 !important;
 	letter-spacing: initial;
-	font-family: 'Tenor Sans' !important;
+	font-family: 'Jost', sans-serif !important;
 	max-width: 70%;
 	line-height: 1;
 	padding: 0 !important;
@@ -1927,6 +1587,15 @@ body.default #ry-section-header.module-43.fixed .ry-leads .btn-wrapper .btn-wrap
 @media screen and (min-width: 1440px) {
 	#ry-pg-banner .ry-bnr-wrp .ry-pg-title h1 {
 		font-size: 60px;
+	}
+
+	.ry-headline h2 {
+		font-size: 80px;
+		font-weight: 400 !important;
+		font-family: 'Tenor Sans' !important;
+		text-transform: uppercase;
+		letter-spacing: -0.5px;
+		line-height: 1;
 	}
 }
 
@@ -2356,6 +2025,7 @@ body.default #ry-section-header.module-43.fixed .ry-leads .btn-wrapper .btn-wrap
 	display: flex;
 	align-items: flex-end;
 	justify-content: center;
+	margin-bottom: 30px;
 }
 
 .module-apply .contact_Upload_custom:before {
@@ -2376,7 +2046,8 @@ body.default #ry-section-header.module-43.fixed .ry-leads .btn-wrapper .btn-wrap
 .module-apply .upload {
 	display: flex;
 	flex-direction: column;
-	gap: 20px;
+	gap: 30px;
+	justify-content: center;
 }
 
 .module-apply #careers_form {
@@ -2878,7 +2549,7 @@ body.default #ry-section-header.module-43.fixed .ry-leads .btn-wrapper .btn-wrap
 	}
 
 	.module-apply .upload {
-		gap: 15px;
+		gap: 30px !important;
 	}
 
 	.module-apply .ry-flex .each-left .wrapper .ry-text h5 {
