@@ -227,7 +227,6 @@ body.default #ry-pg-body[data-interior-layout="Full Width"]>.ry-container>.ry-co
 
 .module-43:not(.fixed) .ry-right .ry-menu .nav-menu {
 	justify-content: end;
-	gap: 5%;
 }
 
 .module-welcome.custom .section-background {

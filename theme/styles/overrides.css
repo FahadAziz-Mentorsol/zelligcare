@@ -10,7 +10,7 @@
 .ry-headline h2 span {
 	display: block;
 	font-size: 30px;
-	font-family: 'Jost', sans-serif !important;
+	font-family: 'Jost' !important;
 	letter-spacing: 5px;
 	color: #184f5a;
 }
@@ -18,6 +18,7 @@
 .ry-headline h5 {
 	font-size: 24px;
 	font-weight: 400 !important;
+	font-family: 'Tenor Sans', sans-serif !important;
 	text-transform: uppercase;
 	letter-spacing: 5px;
 	color: #184f5a;
@@ -95,7 +96,7 @@
 
 .module-hero .hero-text h1 {
 	font-size: 90px;
-	font-family: 'Jost', sans-serif !important;
+	font-family: 'Tenor Sans', sans-serif !important;
 	color: #fff;
 	line-height: 1;
 	font-weight: 400 !important;
@@ -105,7 +106,7 @@
 
 .module-hero .hero-text h1 span {
 	font-size: 36px;
-	font-family: 'Jost', sans-serif !important;
+	font-family: 'Jost' !important;
 	display: block;
 	text-transform: uppercase;
 	letter-spacing: 5px;
@@ -186,7 +187,7 @@
 .module-cta.custom .ry-flex .each .title h4 {
 	font-size: 26px;
 	font-weight: 400 !important;
-	font-family: 'Jost', sans-serif !important;
+	font-family: 'Tenor Sans', sans-serif !important;
 	line-height: 1.1;
 	text-transform: uppercase;
 	color: #3e4f5f;
@@ -212,7 +213,7 @@
 	background-image: none;
 	position: relative;
 	z-index: 1;
-	padding: 100px 0 150px;
+	padding: 100px 0 100px;
 }
 
 #ry-pg-banner .ry-pg-title .ry-container {
@@ -323,7 +324,7 @@
 }
 
 .module-offer.inner-condition-template .group-block .content .each.each-text .ry-text h3 {
-	font-family: 'Jost', sans-serif !important;
+	font-family: 'Jost' !important;
 	font-weight: 400 !important;
 	color: #18505a;
 	line-height: 1;
@@ -510,7 +511,7 @@
 	font-size: 24px;
 	line-height: 1.1;
 	text-transform: uppercase;
-	font-family: 'Jost', sans-serif !important;
+	font-family: 'Tenor Sans', sans-serif !important;
 	color: #fff !important;
 	letter-spacing: 1px;
 	font-weight: 400;
@@ -524,7 +525,7 @@
 	color: #fff;
 	text-decoration: none;
 	font-size: 16px;
-	font-family: 'Jost', sans-serif !important;
+	font-family: 'Jost' !important;
 	text-transform: uppercase;
 	letter-spacing: 1px;
 	transition: all 0.3s ease;
@@ -536,7 +537,7 @@
 }
 
 .module-footer.custom .each .title {
-	font-family: 'Jost', sans-serif !important;
+	font-family: 'Jost' !important;
 	font-weight: 400;
 	font-style: Regular;
 	font-size: 24px;
@@ -548,8 +549,8 @@
 }
 
 .location-item h3 {
-	font-family: 'Jost', sans-serif !important;
-	font-size: 20px;
+	font-family: 'Tenor Sans', sans-serif !important;
+	font-size: 30px;
 	color: #184f5a;
 	text-transform: uppercase;
 	letter-spacing: 2px;
@@ -623,7 +624,7 @@
 	padding: 16px 45px !important;
 	border-radius: 50px !important;
 	text-transform: uppercase !important;
-	font-family: 'Jost', sans-serif !important;
+	font-family: 'Jost' !important;
 	font-weight: 700 !important;
 	letter-spacing: 2px !important;
 	display: inline-block !important;
@@ -652,7 +653,7 @@
 	padding: 16px 45px !important;
 	border-radius: 50px !important;
 	text-transform: uppercase !important;
-	font-family: 'Jost', sans-serif !important;
+	font-family: 'Jost' !important;
 	font-weight: 700 !important;
 	letter-spacing: 2px !important;
 	display: inline-block !important;
@@ -684,7 +685,7 @@
 	color: #fff;
 	text-decoration: none;
 	font-size: 16px;
-	font-family: 'Jost', sans-serif !important;
+	font-family: 'Jost' !important;
 	text-transform: uppercase;
 	letter-spacing: 1px;
 	transition: all 0.3s ease;
@@ -711,7 +712,7 @@
 }
 
 .module-cta.custom .card-link a {
-	font-family: 'Jost', sans-serif !important;
+	font-family: 'Jost' !important;
 	text-transform: uppercase;
 	letter-spacing: 2px;
 	font-weight: 500;
@@ -751,7 +752,7 @@
 
 .module-cta.custom .ry-flex .each.each-1 h3 {
 	font-size: 50px;
-	font-family: 'Jost', sans-serif !important;
+	font-family: 'Tenor Sans', sans-serif !important;
 	font-weight: 400 !important;
 	line-height: 1;
 	text-transform: uppercase;
@@ -938,7 +939,7 @@
 
 .module-faq .faq-wrapper .ry-heading div {
 	font-size: 30px;
-	font-family: 'Jost', sans-serif !important;
+	font-family: 'Jost' !important;
 	line-height: 1;
 	text-transform: uppercase;
 	letter-spacing: -1px;
@@ -1191,7 +1192,7 @@
 .module-footer.custom .each .title {
 	font-size: 34px;
 	text-transform: uppercase;
-	font-family: 'Jost', sans-serif !important;
+	font-family: 'Jost' !important;
 	margin-bottom: 20px;
 	color: rgb(102, 102, 102);
 }
@@ -1223,7 +1224,7 @@
 	font-size: 22px;
 	color: rgb(102, 102, 102);
 	line-height: 1.3;
-	font-family: 'Jost', sans-serif !important;
+	font-family: 'Jost' !important;
 	font-weight: 300;
 	text-decoration: none;
 	transition: opacity 0.3s ease;
@@ -1260,7 +1261,7 @@
 	display: block;
 	line-height: 32px !important;
 	color: rgb(102, 102, 102);
-	font-family: 'Jost', sans-serif !important;
+	font-family: 'Jost' !important;
 	font-weight: 300;
 	text-decoration: none;
 	transition: opacity 0.3s ease;
@@ -1353,8 +1354,16 @@
 }
 
 .module-43 {
-	padding: 15px 0;
+	padding: 35px 0 20px !important;
 	background: #fff;
+	position: relative;
+}
+
+.module-43 .ry-container {
+	max-width: 1600px;
+	width: 95%;
+	margin: 0 auto;
+	padding: 0;
 }
 
 .module-43 .ry-right .ry-menu .nav-menu li a {
@@ -1362,13 +1371,13 @@
 	font-weight: 400;
 	color: #555;
 	letter-spacing: initial;
-	font-family: 'Jost', sans-serif !important;
+	font-family: 'Jost' !important;
 }
 
 .module-43 .ry-right .ry-menu .nav-menu li .dropdown-menu a {
 	font-size: 18px;
 	text-transform: initial;
-	font-family: 'Jost', sans-serif !important;
+	font-family: 'Jost' !important;
 }
 
 .module-43 .ry-right .ry-menu .nav-menu li .dropdown-menu {
@@ -1418,16 +1427,27 @@
 }
 
 .module-43 .ry-right .btn-wrapper .btn-wrap .ry-btn {
-	display: inline-block !important;
+	display: inline-flex !important;
+	align-items: center !important;
+	justify-content: center !important;
 	white-space: nowrap !important;
 	text-decoration: none !important;
 	border: none !important;
 	cursor: pointer !important;
 	transition: all 0.3s ease !important;
-	min-height: 40px !important;
+	height: 45px !important;
+	min-height: 45px !important;
+	max-height: 45px !important;
 	line-height: 1.2 !important;
 	text-align: center !important;
 	vertical-align: middle !important;
+	padding: 10px 18px !important;
+	font-size: 15px !important;
+	font-weight: 400 !important;
+	font-family: 'Jost' !important;
+	border-radius: 5px !important;
+	text-transform: initial !important;
+	letter-spacing: initial !important;
 }
 
 .module-43 .ry-right .btn-wrapper .ry-btn-primary:not(:hover) {
@@ -1435,16 +1455,147 @@
 	color: #fff !important;
 }
 
-.module-43 .ry-right .btn-wrapper .ry-btn {
-	text-transform: initial !important;
-	letter-spacing: initial;
-	font-size: 18px 1im;
+.module-43 .ry-right .btn-wrapper .ry-btn-primary:hover {
+	background: #184f5a !important;
+	color: #fff !important;
 }
 
 .module-43 .ry-nav>li {
 	white-space: nowrap;
 	display: flex;
 	align-items: center;
+	margin: 0 8px;
+}
+
+.module-43:not(.fixed):not(.custom-sticky) .ry-nav>li {
+	margin: 0 15px;
+}
+
+/* Responsive spacing for header menu items */
+@media (min-width: 1600px) {
+	.module-43:not(.fixed):not(.custom-sticky) .ry-nav>li {
+		margin: 0 20px;
+	}
+
+	.module-43 .ry-content.ry-flex {
+		padding: 0 !important;
+	}
+
+	.module-43 .ry-right .btn-wrapper {
+		gap: 15px !important;
+	}
+
+	.module-43 .ry-right .btn-wrapper .btn-wrap .ry-btn {
+		height: 45px !important;
+		min-height: 45px !important;
+		max-height: 45px !important;
+		padding: 10px 18px !important;
+		font-size: 15px !important;
+	}
+}
+
+@media (max-width: 1440px) {
+	.module-43:not(.fixed):not(.custom-sticky) .ry-nav>li {
+		margin: 0 12px;
+	}
+
+	.module-43 .ry-content.ry-flex {
+		padding: 0 !important;
+	}
+
+	.module-43 .ry-right .btn-wrapper {
+		gap: 15px !important;
+	}
+
+	.module-43 .ry-right .btn-wrapper .btn-wrap .ry-btn {
+		height: 45px !important;
+		min-height: 45px !important;
+		max-height: 45px !important;
+		padding: 10px 18px !important;
+		font-size: 15px !important;
+	}
+}
+
+@media (max-width: 1200px) {
+	.module-43:not(.fixed):not(.custom-sticky) .ry-nav>li {
+		margin: 0 10px;
+	}
+
+	.module-43 .ry-content.ry-flex {
+		padding: 0 !important;
+	}
+
+	.module-43 .ry-container {
+		width: 98%;
+	}
+
+	.module-43 .ry-right .btn-wrapper {
+		gap: 12px !important;
+	}
+
+	.module-43 .ry-right .btn-wrapper .btn-wrap .ry-btn {
+		height: 42px !important;
+		min-height: 42px !important;
+		max-height: 42px !important;
+		padding: 9px 16px !important;
+		font-size: 14px !important;
+	}
+}
+
+@media (max-width: 1024px) {
+	.module-43:not(.fixed):not(.custom-sticky) .ry-nav>li {
+		margin: 0 8px;
+	}
+
+	.module-43 .ry-content.ry-flex {
+		padding: 0 !important;
+	}
+
+	.module-43 .ry-right .btn-wrapper {
+		gap: 10px !important;
+	}
+
+	.module-43 .ry-right .btn-wrapper .btn-wrap .ry-btn {
+		height: 40px !important;
+		min-height: 40px !important;
+		max-height: 40px !important;
+		padding: 8px 14px !important;
+		font-size: 13px !important;
+	}
+}
+
+.module-43 .ry-nav>li:first-child {
+	margin-left: 0;
+}
+
+.module-43 .ry-nav>li:last-child {
+	margin-right: 0;
+}
+
+.module-43 .ry-left.ry-logo {
+	width: auto !important;
+	flex: 0 0 auto !important;
+	max-width: none !important;
+}
+
+.module-43 .ry-right {
+	width: auto !important;
+	flex: 1 1 auto !important;
+	max-width: none !important;
+}
+
+.module-43 .ry-content.ry-flex>.col-md-2,
+.module-43 .ry-content.ry-flex>.col-lg-2 {
+	width: auto !important;
+	flex: 0 0 auto !important;
+	max-width: none !important;
+}
+
+.module-43 .ry-content.ry-flex>.col-md-10,
+.module-43 .ry-content.ry-flex>.col-lg-10 {
+	width: auto !important;
+	flex: 1 1 auto !important;
+	max-width: none !important;
 }
 
 .module-43 .ry-nav>li.menu-button {
@@ -1453,17 +1604,20 @@
 }
 
 .module-43 .ry-nav>li.menu-button .ry-btn {
-	margin: 0;
-	padding: 10px 20px;
-	font-size: 16px;
-	height: auto;
+	margin: 0 !important;
+	padding: 10px 18px !important;
+	font-size: 15px !important;
+	height: 45px !important;
+	min-height: 45px !important;
+	max-height: 45px !important;
 	white-space: nowrap;
-	display: flex;
-	align-items: center;
-	justify-content: center;
+	display: inline-flex !important;
+	align-items: center !important;
+	justify-content: center !important;
 	text-align: center;
 	vertical-align: middle;
-	line-height: normal;
+	line-height: 1.2 !important;
+	border-radius: 5px !important;
 }
 
 .module-43 .ry-content.ry-flex {
@@ -1472,13 +1626,19 @@
 	text-align: center;
 	vertical-align: middle;
 	line-height: normal;
+	padding: 0 !important;
+	display: flex;
 }
 
 .module-43 .ry-logo img {
-	height: auto;
+	height: auto !important;
+	max-height: 100px !important;
+	width: auto !important;
 	border: none !important;
 	outline: none !important;
 	box-shadow: none !important;
+	margin: 0 !important;
+	display: block;
 }
 
 .module-43 .ry-right {
@@ -1549,7 +1709,7 @@
 	font-size: 60px;
 	font-weight: 400 !important;
 	letter-spacing: initial;
-	font-family: 'Jost', sans-serif !important;
+	font-family: 'Jost' !important;
 	max-width: 70%;
 	line-height: 1;
 	padding: 0 !important;
@@ -2278,19 +2438,40 @@
 	transform: translate(-50%, 0);
 }
 
-.module-43.fixed #litlleLogo img,
-#litlleLogo img {
-	max-width: 100px !important;
-	max-height: 100px;
+.module-43.fixed #litlleLogo img {
+	max-width: 200px !important;
+	max-height: 200px !important;
+	width: auto !important;
+	height: auto !important;
 	border: none !important;
 	outline: none !important;
 	box-shadow: none !important;
+	margin: 0 !important;
+}
+
+#litlleLogo img {
+	max-width: 80px !important;
+	max-height: 80px !important;
+	width: auto !important;
+	height: auto !important;
+	border: none !important;
+	outline: none !important;
+	box-shadow: none !important;
+	margin: 0 !important;
+}
+
+.module-43.fixed .ry-container {
+	max-width: 1600px;
+	width: 95%;
+	margin: 0 auto;
+	padding: 0;
 }
 
 .module-43.fixed .ry-content {
 	display: flex !important;
 	justify-content: space-between !important;
 	align-items: center !important;
+	padding: 0 !important;
 }
 
 .module-43.fixed .ry-left.ry-logo {
@@ -2329,7 +2510,10 @@
 }
 
 .module-43 .ry-left img {
-	max-height: 140px;
+	max-height: 100px !important;
+	margin: 0 !important;
+	height: auto !important;
+	width: auto !important;
 }
 
 .module-footer.custom .each.each-1 {
@@ -2629,22 +2813,21 @@
 		justify-content: space-between;
 	}
 
+	.module-43.fixed .ry-right .ry-menu .nav-menu,
+	.module-43.custom-sticky .ry-right .ry-menu .nav-menu {
+		justify-content: flex-start !important;
+	}
+
 	.module-43.fixed .ry-right .btn-wrapper .ry-btn {
-		text-indent: -9999px;
-		padding: 0 !important;
-		width: 45px;
-		height: 45px;
-		min-width: 45px;
-		min-height: 45px;
-		font-size: 0;
-		line-height: 0;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		border-radius: 50%;
-		overflow: hidden;
-		position: relative;
-		background-image: none !important;
+		height: 42px !important;
+		min-height: 42px !important;
+		max-height: 42px !important;
+		padding: 9px 16px !important;
+		font-size: 14px !important;
+		display: inline-flex !important;
+		align-items: center !important;
+		justify-content: center !important;
+		border-radius: 5px !important;
 	}
 
 	.module-43.fixed .ry-right .btn-wrapper .ry-btn:before {
@@ -3655,12 +3838,20 @@
 	-webkit-backdrop-filter: blur(10px);
 	transition: all 0.3s ease;
 	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-	padding: 15px 0 !important;
+	padding: 10px 0 !important;
+}
+
+.module-43.custom-sticky .ry-container {
+	max-width: 1600px;
+	width: 95%;
+	margin: 0 auto;
+	padding: 0;
 }
 
 .module-43.custom-sticky .ry-content.ry-flex {
 	align-items: center !important;
-	padding: 0;
+	padding: 0 !important;
+	display: flex;
 }
 
 .module-43.custom-sticky .ry-right.ry-flex {
@@ -3681,11 +3872,14 @@
 
 /* Ensure litlleLogo image matches HTML inline style */
 #litlleLogo img {
-	max-width: 100px !important;
-	max-height: 100px;
+	max-width: 80px !important;
+	max-height: 80px !important;
+	width: auto !important;
+	height: auto !important;
 	border: none !important;
 	outline: none !important;
 	box-shadow: none !important;
+	margin: 0 !important;
 }
 
 /* Header Vertical Alignment & Padding Normalization */
@@ -3698,10 +3892,12 @@
 }
 
 .module-43 .ry-logo img {
-	margin-bottom: 0 !important;
+	margin: 0 !important;
 	border: none !important;
 	outline: none !important;
 	box-shadow: none !important;
+	max-height: 140px !important;
+	height: auto !important;
 }
 
 /* Header ry-leads and btn-wrapper styles */
@@ -3730,6 +3926,25 @@
 	justify-content: flex-end;
 }
 
+.module-43 .ry-right .ry-menu .nav-menu {
+	width: 100%;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-pack: justify;
+	-ms-flex-pack: justify;
+	justify-content: space-between;
+	position: relative;
+	top: 0;
+	float: right;
+	max-width: 1000px;
+}
+
+.module-43.fixed .ry-right .ry-menu .nav-menu,
+.module-43.custom-sticky .ry-right .ry-menu .nav-menu {
+	justify-content: flex-start !important;
+}
+
 .module-43 .ry-menu #litlleLogo {
 	display: none;
 	margin-right: 20px;
@@ -3741,7 +3956,7 @@
 
 /* Header button styles to match HTML */
 .module-43 .ry-leads .btn-wrapper .btn-wrap .ry-btn {
-	font-family: 'Jost', sans-serif;
+	font-family: 'Jost';
 	font-size: 16px;
 	font-weight: 400;
 	padding: 12px 20px;
@@ -3808,67 +4023,92 @@
 	display: inline-block;
 }
 
-.module-43.custom-sticky .ry-leads .btn-wrapper .btn-wrap .ry-btn {
-	font-size: 14px;
-	padding: 10px 15px;
-	display: inline-block;
-	white-space: nowrap;
-	text-decoration: none;
-	border: none;
-	cursor: pointer;
-	transition: all 0.3s ease;
+.module-43.custom-sticky .ry-right .btn-wrapper {
+	display: flex !important;
+	gap: 15px !important;
+	align-items: center !important;
+	flex-wrap: nowrap !important;
+	margin-bottom: 0 !important;
 }
 
-.module-43.custom-sticky .ry-leads .btn-wrapper .btn-wrap .ry-btn-primary {
-	background: #bd945a;
-	color: #fff;
+.module-43.custom-sticky .ry-right .btn-wrapper .btn-wrap {
+	display: inline-block !important;
+	margin: 0 !important;
+	vertical-align: middle !important;
 }
 
-.module-43.custom-sticky .ry-leads .btn-wrapper .btn-wrap .ry-btn-primary:hover {
-	background: #184f5a;
-	color: #fff;
+.module-43.custom-sticky .ry-right .btn-wrapper .btn-wrap .ry-btn {
+	display: inline-flex !important;
+	align-items: center !important;
+	justify-content: center !important;
+	white-space: nowrap !important;
+	text-decoration: none !important;
+	border: none !important;
+	cursor: pointer !important;
+	transition: all 0.3s ease !important;
+	height: 45px !important;
+	min-height: 45px !important;
+	max-height: 45px !important;
+	line-height: 1.2 !important;
+	text-align: center !important;
+	vertical-align: middle !important;
+	padding: 10px 18px !important;
+	font-size: 15px !important;
+	font-weight: 400 !important;
+	font-family: 'Jost' !important;
+	border-radius: 5px !important;
+	text-transform: initial !important;
+	letter-spacing: initial !important;
 }
 
-.module-43.custom-sticky .ry-leads .btn-wrapper .btn-wrap .ry-btn-secondary {
-	background: #184f5a;
-	color: #fff;
+.module-43.custom-sticky .ry-right .btn-wrapper .ry-btn-primary:not(:hover) {
+	background: #bd945a !important;
+	color: #fff !important;
 }
 
-.module-43.custom-sticky .ry-leads .btn-wrapper .btn-wrap .ry-btn-secondary:hover {
-	background: #bd945a;
-	color: #fff;
-}
-
-/* Ensure buttons maintain visibility and proper sizing in sticky mode */
-.module-43.custom-sticky .ry-leads .btn-wrapper .btn-wrap .ry-btn {
-	min-height: 40px;
-	line-height: 1.2;
-	text-align: center;
+.module-43.custom-sticky .ry-right .btn-wrapper .ry-btn-primary:hover {
+	background: #184f5a !important;
+	color: #fff !important;
 }
 
 /* Responsive sticky header button adjustments */
-@media (max-width: 1300px) {
-	.module-43.custom-sticky .ry-leads .btn-wrapper .btn-wrap .ry-btn {
-		font-size: 12px;
-		padding: 8px 12px;
+@media (max-width: 1200px) {
+	.module-43.custom-sticky .ry-right .btn-wrapper {
+		gap: 12px !important;
+	}
+
+	.module-43.custom-sticky .ry-right .btn-wrapper .btn-wrap .ry-btn {
+		height: 42px !important;
+		min-height: 42px !important;
+		max-height: 42px !important;
+		padding: 9px 16px !important;
+		font-size: 14px !important;
 	}
 }
 
-@media (max-width: 1100px) {
-	.module-43.custom-sticky .ry-leads .btn-wrapper {
-		gap: 10px;
+@media (max-width: 1024px) {
+	.module-43.custom-sticky .ry-right .btn-wrapper {
+		gap: 10px !important;
 	}
 
-	.module-43.custom-sticky .ry-leads .btn-wrapper .btn-wrap .ry-btn {
-		font-size: 11px;
-		padding: 8px 10px;
+	.module-43.custom-sticky .ry-right .btn-wrapper .btn-wrap .ry-btn {
+		height: 40px !important;
+		min-height: 40px !important;
+		max-height: 40px !important;
+		padding: 8px 14px !important;
+		font-size: 13px !important;
+	}
+
+	.module-43.custom-sticky .ry-container {
+		width: 98%;
 	}
 }
 
 .module-43 .ry-left img {
-	margin-top: -20px;
-	margin-bottom: -20px;
-	max-height: 140px;
+	margin: 0 !important;
+	max-height: 100px !important;
+	height: auto !important;
+	width: auto !important;
 }
 
 .module-43 .ry-left.ry-logo .img-responsive {
@@ -3917,10 +4157,15 @@
 }
 
 .module-43.custom-sticky .menu-button .ry-btn {
-	padding: 10px 15px !important;
+	padding: 10px 18px !important;
+	font-size: 15px !important;
+	height: 45px !important;
+	min-height: 45px !important;
+	max-height: 45px !important;
 	border-radius: 5px !important;
-	min-width: unset;
-	height: auto;
+	display: inline-flex !important;
+	align-items: center !important;
+	justify-content: center !important;
 }
 
 /* Center Submit Button in Get In Touch */

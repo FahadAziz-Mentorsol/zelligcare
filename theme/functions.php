@@ -324,7 +324,6 @@ require get_template_directory() . '/inc/jetpack.php';
 // Fallback menu function
 function zelligcare_fallback_menu() {
     echo '<ul class="nav-menu ry-nav">';
-    echo '<li class="current-menu-item"><a href="' . home_url() . '">Home</a></li>';
     
     // About dropdown - parent links to about page, children are Our Practice and Careers
     $about_page = get_page_by_path('about');
@@ -397,7 +396,7 @@ function zelligcare_create_main_menu() {
         $existing_items = wp_get_nav_menu_items($menu_id);
         if ($existing_items) {
             // Expected top-level menu items (in order)
-            $expected_top_level = array('Home', 'About', 'Our Team', 'Specialties', 'Patient Center', 'Contact Us');
+            $expected_top_level = array('About', 'Our Team', 'Specialties', 'Patient Center', 'Contact Us');
             
             $items_to_remove = array();
             $top_level_items = array();
@@ -588,14 +587,6 @@ function zelligcare_create_main_menu() {
     if (isset($menu_id) && $menu_id) {
             // Menu items structure - using page IDs for proper linking
             $menu_items = array();
-            
-            // Home
-            $home_page = get_option('page_on_front') ? get_post(get_option('page_on_front')) : null;
-            if (!$home_page) {
-                $menu_items[] = array('title' => 'Home', 'url' => home_url('/'), 'type' => 'custom');
-            } else {
-                $menu_items[] = array('title' => 'Home', 'object_id' => $home_page->ID, 'type' => 'post_type');
-            }
             
             // About dropdown - parent links to about page, children are Our Practice and Careers
             $about_page = get_page_by_path('about');
